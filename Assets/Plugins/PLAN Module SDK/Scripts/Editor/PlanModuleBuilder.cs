@@ -418,7 +418,7 @@ namespace Plan {
         }
 
         public BundleBuild                  GetBundle(string bundleBuildName, bool autoCreate) {
-            Bundles.TryGetValue(bundleBuildName, out var bundle);
+            Bundles.TryGetValue(bundleBuildName.ToLowerInvariant(), out var bundle);
         
             if (bundle == null && autoCreate) {
                 bundle = new BundleBuild();
@@ -428,7 +428,7 @@ namespace Plan {
                     extPos = bundleBuildName.Length;
 
                 bundle.Manifest.BundlePublicName = bundleBuildName.Substring(0, extPos);
-                bundle.Manifest.BundleBuildName  = bundleBuildName;
+                bundle.Manifest.BundleBuildName  = bundleBuildName.ToLowerInvariant();
                 bundle.Module = this;
 
                 Bundles[bundle.Manifest.BundleBuildName] = bundle;

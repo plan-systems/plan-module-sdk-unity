@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ModuleBuildConfig
   m_EditorClassIdentifier: 
   DoLogging: 1
-  DebugBuild: 1
+  DebugBuild: 0
   ModuleOutputPath: '{ProjectDir}/__modules'
   AssetStagingPath: Assets/_module-staging
   platforms:
@@ -71,7 +71,7 @@ MonoBehaviour:
     DisableLoadAssetByFileNameWithExtension: 1
   - Name: iOS
     Platform: 9
-    TargetEnabled: 0
+    TargetEnabled: 1
     Uncompressed: 0
     ForceRebuild: 0
     DisableWriteTypeTree: 0
