@@ -459,9 +459,17 @@ namespace Plan {
 
             AddBundles(Params.PlanMod.transform);
 
+            var removeList = new List<string>();
             foreach (var kv in Bundles) {
                 var bundle = kv.Value;
                 bundle.ExportBundle();
+                if (bundle.Manifest.Assets.Count == 0) {
+                    removeList.Add(kv.Key);
+                }
+            }
+
+            foreach (var i in removeList) {
+                Bundles.Remove(i);
             }
 
             if (SkyboxIconSkin != null) {
