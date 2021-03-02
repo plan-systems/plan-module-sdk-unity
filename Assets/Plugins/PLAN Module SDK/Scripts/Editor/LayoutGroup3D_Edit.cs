@@ -6,7 +6,7 @@ using UnityEditor;
 namespace Plan {
 
     [CustomEditor(typeof(LayoutGroup3D))]
-    public class LayoutGroup3DEditor : Editor {
+    public class LayoutGroup3D_Edit : Editor {
 
         LayoutGroup3D                       LayoutGroup;
 

@@ -8,7 +8,7 @@ using System.IO;
 namespace Plan {
         
     [CustomEditor(typeof(PlanModule))]
-    public class PlanModuleEditor : Editor {
+    public class PlanModule_Edit : Editor {
     
 
         public override void                OnInspectorGUI() {

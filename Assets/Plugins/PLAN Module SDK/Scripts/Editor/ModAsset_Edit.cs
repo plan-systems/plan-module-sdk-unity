@@ -8,7 +8,7 @@ using System;
 namespace Plan {
         
     [CustomEditor(typeof(ModAsset))]
-    public class ModAssetEditor : Editor {
+    public class ModAsset_Edit : Editor {
     
         public override void                OnInspectorGUI() {
             DrawDefaultInspector();
