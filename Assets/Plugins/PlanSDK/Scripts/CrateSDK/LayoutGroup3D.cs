@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
 
     public enum LayoutStyle {
         Linear,

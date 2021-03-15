@@ -6,25 +6,25 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-using Pmod;
+using PlanSDK.Crates;
 using gpb = global::Google.Protobuf;
 
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
 
 
     public class BundleBuilder {
 
-        public static void                         BuildModule(ModuleBuildParams buildParams) {
+        public static void                         BuildModule(CrateBuildParams buildParams) {
 
             if (EditorApplication.isPlaying || EditorApplication.isCompiling) {
                 UnityEngine.Debug.LogWarning("<color=#ff8080>Cannot build while running or compiling.</color>");
                 return;
             }
 
-            buildParams.BuildConfig = ModBuildConfig.CurrentConfig(true);
+            buildParams.BuildConfig = CrateBuildConfig.CurrentConfig(true);
 
-            var modBuild = ModuleBuild.NewBuild(buildParams);
+            var modBuild = CrateBuild.NewBuild(buildParams);
             Debug.Log($"Building {modBuild.OutputPath}");
 
             var buildTargets = buildParams.BuildConfig.GetBuildTargets(); 
@@ -67,8 +67,8 @@ namespace Plan {
                     modBuild.WriteManifests();
 
                     Debug.Log($"<color=#107010>{successCount} of {buildTargets.Count} targets built to {modBuild.OutputPath}</color>");
-                    buildParams.PlanMod.IncrementBuildNum();
-                    EditorUtility.SetDirty(buildParams.PlanMod);
+                    buildParams.Crate.IncrementBuildNum();
+                    EditorUtility.SetDirty(buildParams.Crate);
                     AssetDatabase.SaveAssets();
                 }
 
@@ -79,7 +79,7 @@ namespace Plan {
     }
 
     public class BundleBuild {
-        public ModuleBuild                  Module;
+        public CrateBuild                   Crate;
         public BundleManifest               Manifest    = new BundleManifest();
         public Transform                    BundleRoot;              // Corresponding item representing this bundle in the scene
 
@@ -93,7 +93,7 @@ namespace Plan {
             RuntimePreviewGenerator.BackgroundColor = new Color(0,0,0,0);
             RuntimePreviewGenerator.OrthographicMode = true;
 
-            _bundleAssetDir = $"{Module.AssetStagingDir}";
+            _bundleAssetDir = $"{Crate.AssetStagingDir}";
 
             // Bundle asset URI are relative to the bundle, so create the dirs, but the root bundle URI is ""
             _curURI = "";
@@ -116,7 +116,7 @@ namespace Plan {
                 _curURI = $"{_curURI}/{dirName}";
             }
 
-            ModuleBuild.CreateAssetDir($"{_bundleAssetDir}/{_curURI}");
+            CrateBuild.CreateAssetDir($"{_bundleAssetDir}/{_curURI}");
         }
 
 
@@ -147,8 +147,8 @@ namespace Plan {
             var iconTex = RuntimePreviewGenerator.GenerateModelPreview(target, 128, entry.Bounds);
             if (iconTex != null) {
 
-                iconPathname = $"{_bundleAssetDir}/{entry.URI}.icon.png";
-                Module.WriteProjectFile(iconPathname, iconTex.EncodeToPNG());
+                iconPathname = $"{_bundleAssetDir}/{entry.NameID}.icon.png";
+                Crate.WriteProjectFile(iconPathname, iconTex.EncodeToPNG());
                 AssetDatabase.ImportAsset(iconPathname, ImportAssetOptions.ForceSynchronousImport);
 
                 // TODO see time 6:00 in https://www.youtube.com/watch?v=-bxaYugwVL4&feature=emb_logo for having default filter settings for UI textures
@@ -172,41 +172,57 @@ namespace Plan {
 
 
 
-        void                                  exportModuleAsset(ModAsset mass) { //Transform asset, AssetEntry entry, ModAsset info) {
-            var assetName = mass.name;
-            var target = mass.AssetTarget;
+        void                                  exportModuleAsset(CrateItem item) {
+        
+            if (item.ExcludeFromBuild)
+                return;
+                
 
-            assetName = mass.name;
+            var assetName = item.name;
+            var target = item.AssetTarget;
+
+            if (String.IsNullOrEmpty(item.AssetNameID)) {
+                Debug.LogWarning($"asset '{assetName}' skipped because AssetID is empty");
+            }
+                
+            assetName = item.name;
             var entry = new AssetEntry {
-                Bounds = mass.AssetBounds,
+                Bounds = item.AssetBounds,
                 URI = $"{_curURI}/{assetName}",
+                NameID = item.AssetNameID,
+                Title = item.gameObject.name,
             };
 
-
+            if (item.IsPrivate) {
+                entry.AssetFlags |= AssetFlags.IsPrivate;
+            }
+                    
             string err = null;
 
-            var skybox = mass.GetComponent<Skybox>();
+            var skybox = item.GetComponent<Skybox>();
             if (skybox != null) {
                 entry.AssetFlags |= AssetFlags.IsSkybox;
-                entry.Label = AssetDatabase.GetAssetPath(skybox.material);
+                entry.LocalURI = AssetDatabase.GetAssetPath(skybox.material);
 
-                var iconSkin = Module.SkyboxIconSkin;
+                var iconSkin = Crate.SkyboxIconSkin;
                 iconSkin.sharedMaterial = skybox.material;
 
                 target = iconSkin.transform;
 
             } else {
-                if (mass.IsStruct) {
-                    entry.AssetFlags |= AssetFlags.IsStruct;
+                if (item.IsSurface) {
+                    entry.AssetFlags |= AssetFlags.IsSurface;
                 }
-                if (mass.IsGlyph) {
-                    entry.AssetFlags |= AssetFlags.IsGlyph;
+                if (item.AutoScaleByDefault) {
+                    entry.AssetFlags |= AssetFlags.AutoScale;
                 }
+                
+                entry.AssetFlags |= AssetFlags.IsPlaceable;
             }
             
-            if (entry.AssetIsPrefab()) {
-                string prefabPathname = $"{_bundleAssetDir}/{entry.URI}.prefab";
-                entry.Label = prefabPathname;
+            if (entry.AssetFlags.HasFlag(AssetFlags.IsPlaceable)) {
+                string prefabPathname = $"{_bundleAssetDir}/{entry.NameID}.prefab";
+                entry.LocalURI = prefabPathname;
 
                 //Vector3 savedPos = asset.localPosition;
                 //asset.localPosition = Vector2.zero;
@@ -221,19 +237,23 @@ namespace Plan {
             }
 
             string iconPath = null;
-            if (mass.AutoGenerateIcon) {
+            if (item.AutoGenerateIcon) {
                 iconPath = renderAssetIcon(target, entry);
-            } else if (mass.CustomIcon != null) {
-                iconPath = AssetDatabase.GetAssetPath(mass.CustomIcon);
+            } else if (item.CustomIcon != null) {
+                iconPath = AssetDatabase.GetAssetPath(item.CustomIcon);
             }
 
+            // FUTURE: IconIDs are just 16 byte GUIDs that multuple mod assets reference
             if (String.IsNullOrEmpty(iconPath) == false) {
                 entry.AssetFlags |= AssetFlags.HasIcon;
 
-                Module.BrowserBundle.Manifest.Assets.Add(new AssetEntry {
-                    AssetFlags = AssetFlags.IsIcon | AssetFlags.IsSprite,
+                Crate.BrowserBundle.Manifest.Assets.Add(new AssetEntry {
+                    AssetFlags = /*AssetFlags.IsIcon |*/ AssetFlags.IsSprite,
                     URI = entry.URI,
-                    Label = iconPath,
+                    Tags = item.ExportTagList(),
+                    ShortDesc = item.ShortDescription,
+                    LocalURI = iconPath,
+                    NameID = item.AssetNameID,
                 });
             }
 
@@ -266,7 +286,7 @@ namespace Plan {
             for (int j = 0; j < N; j++) {
                 Transform subItem = groupItem.GetChild(j);
 
-                var mass = subItem.GetComponent<ModAsset>();
+                var mass = subItem.GetComponent<CrateItem>();
                 if (mass == null) {
                     exportGroup(subItem, null);
                 } else {
@@ -280,7 +300,7 @@ namespace Plan {
         }
     }
 
-    public class ModuleBuildParams {
+    public class CrateBuildParams {
 
 
         // // Absolute path of Unity project dir plus trailing slash
@@ -292,10 +312,10 @@ namespace Plan {
 
         public string                               BuildSuffix;
 
-        public PlanModule                           PlanMod;
-        public ModBuildConfig                       BuildConfig;
+        public CrateMaker                           Crate;
+        public CrateBuildConfig                       BuildConfig;
 
-        public                                      ModuleBuildParams() {
+        public                                      CrateBuildParams() {
 
 
         }
@@ -303,26 +323,26 @@ namespace Plan {
     }
 
 
-    public class ModuleBuild {
-        public static readonly string               kModuleInnerNamespace = "!";
-        public static readonly string               kModuleIconName = ".icon";
+    public class CrateBuild {
+        public static readonly string               kCrateInnerNamespace = "!";
+        public static readonly string               kCrateIconName = ".icon";
 
         // Bundle containing all this module's browsable assets, etc.
         public BundleBuild                          BrowserBundle;
         
         public string                               OutputPath;                 // Absolute path of where build products go
         public string                               AssetStagingDir;            // Asset dir pathname of where tp export module assets (starts with "Assets/")
-        public ModuleBuildParams                    Params;
+        public CrateBuildParams                     Params;
 
-        public ModuleManifest                       Manifest;
+        public CrateManifest                        Manifest;
         public Dictionary<string, BundleBuild>      Bundles = new Dictionary<string, BundleBuild>(10);
 
         public MeshRenderer                         SkyboxIconSkin;
 
 
-        public static ModuleBuild           NewBuild(ModuleBuildParams buildParams) {
+        public static CrateBuild            NewBuild(CrateBuildParams buildParams) {
 
-            var build = new ModuleBuild();
+            var build = new CrateBuild();
 
             build.Params = buildParams;
 
@@ -341,19 +361,21 @@ namespace Plan {
 
         void                                initBuild() {
 
-            Manifest = new ModuleManifest();
-            Manifest.ModuleDomain = Params.PlanMod.ModuleDomain;
-            Manifest.ModuleName   = Params.PlanMod.ModuleName;
-            Manifest.BrowserBundle = kModuleInnerNamespace;
+            Manifest = new CrateManifest();
+            Manifest.HomeDomain         = Params.Crate.HomeDomain;
+            Manifest.CrateNameID        = Params.Crate.CrateNameID;
+            Manifest.BuildID            = Params.Crate.IssueBuildID();
+            Manifest.CrateTitle         = Params.Crate.CrateTitle;
+            Manifest.BrowserBundle      = kCrateInnerNamespace;
 
             Bundles.Clear();
 
             {
                 var outDir = Params.BuildConfig.ExpandedOutputPath;
                 Directory.CreateDirectory(outDir);
-                outDir = $"{outDir}/{Manifest.ModuleDomain}";
+                outDir = $"{outDir}/{Manifest.HomeDomain}";
                 Directory.CreateDirectory(outDir);
-                OutputPath = $"{outDir}/{Manifest.ModuleName}";
+                OutputPath = $"{outDir}/{Manifest.CrateNameID}";
             }
             if (Directory.Exists(OutputPath)) {
                 Directory.Delete(OutputPath, true);
@@ -429,7 +451,7 @@ namespace Plan {
 
                 bundle.Manifest.BundlePublicName = bundleBuildName.Substring(0, extPos);
                 bundle.Manifest.BundleBuildName  = bundleBuildName.ToLowerInvariant();
-                bundle.Module = this;
+                bundle.Crate = this;
 
                 Bundles[bundle.Manifest.BundleBuildName] = bundle;
                 this.Manifest.Bundles.Add(bundle.Manifest);
@@ -457,7 +479,7 @@ namespace Plan {
 
         void                                ExportBundles() {
 
-            AddBundles(Params.PlanMod.transform);
+            AddBundles(Params.Crate.transform);
 
             var removeList = new List<string>();
             foreach (var kv in Bundles) {
@@ -483,12 +505,12 @@ namespace Plan {
         public void                         RunExport() {
 
             // Export module icon if set
-            if (Params.PlanMod.ModuleIcon != null) {
-                string spriteAssetPath = AssetDatabase.GetAssetPath(Params.PlanMod.ModuleIcon);
+            if (Params.Crate.CrateIcon != null) {
+                string spriteAssetPath = AssetDatabase.GetAssetPath(Params.Crate.CrateIcon);
                 BrowserBundle.Manifest.Assets.Add(new AssetEntry {
-                    AssetFlags = AssetFlags.IsIcon | AssetFlags.IsSprite,
-                    URI = $"{Manifest.BrowserBundle}/{kModuleIconName}",
-                    Label = spriteAssetPath,
+                    AssetFlags = /*AssetFlags.IsIcon |*/ AssetFlags.IsSprite,
+                    URI = $"{Manifest.BrowserBundle}/{kCrateIconName}",
+                    LocalURI = spriteAssetPath,
                 });
             }
             
@@ -518,7 +540,7 @@ namespace Plan {
 
             // Add the build suffix to each bundle (thanks Unity, for erroring when two totally different assetbundles share the same name, wtf)
             foreach (var bundle in manifest.Bundles) {
-                bundle.BundleBuildName = $"{bundle.BundleBuildName}.{Params.PlanMod.BuildSuffix}";
+                bundle.BundleBuildName = $"{bundle.BundleBuildName}.{Params.Crate.BuildSuffix}";
             }
 
             // Sort assets alphabetically in each bundle
@@ -557,7 +579,7 @@ namespace Plan {
                 builds[i].assetNames       = new string[N];
                 builds[i].addressableNames = new string[N];
                 for (int j = 0; j < N; j++) {
-                    builds[i].assetNames[j]       = bundle.Assets[j].Label;
+                    builds[i].assetNames[j]       = bundle.Assets[j].LocalURI;
                     builds[i].addressableNames[j] = bundle.Assets[j].URI;
                 }
             }
@@ -570,7 +592,7 @@ namespace Plan {
             foreach (var bundle in Manifest.Bundles) {
                 int N = bundle.Assets.Count;
                 for (int i = 0; i < N; i++) {
-                    bundle.Assets[i].Label = "";
+                    bundle.Assets[i].LocalURI = "";
                 }
             }
 

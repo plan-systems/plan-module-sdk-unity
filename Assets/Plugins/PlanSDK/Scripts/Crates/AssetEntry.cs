@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace Pmod {
+namespace PlanSDK.Crates {
 
     public partial class AssetEntry {
 
@@ -28,13 +28,6 @@ namespace Pmod {
         }
 
 
-        public bool                         AssetIsPrefab() {
-            return AssetIsPrefab(this.AssetFlags);
-        }
-
-        public static bool                  AssetIsPrefab(AssetFlags assetFlags) {
-            return (assetFlags & (AssetFlags.IsStruct | AssetFlags.IsGlyph)) != 0;
-        }
     }
 
 }

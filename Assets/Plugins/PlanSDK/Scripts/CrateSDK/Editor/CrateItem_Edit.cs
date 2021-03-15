@@ -5,26 +5,52 @@ using System.Collections.Generic;
 using System;
 
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
         
-    [CustomEditor(typeof(ModAsset))]
-    public class ModAsset_Edit : Editor {
+    [CustomEditor(typeof(CrateItem))]
+    public partial class CrateItem_Edit : Editor {
     
+        SerializedProperty                  _autoScale;
+        SerializedProperty                  _isSurface;
+        
+        static GUIStyle                     _boxStyle; // = EditorStyles.helpBox;
+        
+        void                                OnEnable() {
+            
+            _autoScale = serializedObject.FindProperty("AutoScaleByDefault");
+            _isSurface = serializedObject.FindProperty("IsSurface");
+
+
+            // SerializedProperty vers = serializedObject.FindProperty("_version");
+            // if (vers.intValue == 1) {
+            //     _autoScale.boolValue = serializedObject.FindProperty("IsGlyph").boolValue;
+            //     _isSurface.boolValue = serializedObject.FindProperty("IsStruct").boolValue;
+            //     Debug.Log($"Updated '{target.name}' from version {vers.intValue} to {2}");
+            //     vers.intValue = 2;
+                
+            //     serializedObject.ApplyModifiedProperties();
+            // }
+
+        }
+        
         public override void                OnInspectorGUI() {
+            serializedObject.Update();
+            
             DrawDefaultInspector();
 
-            var mass = target as ModAsset;
+            //EditorGUI.PropertyField(position, property, label, true);
+   
+         
+            var mass = target as CrateItem;
 
             {
                 EditorGUI.BeginChangeCheck();
-                bool autoIcon = EditorGUILayout.Toggle("Auto-Generate Icon",  mass.AutoGenerateIcon);
-
+                bool autoIcon = EditorGUILayout.Toggle("Auto generate Icon",  mass.AutoGenerateIcon);
                 if (EditorGUI.EndChangeCheck()) {
                     mass.AutoGenerateIcon = autoIcon;
                 }
 
                     
-
                 if (autoIcon == false) {
                     EditorGUI.BeginChangeCheck();
                     var customIcon = (Sprite) EditorGUILayout.ObjectField("Custom Icon", mass.CustomIcon, typeof(Sprite), true);
@@ -41,22 +67,28 @@ namespace Plan {
             }
 
 
-            //EditorGUILayout.HelpBox(planModule.NextBuildInfo, MessageType.Info);
+            //EditorGUILayout.HelpBox(CrateMaker.NextBuildInfo, MessageType.Info);
             if (mass.Skybox != null) {
                 EditorGUILayout.HelpBox("IsSkybox", MessageType.Info);
             } else {
-                EditorGUI.BeginChangeCheck();
+//                EditorGUI.BeginChangeCheck();
 
-                bool isGlyph  = EditorGUILayout.Toggle("Is Glyph",  mass.IsGlyph);
-                bool isStruct = EditorGUILayout.Toggle("Is Struct", mass.IsStruct);
+                EditorGUILayout.PropertyField(_autoScale);
+                EditorGUILayout.PropertyField(_isSurface);
 
-                if (EditorGUI.EndChangeCheck()) {
-                    Undo.RecordObject(mass, "change module asset flags");
-                    mass.IsGlyph  = isGlyph;
-                    mass.IsStruct = isStruct;
+                // if (EditorGUI.EndChangeCheck()) {
+                //     Undo.RecordObject(mass, "change module asset flags");
+                //     mass.IsGlyph  = isGlyph;
+                //     mass.IsStruct = isStruct;
+                // }
+                if (_boxStyle == null) {
+                    _boxStyle = new GUIStyle(GUI.skin.box);
+                    _boxStyle.padding = new RectOffset(15, 10, 5, 5);
                 }
-
-                if (isGlyph || isStruct) {
+                
+                EditorGUILayout.LabelField("Extents", EditorStyles.boldLabel);
+                EditorGUILayout.BeginVertical(_boxStyle);
+                {
                     EditorGUI.BeginChangeCheck();
 
                     var center  = EditorGUILayout.Vector3Field("Center",  mass.AssetBounds.center);
@@ -67,16 +99,17 @@ namespace Plan {
                         mass.AssetBounds.center  = center;
                         mass.AssetBounds.extents = extents;
                     }
-                }
 
-                if (GUILayout.Button("Regen Extents") ) {
-                    regenExtents();
+                    if (GUILayout.Button("Regen Extents") ) {
+                        regenExtents();
+                    }
                 }
+                EditorGUILayout.EndVertical();
 
             }
 
            
-            
+            serializedObject.ApplyModifiedProperties();
             // EditorGUILayout.HelpBox("This is a help box", MessageType.Info);
 
             //             Rect r = (Rect)EditorGUILayout.BeginVertical();
@@ -91,7 +124,7 @@ namespace Plan {
 
 
         void                                regenExtents() {
-            var mass = target as ModAsset;
+            var mass = target as CrateItem;
             var bounds = new Bounds();
             int boundsCount = 0;
             var asset = mass.AssetTarget;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
 
     [CustomEditor(typeof(LayoutGroup3D))]
     public class LayoutGroup3D_Edit : Editor {

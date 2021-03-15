@@ -1,7 +1,3 @@
-//-------------------
-// ReachableGames
-// Copyright 2019
-//-------------------
 
 using UnityEngine;
 using UnityEditor;
@@ -9,12 +5,12 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
 
 
-	public struct ModBuildTarget {
+	public struct CrateBuildTarget {
 	
-        public ModBuildTarget(BuildTarget target, string targetString, BuildAssetBundleOptions bundleOptions) {
+        public CrateBuildTarget(BuildTarget target, string targetString, BuildAssetBundleOptions bundleOptions) {
             Target = target;
             TargetString = targetString;
             BundleOptions = bundleOptions;
@@ -36,11 +32,11 @@ namespace Plan {
     // 3) Manifest files have a version number in their filename, so they fully describe the data files that went with that version (may be shared with old or new builds)
     // 4) Older and newer builds will function side-by-side with each other as long as you don't delete or rename any asset bundles or manifests.
 
-    // Place an ModBuildConfig in an Editor/Resources folder.  It is really only there to make it easy to configure and generate builds--the asset is not used at runtime.
-    // Name this asset "ModBuildConfig"
-    public class ModBuildConfig : ScriptableObject {
+    // Place an CrateBuildConfig in an Editor/Resources folder.  It is really only there to make it easy to configure and generate builds--the asset is not used at runtime.
+    // Name this asset "CrateBuildConfig"
+    public class CrateBuildConfig : ScriptableObject {
     
-        static public string                kBuildConfigPath = "ModuleBuildConfig";
+        static public string                kBuildConfigPath = "CrateBuildConfig";
 
         [Tooltip("Turn this on to see asset bundle logging.")]
         public bool                         DoLogging = true;
@@ -49,18 +45,18 @@ namespace Plan {
         public bool                         DebugBuild = false;
 
         [Tooltip("Specifies the output dir where modules are built")]
-        public string                       ModuleOutputPath = "{ProjectDir}/__modules";
+        public string                       CrateOutputPath = "{ProjectDir}/__crates";
 
         public string                       ExpandedOutputPath {
             get {
-                var outDir = ModuleOutputPath.Replace("{ProjectDir}", this.ProjectDir);
+                var outDir = CrateOutputPath.Replace("{ProjectDir}", this.ProjectDir);
                 outDir = outDir.Replace("//", "/");
                 return outDir;
             }
         }
 
         [Tooltip("Specifies where intermediary assets are places in preparation for a module export.  This path must be in your project's Assets.")]
-        public string                       AssetStagingPath = "Assets/_module-staging";
+        public string                       AssetStagingPath = "Assets/_asset-staging";
 
         public PlatformOptions[] platforms = new PlatformOptions[] {
             new PlatformOptions(BuildTarget.StandaloneWindows64),
@@ -81,7 +77,7 @@ namespace Plan {
         // Absolute path of Unity Asset dir plus trailing slash
         public string                               AssetPath {
             get {
-                if (_assetPath == null) {
+                if (String.IsNullOrEmpty(_assetPath)) {
                     _assetPath = Application.dataPath + "/";
                 }
                 return _assetPath;
@@ -91,7 +87,7 @@ namespace Plan {
         // Absolute path of Unity project dir plus trailing slash
         public string                               ProjectDir {
             get {
-                if (_projectDir == null) {
+                if (String.IsNullOrEmpty(_projectDir)) {
                     _projectDir = this.AssetPath;
                     if (_projectDir.EndsWith("/Assets/")) {
                         _projectDir = _projectDir.Substring(0, _projectDir.Length - 7);
@@ -134,7 +130,7 @@ namespace Plan {
 
 
             //-------------------
-            // This combines the settings saved in the ModBuildConfig scriptable object to control the build of asset bundles.
+            // This combines the settings saved in the CrateBuildConfig scriptable object to control the build of asset bundles.
             public BuildAssetBundleOptions GenerateBundleOptionsFromSettings()
             {
                 BuildAssetBundleOptions options = BuildAssetBundleOptions.None;
@@ -211,13 +207,13 @@ namespace Plan {
         
         //-------------------
 
-        public List<ModBuildTarget> GetBuildTargets() {
+        public List<CrateBuildTarget> GetBuildTargets() {
     
             if (string.IsNullOrEmpty(Application.productName)) 
                 Debug.LogError("Product Name is not set.  Do this in Edit->ProjectSettings->Player");
 
             // Build a configuration dictionary with all the settings stored PER-PLATFORM, for easy extraction.
-            var buildTargets = new List<ModBuildTarget>();
+            var buildTargets = new List<CrateBuildTarget>();
             foreach (PlatformOptions po in platforms) {
                 if (po.TargetEnabled) {
 
@@ -227,7 +223,7 @@ namespace Plan {
                     // Generated straight from checkboxes in the ScriptableObject.
                     BuildAssetBundleOptions bundleOptions = po.GenerateBundleOptionsFromSettings();
 
-                    var builtTarget = new ModBuildTarget(po.Platform, GetPlatformName(po.Platform), bundleOptions);
+                    var builtTarget = new CrateBuildTarget(po.Platform, GetPlatformName(po.Platform), bundleOptions);
 
                     buildTargets.Add(builtTarget);
                 }
@@ -239,7 +235,7 @@ namespace Plan {
 
         //-------------------
         // Convenient way to get the build config asset.
-        static public ModBuildConfig        CurrentConfig(bool reload = false) {
+        static public CrateBuildConfig        CurrentConfig(bool reload = false) {
 
             if (reload) {
                 _cachedConfig = null;
@@ -249,14 +245,21 @@ namespace Plan {
                 return _cachedConfig;
         
             // Try to load the BuildSettings scriptable object, which contains the build version, final manifest URL, etc.
-            _cachedConfig = Resources.Load<ModBuildConfig>(ModBuildConfig.kBuildConfigPath);
-            if (_cachedConfig==null) Debug.LogError("<color=#ff8080>No ModBuildConfig object found.</color>");
+            _cachedConfig = LoadBuildConfig();
+            if (_cachedConfig==null) Debug.LogError("<color=#ff8080>No {kBuildConfigPath} object found.</color>");
 
             return _cachedConfig;
         }
 
+        static CrateBuildConfig               LoadBuildConfig() {
+            var config = Resources.Load<CrateBuildConfig>(CrateBuildConfig.kBuildConfigPath);
+            if (config == null) {
+                config = Resources.Load<CrateBuildConfig>("ModuleBuildConfig");        // Try the legacy name
+            }
+            return config;
+        }
 
-        static ModBuildConfig _cachedConfig = null;
+        static CrateBuildConfig _cachedConfig = null;
 
 
 		const string kRevealBuildConfigs                  = "Tools/PLAN/Reveal Build Configs";
@@ -265,7 +268,7 @@ namespace Plan {
         static public string                GetSDKFolder() {
     
             // Allow user to move things around without having to change the code
-            string[] matchList = Directory.GetDirectories(Application.dataPath, "PLAN*SDK", SearchOption.AllDirectories);
+            string[] matchList = Directory.GetDirectories(Application.dataPath, "Plan*SDK", SearchOption.AllDirectories);
             if (matchList.Length == 0) {
                 Debug.Assert(matchList.Length > 0, "failed to locate PLAN SDK dir");
             }
@@ -279,7 +282,7 @@ namespace Plan {
             string sdkDir = $"Assets{GetSDKFolder()}";
 
             string resDir = $"{sdkDir}/Editor/Resources";
-            ModuleBuild.CreateAssetDir(resDir);
+            CrateBuild.CreateAssetDir(resDir);
 
             return resDir;
         }
@@ -287,15 +290,15 @@ namespace Plan {
         [MenuItem(kRevealBuildConfigs, false, 204)]
         static public void RevealBuildConfigs() {
     
-            var config = Resources.Load<ModBuildConfig>(kBuildConfigPath);
+            var config = LoadBuildConfig();
             if (config==null) {
-                config = new ModBuildConfig();
+                config = new CrateBuildConfig();
                 var resDir = GetResourcesDir();
                 string configPath = $"{resDir}/{kBuildConfigPath}.asset";
                 AssetDatabase.CreateAsset(config, configPath);
                 AssetDatabase.SaveAssets();
 
-                config = Resources.Load<ModBuildConfig>(kBuildConfigPath);
+                config = Resources.Load<CrateBuildConfig>(kBuildConfigPath);
             }
 
             AssetDatabase.Refresh();

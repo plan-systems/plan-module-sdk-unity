@@ -5,24 +5,22 @@ using System;
 using System.IO;
 
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
         
-    [CustomEditor(typeof(PlanModule))]
-    public class PlanModule_Edit : Editor {
+    [CustomEditor(typeof(CrateMaker))]
+    public class CrateMaker_Edit : Editor {
     
 
         public override void                OnInspectorGUI() {
             DrawDefaultInspector();
 
-            var planMod = target as PlanModule;
+            var crate = target as CrateMaker;
 
-
-
-            if (GUILayout.Button("Build Module") ) {
+            if (GUILayout.Button("Build Crate") ) {
             
-                var build = new ModuleBuildParams();
-                build.PlanMod = planMod;
-                build.BuildSuffix = planMod.BuildSuffix;
+                var build = new CrateBuildParams();
+                build.Crate = crate;
+                build.BuildSuffix = crate.BuildSuffix;
 
                 EditorDispatcher.Dispatch(() => {
                     BundleBuilder.BuildModule(build);
@@ -30,8 +28,8 @@ namespace Plan {
 
             }
 
-            var buildConfig = ModBuildConfig.CurrentConfig();
-            var outputPath = $"{buildConfig.ExpandedOutputPath}/{planMod.ModuleDomain}";
+            var buildConfig = CrateBuildConfig.CurrentConfig();
+            var outputPath = $"{buildConfig.ExpandedOutputPath}/{crate.HomeDomain}";
             EditorGUILayout.HelpBox(outputPath, MessageType.None);
 
             if (Directory.Exists(outputPath)) {

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 11500000, guid: e2ab4b685df5a4636951c2404b03f67c, type: 3}
-  m_Name: ModuleBuildConfig
+  m_Name: CrateBuildConfig
   m_EditorClassIdentifier: 
   DoLogging: 1
-  DebugBuild: 0
-  ModuleOutputPath: '{ProjectDir}/__modules'
-  AssetStagingPath: Assets/_module-staging
+  DebugBuild: 1
+  CrateOutputPath: '{ProjectDir}/__crates'
+  AssetStagingPath: Assets/_asset-staging
   platforms:
   - Name: Windows
     Platform: 19

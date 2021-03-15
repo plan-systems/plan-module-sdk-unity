@@ -5,7 +5,7 @@ using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 
-namespace Plan {
+namespace PlanSDK.CrateSDK {
 
     public static class EditorDispatcher {
 
