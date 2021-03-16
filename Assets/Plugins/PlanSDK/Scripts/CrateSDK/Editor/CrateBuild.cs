@@ -191,10 +191,15 @@ namespace PlanSDK.CrateSDK {
                 URI = $"{_curURI}/{assetName}",
                 NameID = item.AssetNameID,
                 Title = item.gameObject.name,
+                Tags = item.ExportTagList(),
             };
 
             if (item.IsPrivate) {
                 entry.AssetFlags |= AssetFlags.IsPrivate;
+            }
+
+            if (String.IsNullOrWhiteSpace(item.ShortDescription) == false) {
+                entry.ShortDesc = item.ShortDescription;
             }
                     
             string err = null;
@@ -250,8 +255,6 @@ namespace PlanSDK.CrateSDK {
                 Crate.BrowserBundle.Manifest.Assets.Add(new AssetEntry {
                     AssetFlags = /*AssetFlags.IsIcon |*/ AssetFlags.IsSprite,
                     URI = entry.URI,
-                    Tags = item.ExportTagList(),
-                    ShortDesc = item.ShortDescription,
                     LocalURI = iconPath,
                     NameID = item.AssetNameID,
                 });
@@ -313,7 +316,7 @@ namespace PlanSDK.CrateSDK {
         public string                               BuildSuffix;
 
         public CrateMaker                           Crate;
-        public CrateBuildConfig                       BuildConfig;
+        public CrateBuildConfig                     BuildConfig;
 
         public                                      CrateBuildParams() {
 

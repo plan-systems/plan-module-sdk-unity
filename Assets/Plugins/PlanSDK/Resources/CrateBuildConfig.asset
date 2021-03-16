@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoLogging: 1
   DebugBuild: 1
-  CrateOutputPath: '{ProjectDir}/__crates'
+  CrateOutputPath: '{ProjectDir}/../__builds'
   AssetStagingPath: Assets/_asset-staging
   platforms:
   - Name: Windows

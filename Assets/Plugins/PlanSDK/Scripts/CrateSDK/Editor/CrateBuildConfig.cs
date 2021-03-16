@@ -45,7 +45,7 @@ namespace PlanSDK.CrateSDK {
         public bool                         DebugBuild = false;
 
         [Tooltip("Specifies the output dir where modules are built")]
-        public string                       CrateOutputPath = "{ProjectDir}/__crates";
+        public string                       CrateOutputPath = "{ProjectDir}/../__builds";
 
         public string                       ExpandedOutputPath {
             get {

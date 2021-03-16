@@ -45,7 +45,7 @@ namespace PlanSDK.CrateSDK {
 
             {
                 EditorGUI.BeginChangeCheck();
-                bool autoIcon = EditorGUILayout.Toggle("Auto generate Icon",  mass.AutoGenerateIcon);
+                bool autoIcon = EditorGUILayout.Toggle("Auto generate icon",  mass.AutoGenerateIcon);
                 if (EditorGUI.EndChangeCheck()) {
                     mass.AutoGenerateIcon = autoIcon;
                 }
