@@ -69,7 +69,9 @@ ehthumbs.db
 Thumbs.db
 
 # ignore sample content
-__modules
-Assets/_module-staging*
+__crates
+UserSettings/
+Assets/_asset-staging*
 Assets/content*
-
+.vscode/    
+.vs/
