@@ -25,7 +25,7 @@ namespace PlanSDK.CrateSDK {
         public Sprite                       ModuleIcon;                             // DEPRECATED
         
 
-        public string                       CrateNameID     = "my-pack-id";
+        public string                       CrateNameID     = "my-create-name-id";
         
         [SerializeField]
         string                              _buildID;
@@ -53,6 +53,7 @@ namespace PlanSDK.CrateSDK {
                 assetID = assetID.Replace(c.ToString(), ""); 
             }
             assetID.Trim();
+            assetID = assetID.Replace("---", "-"); 
             assetID = assetID.Replace("  ", " "); 
             assetID = assetID.Replace("   ", " "); 
             return assetID;
@@ -81,7 +82,7 @@ namespace PlanSDK.CrateSDK {
                 CrateNameID = FilterAssetID(CrateNameID);
             }
             
-            gameObject.name = $"{HomeDomain}/{CrateNameID}";
+            gameObject.name = $"CRATE ({CrateNameID})";
         }
         
         // public string                       NextBuildInfo {

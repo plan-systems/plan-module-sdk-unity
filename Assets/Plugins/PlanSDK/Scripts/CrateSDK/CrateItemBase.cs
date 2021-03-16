@@ -11,22 +11,21 @@ namespace PlanSDK.CrateSDK {
         [HideInInspector]
         public int                          _version = 1;
         
-        [Tooltip("AssetNameID permanently identifies this asset.  Changing this ID after this asset has been published will cause references to this asset to break.")]
+        [Tooltip("When this is enabled, this asset will be omitted from the build")]
+        public bool                         ExcludeFromBuild;
+
+        [Tooltip("AssetNameID PERMANENTLY identifies this asset and is CASE SENSITIVE.  Changing this ID after this asset has been published will cause references to this asset to break.")]
         public string                       AssetNameID;
+
+        [Tooltip("A short phase or sentence decribing this item")]
+        public string                       ShortDescription;
 
         [Tooltip("Assets that are private are not visible to users browsing the module")]
         public bool                         IsPrivate;
         
-        [Tooltip("A short phase or sentence decribing this item")]
-        public string                       ShortDescription;
-        
-        [Tooltip("When this is enabled, this asset will be omitted from the build")]
-        public bool                         ExcludeFromBuild;
-        
         [HideInInspector]
         public bool                         AutoGenerateIcon = true;
         
-
         [HideInInspector]
         public Sprite                       CustomIcon;
 
