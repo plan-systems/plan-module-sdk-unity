@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45080322, g: 0.50072855, b: 0.5747285, a: 1}
+  m_IndirectSpecularColor: {r: 0.45080292, g: 0.500728, b: 0.5747283, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 202555370}
   - component: {fileID: 202555371}
   m_Layer: 0
-  m_Name: write
+  m_Name: Write
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,6 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: write
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 3431be0b215624b628ccba9d67cf71b5, type: 3}
   IsGlyph: 1
@@ -207,6 +212,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+  AutoScaleByDefault: 0
+  IsSurface: 1
 --- !u!1 &363714020
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +336,7 @@ GameObject:
   - component: {fileID: 474792752}
   - component: {fileID: 474792753}
   m_Layer: 0
-  m_Name: canvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,6 +369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 1
+  AssetNameID: canvas
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 635618d9c5dd84b1b8a89ba089534abc, type: 3}
   IsGlyph: 1
@@ -369,6 +381,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+  AutoScaleByDefault: 1
+  IsSurface: 0
 --- !u!1 &533416183
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,41 +503,11 @@ Transform:
   m_GameObject: {fileID: 573751678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_Children:
   - {fileID: 1187077432}
   m_Father: {fileID: 202555370}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &579809880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 579809881}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &579809881
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579809880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.253559, y: -0.9833949, z: 10.43092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &642489130
 GameObject:
@@ -543,7 +527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &642489131
 Transform:
   m_ObjectHideFlags: 0
@@ -632,7 +616,7 @@ GameObject:
   - component: {fileID: 740042347}
   - component: {fileID: 740042348}
   m_Layer: 0
-  m_Name: calendar
+  m_Name: Calendar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,6 +649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: calendar
+  ShortDescription: 
+  IsPrivate: 1
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: b0bc79ce57daf4c2cb5725d2cd390a9e, type: 3}
   IsGlyph: 1
@@ -672,6 +661,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+  AutoScaleByDefault: 1
+  IsSurface: 0
 --- !u!1 &815394349
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +674,7 @@ GameObject:
   - component: {fileID: 815394350}
   - component: {fileID: 815394351}
   m_Layer: 0
-  m_Name: space
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,6 +707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: space
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 00ada2740f9ec405ba6da45716b4c91e, type: 3}
   IsGlyph: 1
@@ -723,6 +719,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+  AutoScaleByDefault: 0
+  IsSurface: 0
 --- !u!1 &996001622
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +746,7 @@ Transform:
   m_GameObject: {fileID: 996001622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533416184}
   m_Father: {fileID: 1654727559}
@@ -860,12 +858,12 @@ GameObject:
   - component: {fileID: 1115736419}
   - component: {fileID: 1115736420}
   m_Layer: 0
-  m_Name: talk
+  m_Name: Talk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1115736419
 Transform:
   m_ObjectHideFlags: 0
@@ -893,6 +891,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: talk
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 094e7afb471853147830380750a1b00c, type: 3}
   IsGlyph: 1
@@ -900,6 +903,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+  AutoScaleByDefault: 0
+  IsSurface: 0
 --- !u!1 &1187077431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1043,7 @@ GameObject:
   - component: {fileID: 1374133438}
   - component: {fileID: 3728906038838836234}
   m_Layer: 0
-  m_Name: plan-systems.org/core.ui
+  m_Name: CRATE (drews-crate-demo)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1259,7 +1264,7 @@ GameObject:
   - component: {fileID: 1492445482}
   - component: {fileID: 1492445483}
   m_Layer: 0
-  m_Name: files
+  m_Name: Files
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1292,6 +1297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: files
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: eb369ffe968fd479a903f0d841a83779, type: 3}
   IsGlyph: 1
@@ -1299,6 +1309,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+  AutoScaleByDefault: 1
+  IsSurface: 0
 --- !u!1 &1501074140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: url
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 1
   CustomIcon: {fileID: 0}
   IsGlyph: 1
@@ -1350,6 +1367,8 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0.000079870224, y: 5.029013, z: -0.000045776367}
     m_Extent: {x: 3.8455698, y: 5.0271626, z: 3.8455715}
+  AutoScaleByDefault: 1
+  IsSurface: 0
 --- !u!1 &1511474101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1475,7 @@ GameObject:
   - component: {fileID: 1654727559}
   - component: {fileID: 1654727560}
   m_Layer: 0
-  m_Name: sheets
+  m_Name: Sheets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1489,13 +1508,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea123d9d3f10b4fc1a1b0fdd428582f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 2
+  ExcludeFromBuild: 0
+  AssetNameID: sheets
+  ShortDescription: 
+  IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 86d54abff0d474cecb01c3f0e62826ff, type: 3}
   IsGlyph: 1
   IsStruct: 0
   AssetBounds:
-    m_Center: {x: 0, y: 1.22, z: 0}
-    m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
+    m_Center: {x: 0, y: 0.61, z: 0}
+    m_Extent: {x: 0.5000001, y: 0.5, z: 0.5000001}
+  AutoScaleByDefault: 1
+  IsSurface: 0
 --- !u!1 &1667060869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,9 +2323,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d5c973486e04a94a82eb3a1524c81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
+  _version: 2
+  CrateIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
+  CrateTitle: Drew's Crate Demo!!!!
+  HomeDomain: plan-systems.org
+  ModuleName: module-sdk-test
   ModuleDomain: plan-systems.org
-  ModuleName: stock.ui
+  ModuleIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
+  CrateNameID: drews-crate-demo
+  _buildID: '{yyMMdd}'
+  _buildNumber: 5
 --- !u!1 &3801478230160134348
 GameObject:
   m_ObjectHideFlags: 0
