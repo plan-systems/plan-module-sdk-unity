@@ -188,9 +188,9 @@ namespace PlanSDK.CrateSDK {
             assetName = item.name;
             var entry = new AssetEntry {
                 Bounds = item.AssetBounds,
-                URI = $"{_curURI}/{assetName}",
+                BrowsePath = $"{_curURI}/{assetName}",        // DEPRECATED
                 NameID = item.AssetNameID,
-                Title = item.gameObject.name,
+                Name = assetName,
                 Tags = item.ExportTagList(),
             };
 
@@ -231,13 +231,13 @@ namespace PlanSDK.CrateSDK {
 
                 //Vector3 savedPos = asset.localPosition;
                 //asset.localPosition = Vector2.zero;
-                Debug.Assert(target != null, $"item {entry.URI} has no asset to export");
+                Debug.Assert(target != null, $"item {entry.BrowsePath} has no asset to export");
 
                 // Vector3 pos = asset.localPosition;
                 // asset.localPosition = bounds.center;
                 PrefabUtility.SaveAsPrefabAsset(target.gameObject, prefabPathname, out bool success);
                 if (!success) {
-                    err = $"failed to export {entry.URI} as prefab '{prefabPathname}'";
+                    err = $"failed to export {entry.BrowsePath} as prefab '{prefabPathname}'";
                 }
             }
 
@@ -254,7 +254,6 @@ namespace PlanSDK.CrateSDK {
 
                 Crate.BrowserBundle.Manifest.Assets.Add(new AssetEntry {
                     AssetFlags = /*AssetFlags.IsIcon |*/ AssetFlags.IsSprite,
-                    URI = entry.URI,
                     LocalURI = iconPath,
                     NameID = item.AssetNameID,
                 });
@@ -327,8 +326,7 @@ namespace PlanSDK.CrateSDK {
 
 
     public class CrateBuild {
-        public static readonly string               kCrateInnerNamespace = "!";
-        public static readonly string               kCrateIconName = ".icon";
+        public static readonly string               kBrowserBundleDefaultName = "!";
 
         // Bundle containing all this module's browsable assets, etc.
         public BundleBuild                          BrowserBundle;
@@ -367,9 +365,11 @@ namespace PlanSDK.CrateSDK {
             Manifest = new CrateManifest();
             Manifest.HomeDomain         = Params.Crate.HomeDomain;
             Manifest.CrateNameID        = Params.Crate.CrateNameID;
+            Manifest.Tags               = Params.Crate.Tags;
+            Manifest.ShortDesc          = Params.Crate.ShortDescription;
             Manifest.BuildID            = Params.Crate.IssueBuildID();
             Manifest.CrateTitle         = Params.Crate.CrateTitle;
-            Manifest.BrowserBundle      = kCrateInnerNamespace;
+            Manifest.BrowserBundleName  = kBrowserBundleDefaultName;
 
             Bundles.Clear();
 
@@ -401,7 +401,7 @@ namespace PlanSDK.CrateSDK {
             }
 
             // Set up browser bundle
-            BrowserBundle = GetBundle(Manifest.BrowserBundle, true);
+            BrowserBundle = GetBundle(Manifest.BrowserBundleName, true);
             BrowserBundle.Manifest.LoadAllHint = true;
         }
 
@@ -511,8 +511,8 @@ namespace PlanSDK.CrateSDK {
             if (Params.Crate.CrateIcon != null) {
                 string spriteAssetPath = AssetDatabase.GetAssetPath(Params.Crate.CrateIcon);
                 BrowserBundle.Manifest.Assets.Add(new AssetEntry {
-                    AssetFlags = /*AssetFlags.IsIcon |*/ AssetFlags.IsSprite,
-                    URI = $"{Manifest.BrowserBundle}/{kCrateIconName}",
+                    AssetFlags = AssetFlags.IsSprite,
+                    NameID = CrateManifest.kCrateIconNameID,
                     LocalURI = spriteAssetPath,
                 });
             }
@@ -553,7 +553,7 @@ namespace PlanSDK.CrateSDK {
                 var asslist = new AssetEntry[assetCount];
                 bundle.Assets.CopyTo(asslist, 0);
     
-                Array.Sort<AssetEntry>(asslist, (a, b) => a.URI.CompareTo(b.URI) ); 
+                Array.Sort<AssetEntry>(asslist, (a, b) => a.BrowsePath.CompareTo(b.BrowsePath) ); 
                 bundle.Assets.Clear();
                 bundle.Assets.Add(asslist);
             }
@@ -583,7 +583,7 @@ namespace PlanSDK.CrateSDK {
                 builds[i].addressableNames = new string[N];
                 for (int j = 0; j < N; j++) {
                     builds[i].assetNames[j]       = bundle.Assets[j].LocalURI;
-                    builds[i].addressableNames[j] = bundle.Assets[j].URI;
+                    builds[i].addressableNames[j] = bundle.Assets[j].NameID;
                 }
             }
         }
@@ -591,7 +591,7 @@ namespace PlanSDK.CrateSDK {
 
         public void                         WriteManifests() {
 
-            // Clear Label since we were just using it to store the asset file pathname
+            // Clear LocalURI since we were just using it to store the asset file pathname
             foreach (var bundle in Manifest.Bundles) {
                 int N = bundle.Assets.Count;
                 for (int i = 0; i < N; i++) {
