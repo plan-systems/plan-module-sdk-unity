@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System;
 
 namespace PlanSDK.CrateSDK {
@@ -13,19 +12,16 @@ namespace PlanSDK.CrateSDK {
         public Sprite                       CrateIcon;
 
 
-        [Header("Create Info")]
-        public string                       CrateTitle       = "org-name.org";
-        public string                       HomeDomain       = "org-name.org";
-
-        [HideInInspector]
-        public string                       ModuleName      = "my-module-name";     // DEPRECATED
-        [HideInInspector]
-        public string                       ModuleDomain    = "org-name.org";       // DEPRECATED
-        [HideInInspector]
-        public Sprite                       ModuleIcon;                             // DEPRECATED
+        [Header("Crate Info")]
+        public string                       CrateTitle          = "org-name.org";
+        public string                       CrateNameID         = "my-create-name-id";       
         
+        public string                       HomeDomain          = "org-name.org";
+        public string                       ShortDescription    = "";
 
-        public string                       CrateNameID     = "my-create-name-id";
+        
+        [Tooltip("A list of tags for this crate separated by commas")]
+        public string                       Tags = "";       
         
         [SerializeField]
         string                              _buildID;
@@ -62,13 +58,6 @@ namespace PlanSDK.CrateSDK {
 
         void                                OnValidate() {
 
-            if (_version == 1) {
-                _version = 2;
-                
-                HomeDomain = ModuleDomain;
-                CrateIcon = ModuleIcon;
-                CrateTitle = ModuleName;
-            }
             
             if (String.IsNullOrWhiteSpace(_buildID)) {
                 _buildID = "{yyMMdd}";
@@ -80,6 +69,27 @@ namespace PlanSDK.CrateSDK {
             
             if (String.IsNullOrWhiteSpace(CrateNameID)) {
                 CrateNameID = FilterAssetID(CrateNameID);
+            }
+            
+            if (String.IsNullOrEmpty(Tags) == false) {
+                bool changed = false;
+                var tags = Tags.Split(',');
+                for (int i = 0; i < tags.Length; i++) {
+                    var filtered = tags[i].Trim();
+                    if (filtered != tags[i]) {
+                        changed = true;
+                        tags[i] = filtered;
+                    }
+                }
+                if (changed) {
+                    var builder = new System.Text.StringBuilder();
+                    for (int i = 0; i < tags.Length; i++) {
+                        if (i > 0)
+                            builder.Append(',');
+                        builder.Append(tags[i]);
+                    }
+                    Tags = builder.ToString();
+                }
             }
             
             gameObject.name = $"CRATE ({CrateNameID})";
