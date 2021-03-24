@@ -79,15 +79,17 @@ namespace PlanSDK.CrateSDK {
                 Gizmos.DrawSphere(pos, .05f);
                 for (int i = 0; i < 3; i++) {
                     Vector3 ax;
+                    float segLen = 10f;
                     if (i < 2) {
                         ax = (i == 0) ? Vector3.right : Vector3.forward;
                     } else {
+                        segLen = 100f;
                         Gizmos.color = Color.green;
                         ax = Vector3.up;
                     }
-                    Gizmos.DrawLine(pos - 10f * ax,  pos - ax);
-                    Gizmos.DrawLine(pos + 10f * ax,  pos + ax);
-                    Gizmos.DrawLine(pos - .5f * ax,  pos + .5f * ax);
+                    Gizmos.DrawLine(pos - segLen * ax,  pos -       ax);
+                    Gizmos.DrawLine(pos + segLen * ax,  pos +       ax);
+                    Gizmos.DrawLine(pos -    .5f * ax,  pos + .5f * ax);
                 }
             }
         }
