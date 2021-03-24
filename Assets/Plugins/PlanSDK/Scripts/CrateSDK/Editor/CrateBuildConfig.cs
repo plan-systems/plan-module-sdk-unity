@@ -13,7 +13,11 @@ namespace PlanSDK.CrateSDK {
         public CrateBuildTarget(BuildTarget target, string targetString, BuildAssetBundleOptions bundleOptions) {
             Target = target;
             TargetString = targetString;
-            BundleOptions = bundleOptions;
+            BundleOptions = bundleOptions |
+                //BuildAssetBundleOptions.DisableWriteTypeTree | 
+                BuildAssetBundleOptions.ForceRebuildAssetBundle | 
+                BuildAssetBundleOptions.DisableLoadAssetByFileName |
+                BuildAssetBundleOptions.DisableLoadAssetByFileNameWithExtension;
 
             Logging = true;
         }
@@ -118,15 +122,8 @@ namespace PlanSDK.CrateSDK {
             [Space]
             [Header("Asset Bundle Options")]
             public bool Uncompressed = false;
-            public bool ForceRebuild = false;
-            public bool DisableWriteTypeTree = false;
-            public bool IgnoreTypeTreeChanges = false;
             public bool ChunkBasedCompression = true;
-            public bool AssetBundleStripUnityVersion = true;
             public bool StrictMode = true;
-            public bool DeterministicAssetBundle = true;
-            public bool DisableLoadAssetByFileName = true;
-            public bool DisableLoadAssetByFileNameWithExtension = true;
 
 
             //-------------------
@@ -136,24 +133,10 @@ namespace PlanSDK.CrateSDK {
                 BuildAssetBundleOptions options = BuildAssetBundleOptions.None;
                 if (Uncompressed)
                     options |= BuildAssetBundleOptions.UncompressedAssetBundle;
-                if (DisableWriteTypeTree)
-                    options |= BuildAssetBundleOptions.DisableWriteTypeTree;
-                if (DeterministicAssetBundle)
-                    options |= BuildAssetBundleOptions.DeterministicAssetBundle;
-                if (ForceRebuild)
-                    options |= BuildAssetBundleOptions.ForceRebuildAssetBundle;
-                if (IgnoreTypeTreeChanges)
-                    options |= BuildAssetBundleOptions.IgnoreTypeTreeChanges;
                 if (ChunkBasedCompression)
                     options |= BuildAssetBundleOptions.ChunkBasedCompression;
                 if (StrictMode)
                     options |= BuildAssetBundleOptions.StrictMode;
-                if (DisableLoadAssetByFileName)
-                    options |= BuildAssetBundleOptions.DisableLoadAssetByFileName;
-                if (DisableLoadAssetByFileNameWithExtension)
-                    options |= BuildAssetBundleOptions.DisableLoadAssetByFileNameWithExtension;
-                if (AssetBundleStripUnityVersion)
-                    options |= BuildAssetBundleOptions.AssetBundleStripUnityVersion;
 
                 return options;
             } 
@@ -217,14 +200,9 @@ namespace PlanSDK.CrateSDK {
             foreach (PlatformOptions po in platforms) {
                 if (po.TargetEnabled) {
 
-                    if (po.Platform == BuildTarget.WebGL)
-                        po.DisableWriteTypeTree = false;
-
                     // Generated straight from checkboxes in the ScriptableObject.
                     BuildAssetBundleOptions bundleOptions = po.GenerateBundleOptionsFromSettings();
-
                     var builtTarget = new CrateBuildTarget(po.Platform, GetPlatformName(po.Platform), bundleOptions);
-
                     buildTargets.Add(builtTarget);
                 }
             }
