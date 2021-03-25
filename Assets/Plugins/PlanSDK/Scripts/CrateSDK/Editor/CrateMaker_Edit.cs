@@ -34,7 +34,7 @@ namespace PlanSDK.CrateSDK {
 
             if (Directory.Exists(outputPath)) {
                 if (GUILayout.Button("Reveal in Finder") ) {
-                    EditorUtility.RevealInFinder(outputPath);
+                    EditorUtility.RevealInFinder(LocalFS.ProcessPath(outputPath));
                 }
             }
 
