@@ -21,6 +21,8 @@ namespace PlanSDK.CrateSDK {
                 var build = new CrateBuildParams();
                 build.Crate = crate;
                 build.BuildSuffix = crate.BuildSuffix;
+                
+                RenameEmptySubs(crate.transform);
 
                 EditorDispatcher.Dispatch(() => {
                     BundleBuilder.BuildModule(build);
@@ -41,6 +43,15 @@ namespace PlanSDK.CrateSDK {
         }
 
    
+
+        public static void                 RenameEmptySubs(Transform obj, string nonNilName = "-") {
+            if (String.IsNullOrWhiteSpace(obj.gameObject.name)) {
+                obj.gameObject.name = nonNilName;
+            }
+            for (int i = 0; i < obj.childCount; i++ ) {
+                RenameEmptySubs(obj.GetChild(i), nonNilName);
+            }
+        }
 
 
     }
