@@ -22,6 +22,8 @@ namespace PlanSDK.CrateSDK {
                 build.Crate = crate;
                 build.BuildSuffix = crate.BuildSuffix;
                 
+                // As of Unity 2021.1.0, empty game obj names cause issues, grrr
+                // https://forum.unity.com/threads/importer-defaultimporter-generated-inconsistent-result-for-asset.1022446/
                 RenameEmptySubs(crate.transform);
 
                 EditorDispatcher.Dispatch(() => {
