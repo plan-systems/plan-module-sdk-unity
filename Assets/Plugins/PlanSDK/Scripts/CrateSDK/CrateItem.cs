@@ -7,11 +7,6 @@ namespace PlanSDK.CrateSDK {
     public class CrateItem : CrateItemBase {
     
         [HideInInspector]
-        public bool                         IsGlyph;        // DEPRECATED -- REMOVE IN V3
-        [HideInInspector]
-        public bool                         IsStruct;       // DEPRECATED -- REMOVE IN V3
-        
-        [HideInInspector]
         public Bounds                       AssetBounds;
         
         // FUTURE: use a 0..1 value that helps the engine to decide which mode to view.
@@ -35,12 +30,12 @@ namespace PlanSDK.CrateSDK {
         }
         
         void                                OnValidate() {
-            if (_version <= 1) {
-                AutoScaleByDefault = IsGlyph;
-                IsSurface = IsStruct;
-                Debug.Log($"Updated '{name}' from version {_version} to {2}");
-                _version = 2;
-            }
+            // if (_version <= 1) {
+            //     AutoScaleByDefault = IsGlyph;
+            //     IsSurface = IsStruct;
+            //     Debug.Log($"Updated '{name}' from version {_version} to {2}");
+            //     _version = 2;
+            // }
             
             if (String.IsNullOrWhiteSpace(AssetNameID)) {
                 AssetNameID = CrateMaker.FilterAssetID(gameObject.name.ToLowerInvariant());
@@ -62,10 +57,13 @@ namespace PlanSDK.CrateSDK {
         //         }
         //     }
         // }
-
+    
+        static readonly Color               kVerticalGuideColor = new Color(0,1,0,.5f);
+        static readonly Color               kGuideColor         = new Color(1,1,0,.6f);
+        
         void                                OnDrawGizmosSelected() {
             var sz = AssetBounds.size;
-            Gizmos.color = Color.yellow;
+            Gizmos.color = kGuideColor;
 
             if (sz.x > 0) {
                 // Draw a yellow cube at the transform position.
@@ -84,7 +82,7 @@ namespace PlanSDK.CrateSDK {
                         ax = (i == 0) ? Vector3.right : Vector3.forward;
                     } else {
                         segLen = 100f;
-                        Gizmos.color = Color.green;
+                        Gizmos.color = kVerticalGuideColor;
                         ax = Vector3.up;
                     }
                     Gizmos.DrawLine(pos - segLen * ax,  pos -       ax);
