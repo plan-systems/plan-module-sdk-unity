@@ -64,13 +64,12 @@ namespace PlanSDK.CrateSDK {
 
         public PlatformOptions[] platforms = new PlatformOptions[] {
             new PlatformOptions(BuildTarget.StandaloneWindows64),
-            new PlatformOptions(BuildTarget.WSAPlayer),
+            //new PlatformOptions(BuildTarget.WSAPlayer),
             new PlatformOptions(BuildTarget.StandaloneOSX),
-            new PlatformOptions(BuildTarget.Stadia),
             new PlatformOptions(BuildTarget.StandaloneLinux64),
             new PlatformOptions(BuildTarget.Android),
             new PlatformOptions(BuildTarget.iOS),
-            new PlatformOptions(BuildTarget.Lumin),
+            //new PlatformOptions(BuildTarget.Lumin),
         };
 
         // "Users/me/UnityProjectDir/"  (includes trailing slash)
@@ -240,39 +239,34 @@ namespace PlanSDK.CrateSDK {
         static CrateBuildConfig _cachedConfig = null;
 
 
-		const string kRevealBuildConfigs                  = "Tools/PLAN/Reveal Build Configs";
+		const string kRevealBuildConfigs                  = "Tools/PLAN/Reveal CrateBuildConfig";
 
-        // Easier to configure stuff if it's broken out in an obvious place like this.
-        static public string                GetSDKFolder() {
-    
-            // Allow user to move things around without having to change the code
-            string[] matchList = Directory.GetDirectories(Application.dataPath, "Plan*SDK", SearchOption.AllDirectories);
-            if (matchList.Length == 0) {
-                Debug.Assert(matchList.Length > 0, "failed to locate PLAN SDK dir");
-            }
-
-            string sdkDir = matchList[0].Replace(Application.dataPath, "");
-            sdkDir = sdkDir.Replace('\\', '/');
-            return sdkDir;
-        }
 
         static public string                GetResourcesDir() {
-            string sdkDir = $"Assets{GetSDKFolder()}";
+            // Allow user to move things around without having to change the code
+            string[] matchList = Directory.GetDirectories(Application.dataPath, "PlanSDK", SearchOption.AllDirectories);
+            string dstPath = null;
+            if (matchList.Length > 0) {
+                dstPath = "Assets" + matchList[0].Replace(Application.dataPath, "") + "/Resources";
+                dstPath = dstPath.Replace('\\', '/');
+                CrateBuild.CreateAssetDir(dstPath);
+            } else {
+                Debug.Assert(matchList.Length > 0, "failed to locate 'PlanSDK/Resources' dir");
+            }
 
-            string resDir = $"{sdkDir}/Editor/Resources";
-            CrateBuild.CreateAssetDir(resDir);
 
-            return resDir;
+            return dstPath;
         }
 
         [MenuItem(kRevealBuildConfigs, false, 204)]
         static public void RevealBuildConfigs() {
     
             var config = LoadBuildConfig();
-            if (config==null) {
-                config = new CrateBuildConfig();
+            if (config == null) {
+                config = ScriptableObject.CreateInstance<CrateBuildConfig>();
                 var resDir = GetResourcesDir();
                 string configPath = $"{resDir}/{kBuildConfigPath}.asset";
+                Debug.Log($"Creating new CrateBuildConfig at {configPath}");
                 AssetDatabase.CreateAsset(config, configPath);
                 AssetDatabase.SaveAssets();
 
