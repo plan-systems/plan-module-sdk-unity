@@ -4,15 +4,15 @@ using UnityEditor;
 using System;
 using System.IO;
 using System.Collections.Generic;
+using PlanSDK.Crates;
 
 namespace PlanSDK.CrateSDK {
 
 
 	public struct CrateBuildTarget {
 	
-        public CrateBuildTarget(BuildTarget target, string targetString, BuildAssetBundleOptions bundleOptions) {
+        public CrateBuildTarget(BuildTarget target, BuildAssetBundleOptions bundleOptions) {
             Target = target;
-            TargetString = targetString;
             BundleOptions = bundleOptions |
                 //BuildAssetBundleOptions.DisableWriteTypeTree | 
                 BuildAssetBundleOptions.ForceRebuildAssetBundle | 
@@ -20,10 +20,12 @@ namespace PlanSDK.CrateSDK {
                 BuildAssetBundleOptions.DisableLoadAssetByFileNameWithExtension;
 
             Logging = true;
+            OutputDir = null;
         }
         
+        public string                  OutputDir;
+        public string                  TargetString { get => CrateBuildConfig.GetPlatformNameID(Target); }
         public BuildTarget             Target { get; private set; }
-        public string                  TargetString { get; private set; }
         public BuildAssetBundleOptions BundleOptions { get; private set; }
         public bool                    Logging { get; private set; }
     
@@ -54,7 +56,7 @@ namespace PlanSDK.CrateSDK {
         public string                       ExpandedOutputPath {
             get {
                 var outDir = CrateOutputPath.Replace("{ProjectDir}", this.ProjectDir);
-                outDir = outDir.Replace("//", "/");
+                outDir = LocalFS.ProcessPath(outDir);
                 return outDir;
             }
         }
@@ -75,7 +77,6 @@ namespace PlanSDK.CrateSDK {
         // "Users/me/UnityProjectDir/"  (includes trailing slash)
         string                                      _projectDir;
         string                                      _assetPath;
-        string                                      _expandedOutputPath;
 
         // Absolute path of Unity Asset dir plus trailing slash
         public string                               AssetPath {
@@ -106,7 +107,6 @@ namespace PlanSDK.CrateSDK {
         public class PlatformOptions {
     
             // This must come first to show up in the Inspector as the drop-down label.
-            public string                   Name;			
             public BuildTarget              Platform;
         
             // This controls whether this platform is AVAILABLE, and if they someone does a Build All, or even an explicit Build xxxxx, 
@@ -143,49 +143,42 @@ namespace PlanSDK.CrateSDK {
             // Constructor to set name properly.
             public PlatformOptions(BuildTarget platform) {
                 Platform = platform;
-                Name = GetPlatformName(platform);
             }
         }
 
 
         // This lets us get the build target string, which should show up as the matching string above at runtime.
-        static public string GetPlatformName(BuildTarget bt)
-        {
-            switch (bt)
-            {
-                case BuildTarget.Android:
-                    return "Android";
-                case BuildTarget.iOS:
-                    return "iOS";
-                case BuildTarget.Stadia:
-                    return "stadia";
-                case BuildTarget.StandaloneLinux64:
-                    return "linux64";
+        static public string                GetPlatformNameID(BuildTarget target) {
+        
+            switch (target) {
+                case BuildTarget.StandaloneWindows:
+                case BuildTarget.StandaloneWindows64:
+                case BuildTarget.WSAPlayer:
+                    return "Windows";
                 case BuildTarget.StandaloneOSX:
                     return "macOS";
-                case BuildTarget.StandaloneWindows:
-                    return "win32";
-                case BuildTarget.StandaloneWindows64:
-                    return "Windows";
-                case BuildTarget.WSAPlayer:
-                    return "winstore";
-                case BuildTarget.tvOS:
-                    return "tvos";
-                case BuildTarget.Lumin:
-                    return "magicleap";
+                case BuildTarget.StandaloneLinux64:
+                    return "Linux";
+                case BuildTarget.iOS:
+                    return "iOS";
+                case BuildTarget.Android:
+                    return "Android";
+                case BuildTarget.Stadia:
+                    return "Stadia";
                 case BuildTarget.WebGL:
-                    return "webgl";
+                    return "WebGL";
                 case BuildTarget.PS4:
-                    return "ps4";
+                    return "PS4";
                 case BuildTarget.Switch:
-                    return "switch";
+                    return "Switch";
                 case BuildTarget.XboxOne:
-                    return "xboxone";
+                    return "XboxOne";
+                default:
+                    Debug.Assert(false, "Platform is unknown: " + target);
+                    return "unknown";            
             }
-            Debug.Assert(false, "Requested platform is unknown: "+bt);
-            return "unknown";
-        }
 
+        }
         
         //-------------------
 
@@ -201,7 +194,7 @@ namespace PlanSDK.CrateSDK {
 
                     // Generated straight from checkboxes in the ScriptableObject.
                     BuildAssetBundleOptions bundleOptions = po.GenerateBundleOptionsFromSettings();
-                    var builtTarget = new CrateBuildTarget(po.Platform, GetPlatformName(po.Platform), bundleOptions);
+                    var builtTarget = new CrateBuildTarget(po.Platform, bundleOptions);
                     buildTargets.Add(builtTarget);
                 }
             }

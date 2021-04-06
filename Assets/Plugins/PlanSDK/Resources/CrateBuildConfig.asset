@@ -8,77 +8,37 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2ab4b685df5a4636951c2404b03f67c, type: 3}
   m_Name: CrateBuildConfig
   m_EditorClassIdentifier: 
   DoLogging: 1
-  DebugBuild: 1
+  DebugBuild: 0
   CrateOutputPath: '{ProjectDir}/../__builds'
   AssetStagingPath: Assets/_asset-staging
   platforms:
-  - Name: Windows
-    Platform: 19
+  - Platform: 19
     TargetEnabled: 0
     Uncompressed: 0
-    ForceRebuild: 0
-    DisableWriteTypeTree: 0
-    IgnoreTypeTreeChanges: 0
     ChunkBasedCompression: 1
-    AssetBundleStripUnityVersion: 1
     StrictMode: 1
-    DeterministicAssetBundle: 1
-    DisableLoadAssetByFileName: 1
-    DisableLoadAssetByFileNameWithExtension: 1
-  - Name: macOS
-    Platform: 2
+  - Platform: 2
     TargetEnabled: 1
     Uncompressed: 0
-    ForceRebuild: 0
-    DisableWriteTypeTree: 0
-    IgnoreTypeTreeChanges: 0
     ChunkBasedCompression: 1
-    AssetBundleStripUnityVersion: 1
     StrictMode: 1
-    DeterministicAssetBundle: 1
-    DisableLoadAssetByFileName: 1
-    DisableLoadAssetByFileNameWithExtension: 1
-  - Name: linux64
-    Platform: 24
+  - Platform: 24
     TargetEnabled: 0
     Uncompressed: 0
-    ForceRebuild: 0
-    DisableWriteTypeTree: 0
-    IgnoreTypeTreeChanges: 0
     ChunkBasedCompression: 1
-    AssetBundleStripUnityVersion: 1
     StrictMode: 1
-    DeterministicAssetBundle: 1
-    DisableLoadAssetByFileName: 1
-    DisableLoadAssetByFileNameWithExtension: 1
-  - Name: Android
-    Platform: 13
+  - Platform: 13
     TargetEnabled: 0
     Uncompressed: 0
-    ForceRebuild: 0
-    DisableWriteTypeTree: 0
-    IgnoreTypeTreeChanges: 0
     ChunkBasedCompression: 1
-    AssetBundleStripUnityVersion: 1
     StrictMode: 1
-    DeterministicAssetBundle: 1
-    DisableLoadAssetByFileName: 1
-    DisableLoadAssetByFileNameWithExtension: 1
-  - Name: iOS
-    Platform: 9
-    TargetEnabled: 1
+  - Platform: 9
+    TargetEnabled: 0
     Uncompressed: 0
-    ForceRebuild: 0
-    DisableWriteTypeTree: 0
-    IgnoreTypeTreeChanges: 0
     ChunkBasedCompression: 1
-    AssetBundleStripUnityVersion: 1
     StrictMode: 1
-    DeterministicAssetBundle: 1
-    DisableLoadAssetByFileName: 1
-    DisableLoadAssetByFileNameWithExtension: 1
