@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185265639}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,8 +207,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 3431be0b215624b628ccba9d67cf71b5, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
@@ -376,8 +374,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 635618d9c5dd84b1b8a89ba089534abc, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
@@ -440,6 +436,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -488,7 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573751679}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,6 +564,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -656,8 +654,6 @@ MonoBehaviour:
   IsPrivate: 1
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: b0bc79ce57daf4c2cb5725d2cd390a9e, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
@@ -714,8 +710,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 00ada2740f9ec405ba6da45716b4c91e, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
@@ -731,7 +725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 996001623}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,6 +803,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -898,8 +893,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 094e7afb471853147830380750a1b00c, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
@@ -962,6 +955,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1106,7 +1100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440072713}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,6 +1178,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1232,7 +1227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477852892}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,8 +1299,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: eb369ffe968fd479a903f0d841a83779, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
@@ -1362,8 +1355,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 1
   CustomIcon: {fileID: 0}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0.000079870224, y: 5.029013, z: -0.000045776367}
     m_Extent: {x: 3.8455698, y: 5.0271626, z: 3.8455715}
@@ -1426,6 +1417,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1515,8 +1507,6 @@ MonoBehaviour:
   IsPrivate: 0
   AutoGenerateIcon: 0
   CustomIcon: {fileID: 21300000, guid: 86d54abff0d474cecb01c3f0e62826ff, type: 3}
-  IsGlyph: 1
-  IsStruct: 0
   AssetBounds:
     m_Center: {x: 0, y: 0.61, z: 0}
     m_Extent: {x: 0.5000001, y: 0.5, z: 0.5000001}
@@ -1532,7 +1522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1667060870}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1610,6 +1600,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1658,7 +1649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752148875}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1829,6 +1820,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1993,7 +1985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2147041947}
   m_Layer: 0
-  m_Name: 
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,6 +2017,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2240,6 +2233,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2281,6 +2275,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2326,11 +2321,14 @@ MonoBehaviour:
   _version: 2
   CrateIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
   CrateTitle: Drew's Crate Demo!!!!
-  HomeDomain: plan-systems.org
   CrateNameID: drews-crate-demo
-  CrateTags: private
-  _buildID: '{yyMMdd}'
-  _buildNumber: 6
+  HomeDomain: plan-systems.org
+  ShortDescription: Meat!
+  TimeCreated: 1617218717
+  Tags: 
+  MajorVersion: 0
+  MinorVersion: 3
+  _buildNumber: 73
 --- !u!1 &3801478230160134348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,6 +2358,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2401,6 +2400,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2530,6 +2530,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2589,6 +2590,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2718,6 +2720,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2785,6 +2788,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2826,6 +2830,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

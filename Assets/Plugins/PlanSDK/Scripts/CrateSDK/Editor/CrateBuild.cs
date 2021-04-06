@@ -24,55 +24,96 @@ namespace PlanSDK.CrateSDK {
 
             buildParams.BuildConfig = CrateBuildConfig.CurrentConfig(true);
 
-            var modBuild = CrateBuild.NewBuild(buildParams);
-            Debug.Log($"Building {modBuild.OutputPath}");
+            var crateBuild = CrateBuild.NewBuild(buildParams);
+            var buildDesc = $"<b><color=#008080>{crateBuild.Manifest.Info.HomeDomain}/{crateBuild.Manifest.Info.NameID}</color></b>";
 
             var buildTargets = buildParams.BuildConfig.GetBuildTargets(); 
+            Debug.Log($"{buildDesc} STARTING ({buildTargets.Count} targets)");
 
-            modBuild.RunExport();
-
-
+            crateBuild.RunExport();
+                        
             {
                 int successCount = 0;
 
-                foreach (var target in buildTargets) {
+                var outputDir = crateBuild.OutputPath;
 
-                    var outputDir = $"{modBuild.OutputPath}/{target.TargetString}";
-                    Directory.CreateDirectory(outputDir);
+                for (int j = 0; j < buildTargets.Count; j++) {
+                    var target = buildTargets[j];
 
-					// ABBundleBuilder.DoBuildBundles(target.SrcBundleFolder, target.BuildVersion, target.DestBundleFolder, target.BundleOptions, target.Target, target.TargetString, target.Logging, target.IgnoreEndsWith, target.IgnoreContains, target.IgnoreExact);
+                    var platformDir = $"{outputDir}/{target.TargetString}";
+                    if (Directory.Exists(platformDir)) {
+                        Directory.Delete(platformDir, true);
+                    }
+                    Directory.CreateDirectory(platformDir);
 
-                    modBuild.PrepareToBuild(out var builds);
+                    crateBuild.PrepareToBuild(out var builds);
 
-                    var bundleManifest = BuildPipeline.BuildAssetBundles(outputDir, builds, target.BundleOptions, target.Target);
+                    var bundleManifest = BuildPipeline.BuildAssetBundles(platformDir, builds, target.BundleOptions, target.Target);
                     if (bundleManifest == null) {
-                        Debug.LogError($"<color=#ff8080>Asset bundle build failed for {outputDir}</color>");
+                        Debug.LogError($"<color=#ff8080>Asset bundle build failed for {platformDir}</color>");
                         return;
                     }
-
-                    successCount++;
-
+                    
+    
                     // Delete junk files 
                     {
-                        foreach (var filename in Directory.GetFiles(outputDir, "*.manifest", SearchOption.TopDirectoryOnly)) {
+                        foreach (var filename in Directory.GetFiles(platformDir, "*.manifest", SearchOption.TopDirectoryOnly)) {
                             File.Delete(filename);
                         }
 
                         // Unity makes a cheese manifest object for the parent folder
-                        File.Delete($"{outputDir}/{target.TargetString}");
+                        File.Delete($"{platformDir}/{target.TargetString}");
                     }
+                    
+                    successCount++;
+
+                    if (target.Logging) {
+                        Debug.Log($"{buildDesc}: <color=#096009>{target.TargetString} complete</color> ({successCount}/{buildTargets.Count})");
+                    }
+
                 }
+                
+
+    
 
                 if (successCount == buildTargets.Count) {
-                    modBuild.WriteManifests();
+                    crateBuild.WriteManifests();
 
-                    Debug.Log($"<color=#107010>{successCount} of {buildTargets.Count} targets built to {modBuild.OutputPath}</color>");
+                    string info         = $"{outputDir}/{CrateInfo.kInfoFilename}";
+                    string manifest     = $"{outputDir}/{CrateManifest.kManfestFilename}";
+                    string manifestJSON = $"{outputDir}/{CrateManifest.kManfestFilename}.json";
+                    
+                    // Compress and finalize each platform crate
+                    foreach (var target in buildTargets) {
+                        var platformDir = $"{outputDir}/{target.TargetString}";
+    
+                        File.Copy(manifest,      $"{platformDir}/{CrateInfo.kInfoFilename}");
+                        File.Copy(manifest,      $"{platformDir}/{CrateManifest.kManfestFilename}");
+                        File.Copy(manifestJSON,  $"{platformDir}/{CrateManifest.kManfestFilename}.json");
+                    
+                        var dstZip = $"{outputDir}/{crateBuild.Manifest.Info.NameID}__{crateBuild.Manifest.Info.BuildID}.{target.TargetString}.zip";
+                        int[] zipProgress = new int[1];
+                        var zipStatus = lzip.compressDir(platformDir, 9, dstZip, true, zipProgress, null, false, 0);
+                        
+                        if (zipStatus == 1) {
+                            Directory.Delete(platformDir, true);
+                        } else {
+                            Debug.LogError($"lzip error {zipStatus} when creating '{dstZip}' from '{platformDir}'");
+                            return;
+                        }
+                    }
+                    
+                    File.Delete(info);
+                    File.Delete(manifest);
+                    File.Delete(manifestJSON);
+                
+                    Debug.Log($"<b><color=#107010>BUILT {successCount} of {buildTargets.Count}</color></b> to '{crateBuild.OutputPath}'");
                     buildParams.Crate.IncrementBuildNum();
                     EditorUtility.SetDirty(buildParams.Crate);
                     AssetDatabase.SaveAssets();
                 }
 
-                modBuild.Cleanup();
+                crateBuild.Cleanup();
             }
 
         }
@@ -80,11 +121,8 @@ namespace PlanSDK.CrateSDK {
 
     public class BundleBuild {
         public CrateBuild                   Crate;
-        public BundleManifest               Manifest    = new BundleManifest();
+        public BundleManifest               Manifest  = new BundleManifest();
         public Transform                    BundleRoot;              // Corresponding item representing this bundle in the scene
-
-
-
 
 
         public void                         ExportBundle() {
@@ -93,12 +131,10 @@ namespace PlanSDK.CrateSDK {
             RuntimePreviewGenerator.BackgroundColor = new Color(0,0,0,0);
             RuntimePreviewGenerator.OrthographicMode = true;
 
-            _bundleAssetDir = $"{Crate.AssetStagingDir}";
+            _bundleAssetDir = $"{Crate.AssetStagingDir}/{Manifest.BundleNameID}";
+            CrateBuild.CreateAssetDir(_bundleAssetDir);
 
-            // Bundle asset URI are relative to the bundle, so create the dirs, but the root bundle URI is ""
-            _curURI = "";
-
-            pushDir(Manifest.BundlePublicName);
+            _curPath = Manifest.BundleTitle;
 
             exportGroup(BundleRoot, "");
         }
@@ -107,31 +143,25 @@ namespace PlanSDK.CrateSDK {
         string                              _bundleAssetDir;
 
         // Is "" or includes trailing '/'
-        string                              _curURI;
+        string                              _curPath;
 
         void                                pushDir(string dirName) {
-            if (_curURI == "") {
-                _curURI = dirName;
-            } else {
-                _curURI = $"{_curURI}/{dirName}";
-            }
-
-            CrateBuild.CreateAssetDir($"{_bundleAssetDir}/{_curURI}");
+            _curPath = $"{_curPath}/{dirName}";
         }
 
 
         void                                popDir() {
-            int len = _curURI.Length;
-            int pos = _curURI.LastIndexOf('/');
+            int len = _curPath.Length;
+            int pos = _curPath.LastIndexOf('/');
             if (pos == len-1) {
                 len--;
-                pos = _curURI.LastIndexOf('/', len-1);
+                pos = _curPath.LastIndexOf('/', len-1);
             }
 
             if (pos > 0) {
-                _curURI = _curURI.Substring(0, pos);
+                _curPath = _curPath.Substring(0, pos);
             } else {
-                _curURI = "";
+                _curPath = "";
             }
         }
 
@@ -178,17 +208,17 @@ namespace PlanSDK.CrateSDK {
                 return;
                 
 
-            var assetName = item.name;
+            var assetName = item.name.Trim();
             var target = item.AssetTarget;
 
             if (String.IsNullOrEmpty(item.AssetNameID)) {
                 Debug.LogWarning($"asset '{assetName}' skipped because AssetID is empty");
+                return;
             }
                 
-            assetName = item.name;
             var entry = new AssetEntry {
                 Bounds = item.AssetBounds,
-                BrowsePath = $"{_curURI}/{assetName}",        // DEPRECATED
+                BrowsePath = $"{_curPath}/{assetName}",        // DEPRECATED
                 NameID = item.AssetNameID,
                 Name = assetName,
                 Tags = item.ExportTagList(),
@@ -304,16 +334,6 @@ namespace PlanSDK.CrateSDK {
 
     public class CrateBuildParams {
 
-
-        // // Absolute path of Unity project dir plus trailing slash
-        // // e.g. "/Users/aomeara/MyUnityProjectDir/" 
-        // public string                               ProjectDir;             // "Users/me/UnityProjectDir/"  (includes trailing slash)
-
-        // // Absolute path of Unity asset dir plus trailing slash
-        // public string                               AssetDir;
-
-        public string                               BuildSuffix;
-
         public CrateMaker                           Crate;
         public CrateBuildConfig                     BuildConfig;
 
@@ -326,7 +346,7 @@ namespace PlanSDK.CrateSDK {
 
 
     public class CrateBuild {
-        public static readonly string               kBrowserBundleDefaultName = "!";
+        public const string                         kDefaultBrowserBundleName = "!";
 
         // Bundle containing all this module's browsable assets, etc.
         public BundleBuild                          BrowserBundle;
@@ -336,8 +356,8 @@ namespace PlanSDK.CrateSDK {
         public CrateBuildParams                     Params;
 
         public CrateManifest                        Manifest;
-        public Dictionary<string, BundleBuild>      Bundles = new Dictionary<string, BundleBuild>(10);
-
+        public List<BundleBuild>                    Bundles = new List<BundleBuild>(10);
+        
         public MeshRenderer                         SkyboxIconSkin;
 
 
@@ -362,28 +382,21 @@ namespace PlanSDK.CrateSDK {
 
         void                                initBuild() {
 
-            Manifest = new CrateManifest();
-            Manifest.HomeDomain         = Params.Crate.HomeDomain;
-            Manifest.CrateNameID        = Params.Crate.CrateNameID;
-            Manifest.Tags               = Params.Crate.Tags;
-            Manifest.ShortDesc          = Params.Crate.ShortDescription;
-            Manifest.BuildID            = Params.Crate.IssueBuildID();
-            Manifest.CrateTitle         = Params.Crate.CrateTitle;
-            Manifest.BrowserBundleName  = kBrowserBundleDefaultName;
+            Manifest = new CrateManifest() {
+                Info = Params.Crate.ExportCrateInfo(),
+            };
+
 
             Bundles.Clear();
 
             {
                 var outDir = Params.BuildConfig.ExpandedOutputPath;
                 Directory.CreateDirectory(outDir);
-                outDir = $"{outDir}/{Manifest.HomeDomain}";
+                OutputPath = $"{outDir}/{Manifest.Info.HomeDomain}";
                 Directory.CreateDirectory(outDir);
-                OutputPath = $"{outDir}/{Manifest.CrateNameID}";
+                // OutputPath = $"{outDir}/{Manifest.CrateNameID}";
+                // Directory.CreateDirectory(outDir);
             }
-            if (Directory.Exists(OutputPath)) {
-                Directory.Delete(OutputPath, true);
-            }
-            Directory.CreateDirectory(OutputPath);
         
 
             AssetStagingDir = Params.BuildConfig.AssetStagingPath;
@@ -401,8 +414,9 @@ namespace PlanSDK.CrateSDK {
             }
 
             // Set up browser bundle
-            BrowserBundle = GetBundle(Manifest.BrowserBundleName, true);
+            BrowserBundle = CreateSubBundle(kDefaultBrowserBundleName, kDefaultBrowserBundleName);
             BrowserBundle.Manifest.LoadAllHint = true;
+            Manifest.Info.BrowserBundleNameID = BrowserBundle.Manifest.BundleNameID;
         }
 
 
@@ -412,6 +426,16 @@ namespace PlanSDK.CrateSDK {
         }
 
         public static void                  CreateAssetDir(string assetPath) {
+            if (AssetDatabase.IsValidFolder(assetPath))
+                return;
+                    
+            // if (assetPath.StartsWith("Assets/")) {
+            //     var assetSubPath = assetPath.Substring(7);
+            //     Debug.Log($">>{assetSubPath}<<");
+            //     if (Directory.Exists(assetSubPath))
+            //         return;
+            // }
+                
             int pos = assetPath.LastIndexOf('/');
 
             int len = assetPath.Length;
@@ -434,48 +458,35 @@ namespace PlanSDK.CrateSDK {
         public void                         WriteProjectFile(string assetPath, byte[] data) {
             File.WriteAllBytes(Params.BuildConfig.ProjectDir + assetPath, data);
         }
-
-        public BundleBuild                  CreateBundle(Transform bundleObj) {
-            var bundle = GetBundle(bundleObj.name, true);
-            bundle.BundleRoot = bundleObj;
-
-            return bundle;
-        }
-
-        public BundleBuild                  GetBundle(string bundleBuildName, bool autoCreate) {
-            Bundles.TryGetValue(bundleBuildName.ToLowerInvariant(), out var bundle);
         
-            if (bundle == null && autoCreate) {
-                bundle = new BundleBuild();
-
-                int extPos = bundleBuildName.IndexOf('.');
-                if (extPos < 0)
-                    extPos = bundleBuildName.Length;
-
-                bundle.Manifest.BundlePublicName = bundleBuildName.Substring(0, extPos);
-                bundle.Manifest.BundleBuildName  = bundleBuildName.ToLowerInvariant();
-                bundle.Crate = this;
-
-                Bundles[bundle.Manifest.BundleBuildName] = bundle;
-                this.Manifest.Bundles.Add(bundle.Manifest);
+            
+        public BundleBuild                  CreateSubBundle(string bundleTitle, string bundleNameID = null) {
+            bundleTitle = bundleTitle.Trim();
+            if (String.IsNullOrWhiteSpace(bundleNameID)) {
+                bundleNameID = LocalFS.FilterName(bundleTitle);
+                bundleNameID = bundleNameID.Replace(" ", "-").ToLowerInvariant();
             }
 
+            var bundle = new BundleBuild();
+            bundle.Manifest.BundleTitle = bundleTitle;
+            bundle.Manifest.BundleNameID = $"{Manifest.Info.NameID}.{bundleNameID} {Manifest.Info.BuildID}";
+            bundle.Crate = this;
+
+            Bundles.Add(bundle);
+            this.Manifest.Bundles.Add(bundle.Manifest);
+
             return bundle;
         }
 
-        void                                AddModuleIcon() {
 
-
-
-
-        }
 
         void                                AddBundles(Transform bundles) {
 
             int N = bundles.childCount;
             for (int i = 0; i < N; i++) {
                 var bundleObj = bundles.GetChild(i);
-                CreateBundle(bundleObj);                
+                var bundleBuild = CreateSubBundle(bundleObj.name);
+                bundleBuild.BundleRoot = bundleObj;
             }
 
         }
@@ -484,17 +495,19 @@ namespace PlanSDK.CrateSDK {
 
             AddBundles(Params.Crate.transform);
 
-            var removeList = new List<string>();
-            foreach (var kv in Bundles) {
-                var bundle = kv.Value;
-                bundle.ExportBundle();
-                if (bundle.Manifest.Assets.Count == 0) {
-                    removeList.Add(kv.Key);
+            {
+                var removeList = new List<BundleBuild>();
+                foreach (var bundle in Bundles) {
+                    bundle.ExportBundle();
+                    if (bundle.Manifest.Assets.Count == 0) {
+                        removeList.Add(bundle);
+                    }
                 }
-            }
-
-            foreach (var i in removeList) {
-                Bundles.Remove(i);
+    
+                foreach (var i in removeList) {
+                    this.Manifest.Bundles.Remove(i.Manifest);
+                    Bundles.Remove(i);
+                }
             }
 
             if (SkyboxIconSkin != null) {
@@ -536,14 +549,9 @@ namespace PlanSDK.CrateSDK {
                 var blist = new BundleManifest[bundleCount];
                 manifest.Bundles.CopyTo(blist, 0);
     
-                Array.Sort<BundleManifest>(blist, (a, b) => a.BundleBuildName.CompareTo(b.BundleBuildName) ); 
+                Array.Sort<BundleManifest>(blist, (a, b) => a.BundleTitle.CompareTo(b.BundleTitle) ); 
                 manifest.Bundles.Clear();
                 manifest.Bundles.Add(blist);
-            }
-
-            // Add the build suffix to each bundle (thanks Unity, for erroring when two totally different assetbundles share the same name, wtf)
-            foreach (var bundle in manifest.Bundles) {
-                bundle.BundleBuildName = $"{bundle.BundleBuildName}.{Params.Crate.BuildSuffix}";
             }
 
             // Sort assets alphabetically in each bundle
@@ -577,7 +585,7 @@ namespace PlanSDK.CrateSDK {
                 var bundle = manifest.Bundles[i];
                 int N = bundle.Assets.Count;
 
-                builds[i].assetBundleName = bundle.BundleBuildName + ".assetbundle";
+                builds[i].assetBundleName = bundle.BundleNameID + ".assetbundle";
 
                 builds[i].assetNames       = new string[N];
                 builds[i].addressableNames = new string[N];
@@ -598,12 +606,17 @@ namespace PlanSDK.CrateSDK {
                     bundle.Assets[i].LocalURI = "";
                 }
             }
-
-            string manifestPath = $"{OutputPath}/_manifest.pb";
-            byte[] buf = gpb.MessageExtensions.ToByteArray(this.Manifest);
-            File.WriteAllBytes(manifestPath, buf);
-
+            
             {
+                byte[] buf = gpb.MessageExtensions.ToByteArray(this.Manifest.Info);
+                File.WriteAllBytes($"{OutputPath}/{CrateInfo.kInfoFilename}", buf);
+            }
+            
+            {
+                string manifestPath = $"{OutputPath}/{CrateManifest.kManfestFilename}";
+                byte[] buf = gpb.MessageExtensions.ToByteArray(this.Manifest);
+                File.WriteAllBytes(manifestPath, buf);
+
                 var jsonFormater = new gpb.JsonFormatter(new gpb.JsonFormatter.Settings(true));
                 string manifestJson = jsonFormater.Format(this.Manifest);
 

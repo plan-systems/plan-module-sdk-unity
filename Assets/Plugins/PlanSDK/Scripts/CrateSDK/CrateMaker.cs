@@ -13,41 +13,58 @@ namespace PlanSDK.CrateSDK {
 
 
         [Header("Crate Info")]
-        public string                       CrateTitle          = "org-name.org";
-        public string                       CrateNameID         = "my-create-name-id";       
+        public string                       CrateTitle          = "My Crate Title";
+        public string                       CrateNameID         = "static-create-name-id";       
         
         public string                       HomeDomain          = "org-name.org";
         public string                       ShortDescription    = "";
 
+        // Seconds UTC
+        [HideInInspector]
+        public long                         TimeCreated;         
         
         [Tooltip("A list of tags for this crate separated by commas")]
         public string                       Tags = "";       
         
-        [SerializeField]
-        string                              _buildID;
         
-        [HideInInspector]
-        [SerializeField]
-        int                                 _buildNumber;
+        [Header("Build Info")]
+        public int                          MajorVersion = 0;
+        public int                          MinorVersion = 1;
         
-        public string                       IssueBuildID() {
-            string buildID = _buildID;
-            if (_buildID.Contains("{") && _buildID.Contains("}")) {
-                buildID = buildID.Replace("{", "").Replace("}", "");
-                buildID = DateTime.Now.ToString(buildID).Substring(1);
-            }
+        [SerializeField]
+        int                                 _buildNumber = 1;
+        
+
+
+        public void                         IncrementBuildNum() {
             _buildNumber++;
-            return buildID;
         }
         
+        public Crates.CrateInfo             ExportCrateInfo() {
+            var info = new Crates.CrateInfo() {
+                HomeDomain    = HomeDomain,
+                NameID        = CrateNameID,
+                Title         = CrateTitle,
+                ShortDesc     = ShortDescription,
+                Tags          = Tags,
+                TimeCreated   = TimeCreated,
+                TimeBuilt     = IssueSecondsUTC(),
+                MajorVersion  = MajorVersion,
+                MinorVersion  = MinorVersion,
+                BuildNumber   = _buildNumber,
+            };
+            
+            string dateStr = DateTime.Now.ToString("yyMMdd");
+            info.BuildID = $"{dateStr}-{info.VersionID}";
+            
+            return info;
+        }
+                       
+
         
         public static string                FilterAssetID(string assetID) {
-            const string kIllegal = "\\/:*?\"'\'&@<>|!"; 
-            assetID = assetID.ToLower().Replace(" ", "-"); 
+            assetID = LocalFS.FilterName(assetID);
 
-            foreach (char c in kIllegal) {
-                assetID = assetID.Replace(c.ToString(), ""); 
-            }
             assetID.Trim();
             assetID = assetID.Replace("---", "-"); 
             assetID = assetID.Replace("  ", " "); 
@@ -55,12 +72,15 @@ namespace PlanSDK.CrateSDK {
             return assetID;
         }
         
+        public static long                  IssueSecondsUTC() {
+            return (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+        }
+        
 
         void                                OnValidate() {
-
             
-            if (String.IsNullOrWhiteSpace(_buildID)) {
-                _buildID = "{yyMMdd}";
+            if (TimeCreated == 0) {
+                TimeCreated = IssueSecondsUTC();
             }
             
             if (String.IsNullOrWhiteSpace(CrateNameID)) {
@@ -104,23 +124,6 @@ namespace PlanSDK.CrateSDK {
         //         return _buildInfo;
         //     }
         // }
-
-
-        public string                       BuildSuffix {
-            get {
-                var ticks = DateTime.UtcNow.Ticks / 10000000;
-                var unixSecs = (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-                return $"{unixSecs:x08}";
-            }
-        }
-
-
-        int                                 _curBuildNumber = 1;
-
-
-        public void                         IncrementBuildNum() {
-            _curBuildNumber++;
-        }
 
 
 
