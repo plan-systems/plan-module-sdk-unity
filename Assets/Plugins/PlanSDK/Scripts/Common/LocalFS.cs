@@ -1,13 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
+using System;
+using System.IO;
 
 namespace PlanSDK {
     
     public class LocalFS {
     
-        public static string                ProcessPath(string path) {
+        static readonly Regex               IllegalFileChars;
         
+        static LocalFS() {
+
+            IllegalFileChars = new Regex(@"\/:*?""'&@<>|", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+            //new Regex(String.Format(@"^(CON|PRN|AUX|NUL|CLOCK\$|COM[1-9]|LPT[1-9])(?=\..|$)|(^(\.+|\s+)$)|((\.+|\s+)$)|([{0}])",                          
+            //Regex.Escape(new String(Path.GetInvalidFileNameChars()))), RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+        }
+        
+        public static string                ProcessPath(string path) {
+            path = path.Replace("//", "/");
+
             // Save work and allocations if no processing is needed
             if (path.Contains("/..") == false)
                 return path;
@@ -33,6 +46,13 @@ namespace PlanSDK {
                 outPath.Append(parts[i]);
             }
             return outPath.ToString();
+        }
+        
+        
+        public static string                FilterName(string name, string invalidCharReplacement = "") {
+            name = IllegalFileChars.Replace(name, invalidCharReplacement);
+            name = name.Trim();
+            return name;
         }
     }
 
