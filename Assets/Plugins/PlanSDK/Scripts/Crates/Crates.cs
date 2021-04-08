@@ -33,28 +33,30 @@ namespace PlanSDK.Crates {
             "CRIRCglTaG9ydERlc2MYICABKAkidAoOQnVuZGxlTWFuaWZlc3QSEwoLQnVu",
             "ZGxlVGl0bGUYAiABKAkSFAoMQnVuZGxlTmFtZUlEGAMgASgJEiIKBkFzc2V0",
             "cxgKIAMoCzISLmNyYXRlcy5Bc3NldEVudHJ5EhMKC0xvYWRBbGxIaW50GBQg",
-            "ASgIIvYBCglDcmF0ZUluZm8SDgoGSW5zdElEGAEgASgNEhIKCkhvbWVEb21h",
-            "aW4YAyABKAkSDgoGTmFtZUlEGAUgASgJEg0KBVRpdGxlGAogASgJEhEKCVNo",
-            "b3J0RGVzYxgLIAEoCRIMCgRUYWdzGA8gASgJEhMKC1RpbWVDcmVhdGVkGB4g",
-            "ASgDEhEKCVRpbWVCdWlsdBgfIAEoAxIUCgxNYWpvclZlcnNpb24YKCABKAUS",
-            "FAoMTWlub3JWZXJzaW9uGCkgASgFEhMKC0J1aWxkTnVtYmVyGCogASgFEg8K",
-            "B0J1aWxkSUQYLSABKAkSCwoDVVJMGDIgASgJInEKDUNyYXRlTWFuaWZlc3QS",
-            "HwoESW5mbxgBIAEoCzIRLmNyYXRlcy5DcmF0ZUluZm8SFgoOSWNvbkJ1bmRs",
-            "ZU5hbWUYBSABKAkSJwoHQnVuZGxlcxgKIAMoCzIWLmNyYXRlcy5CdW5kbGVN",
-            "YW5pZmVzdCJWCg1DcmF0ZVNuYXBzaG90Eg0KBVJldklEGAEgASgDEhMKC0Rv",
-            "d25sb2FkVVJMGAMgASgJEiEKBkNyYXRlcxgKIAMoCzIRLmNyYXRlcy5DcmF0",
-            "ZUluZm8qwQEKCkFzc2V0RmxhZ3MSCwoHTm9GbGFncxAAEgsKB0lzVGV4MkQQ",
-            "ARIMCghJc1Nwcml0ZRACEg4KCklzTWF0ZXJpYWwQBBIPCgtJc1BsYWNlYWJs",
-            "ZRAIEhMKD0lzUmVjdFRyYW5zZm9ybRAQEggKBElzVUkQIBIMCgdIYXNJY29u",
-            "EIACEg4KCUlzUHJpdmF0ZRCABBINCghJc1NreWJveBCACBIOCglBdXRvU2Nh",
-            "bGUQgBASDgoJSXNTdXJmYWNlEIAgQhGqAg5QbGFuU0RLLkNyYXRlc2IGcHJv",
-            "dG8z"));
+            "ASgIIpwCCglDcmF0ZUluZm8SEwoLQ3JhdGVTY2hlbWEYASABKAUSDgoGSW5z",
+            "dElEGAIgASgNEhIKCkhvbWVEb21haW4YBiABKAkSDgoGTmFtZUlEGAcgASgJ",
+            "Eg0KBVRpdGxlGAogASgJEhEKCVNob3J0RGVzYxgLIAEoCRIMCgRUYWdzGA8g",
+            "ASgJEhMKC1RpbWVDcmVhdGVkGB4gASgDEhEKCVRpbWVCdWlsdBgfIAEoAxIU",
+            "CgxNYWpvclZlcnNpb24YKCABKAUSFAoMTWlub3JWZXJzaW9uGCkgASgFEhMK",
+            "C0J1aWxkTnVtYmVyGCogASgFEg8KB0J1aWxkSUQYLSABKAkSDwoHSG9tZVVS",
+            "TBgyIAEoCRILCgNVUkwYNyABKAkicQoNQ3JhdGVNYW5pZmVzdBIfCgRJbmZv",
+            "GAEgASgLMhEuY3JhdGVzLkNyYXRlSW5mbxIWCg5JY29uQnVuZGxlTmFtZRgF",
+            "IAEoCRInCgdCdW5kbGVzGAogAygLMhYuY3JhdGVzLkJ1bmRsZU1hbmlmZXN0",
+            "IlYKDUNyYXRlU25hcHNob3QSDQoFUmV2SUQYASABKAMSEwoLRG93bmxvYWRV",
+            "UkwYAyABKAkSIQoGQ3JhdGVzGAogAygLMhEuY3JhdGVzLkNyYXRlSW5mbyrB",
+            "AQoKQXNzZXRGbGFncxILCgdOb0ZsYWdzEAASCwoHSXNUZXgyRBABEgwKCElz",
+            "U3ByaXRlEAISDgoKSXNNYXRlcmlhbBAEEg8KC0lzUGxhY2VhYmxlEAgSEwoP",
+            "SXNSZWN0VHJhbnNmb3JtEBASCAoESXNVSRAgEgwKB0hhc0ljb24QgAISDgoJ",
+            "SXNQcml2YXRlEIAEEg0KCElzU2t5Ym94EIAIEg4KCUF1dG9TY2FsZRCAEBIO",
+            "CglJc1N1cmZhY2UQgCAqMwoLQ3JhdGVTY2hlbWESEwoPVW5kZWZpbmVkU2No",
+            "ZW1hEAASDwoKQ3JhdGVzMjAyMRDSAUIRqgIOUGxhblNESy5DcmF0ZXNiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PlanSDK.Crates.AssetFlags), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PlanSDK.Crates.AssetFlags), typeof(global::PlanSDK.Crates.CrateSchema), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.AssetEntry), global::PlanSDK.Crates.AssetEntry.Parser, new[]{ "AssetFlags", "BrowsePath", "Name", "NameID", "CenterX", "CenterY", "CenterZ", "ExtentsX", "ExtentsY", "ExtentsZ", "LocalURI", "Tags", "ShortDesc" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.BundleManifest), global::PlanSDK.Crates.BundleManifest.Parser, new[]{ "BundleTitle", "BundleNameID", "Assets", "LoadAllHint" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "InstID", "HomeDomain", "NameID", "Title", "ShortDesc", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID", "URL" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "CrateSchema", "InstID", "HomeDomain", "NameID", "Title", "ShortDesc", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID", "HomeURL", "URL" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateManifest), global::PlanSDK.Crates.CrateManifest.Parser, new[]{ "Info", "IconBundleName", "Bundles" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateSnapshot), global::PlanSDK.Crates.CrateSnapshot.Parser, new[]{ "RevID", "DownloadURL", "Crates" }, null, null, null, null)
           }));
@@ -96,6 +98,15 @@ namespace PlanSDK.Crates {
     /// e.g.  a building, a terrain formation, a wall
     /// </summary>
     [pbr::OriginalName("IsSurface")] IsSurface = 4096,
+  }
+
+  /// <summary>
+  /// CrateSchema helps future-proof against breaking changes down the road.
+  /// Enum values should be the last two digits of the release year and a revision digit.
+  /// </summary>
+  public enum CrateSchema {
+    [pbr::OriginalName("UndefinedSchema")] UndefinedSchema = 0,
+    [pbr::OriginalName("Crates2021")] Crates2021 = 210,
   }
 
   #endregion
@@ -1041,6 +1052,7 @@ namespace PlanSDK.Crates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CrateInfo(CrateInfo other) : this() {
+      crateSchema_ = other.crateSchema_;
       instID_ = other.instID_;
       homeDomain_ = other.homeDomain_;
       nameID_ = other.nameID_;
@@ -1053,6 +1065,7 @@ namespace PlanSDK.Crates {
       minorVersion_ = other.minorVersion_;
       buildNumber_ = other.buildNumber_;
       buildID_ = other.buildID_;
+      homeURL_ = other.homeURL_;
       uRL_ = other.uRL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1062,8 +1075,23 @@ namespace PlanSDK.Crates {
       return new CrateInfo(this);
     }
 
+    /// <summary>Field number for the "CrateSchema" field.</summary>
+    public const int CrateSchemaFieldNumber = 1;
+    private int crateSchema_;
+    /// <summary>
+    /// CrateSchema communicates which build and packaging schema was used for this crate build.
+    /// This value should be the integer value of a valid CrateSchema enum.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CrateSchema {
+      get { return crateSchema_; }
+      set {
+        crateSchema_ = value;
+      }
+    }
+
     /// <summary>Field number for the "InstID" field.</summary>
-    public const int InstIDFieldNumber = 1;
+    public const int InstIDFieldNumber = 2;
     private uint instID_;
     /// <summary>
     /// InstID is 0 by default and reserved for a runtime manager to reference a crate via issuing integers.
@@ -1078,10 +1106,10 @@ namespace PlanSDK.Crates {
     }
 
     /// <summary>Field number for the "HomeDomain" field.</summary>
-    public const int HomeDomainFieldNumber = 3;
+    public const int HomeDomainFieldNumber = 6;
     private string homeDomain_ = "";
     /// <summary>
-    /// HomeDomain identifies the publisher of this asset crate
+    /// HomeDomain identifies the publisher of this asset crate and  double 
     ///
     /// e.g. 
     ///    "plan-systems.org"
@@ -1097,7 +1125,7 @@ namespace PlanSDK.Crates {
     }
 
     /// <summary>Field number for the "NameID" field.</summary>
-    public const int NameIDFieldNumber = 5;
+    public const int NameIDFieldNumber = 7;
     private string nameID_ = "";
     /// <summary>
     /// NameID uniquely identifies this crate (for the given crate's publisher/home domain).
@@ -1243,11 +1271,25 @@ namespace PlanSDK.Crates {
       }
     }
 
+    /// <summary>Field number for the "HomeURL" field.</summary>
+    public const int HomeURLFieldNumber = 50;
+    private string homeURL_ = "";
+    /// <summary>
+    /// HomeURL is an optional link that allows a human to learn more about this crate.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string HomeURL {
+      get { return homeURL_; }
+      set {
+        homeURL_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "URL" field.</summary>
-    public const int URLFieldNumber = 50;
+    public const int URLFieldNumber = 55;
     private string uRL_ = "";
     /// <summary>
-    /// URL is an optional string available to specifying a means to access this crate.
+    /// URL is an optional string available to specifying URL to download this crate.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string URL {
@@ -1270,6 +1312,7 @@ namespace PlanSDK.Crates {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (CrateSchema != other.CrateSchema) return false;
       if (InstID != other.InstID) return false;
       if (HomeDomain != other.HomeDomain) return false;
       if (NameID != other.NameID) return false;
@@ -1282,6 +1325,7 @@ namespace PlanSDK.Crates {
       if (MinorVersion != other.MinorVersion) return false;
       if (BuildNumber != other.BuildNumber) return false;
       if (BuildID != other.BuildID) return false;
+      if (HomeURL != other.HomeURL) return false;
       if (URL != other.URL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1289,6 +1333,7 @@ namespace PlanSDK.Crates {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (CrateSchema != 0) hash ^= CrateSchema.GetHashCode();
       if (InstID != 0) hash ^= InstID.GetHashCode();
       if (HomeDomain.Length != 0) hash ^= HomeDomain.GetHashCode();
       if (NameID.Length != 0) hash ^= NameID.GetHashCode();
@@ -1301,6 +1346,7 @@ namespace PlanSDK.Crates {
       if (MinorVersion != 0) hash ^= MinorVersion.GetHashCode();
       if (BuildNumber != 0) hash ^= BuildNumber.GetHashCode();
       if (BuildID.Length != 0) hash ^= BuildID.GetHashCode();
+      if (HomeURL.Length != 0) hash ^= HomeURL.GetHashCode();
       if (URL.Length != 0) hash ^= URL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1318,16 +1364,20 @@ namespace PlanSDK.Crates {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (InstID != 0) {
+      if (CrateSchema != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(CrateSchema);
+      }
+      if (InstID != 0) {
+        output.WriteRawTag(16);
         output.WriteUInt32(InstID);
       }
       if (HomeDomain.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteString(HomeDomain);
       }
       if (NameID.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteString(NameID);
       }
       if (Title.Length != 0) {
@@ -1366,8 +1416,12 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(234, 2);
         output.WriteString(BuildID);
       }
-      if (URL.Length != 0) {
+      if (HomeURL.Length != 0) {
         output.WriteRawTag(146, 3);
+        output.WriteString(HomeURL);
+      }
+      if (URL.Length != 0) {
+        output.WriteRawTag(186, 3);
         output.WriteString(URL);
       }
       if (_unknownFields != null) {
@@ -1379,16 +1433,20 @@ namespace PlanSDK.Crates {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (InstID != 0) {
+      if (CrateSchema != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(CrateSchema);
+      }
+      if (InstID != 0) {
+        output.WriteRawTag(16);
         output.WriteUInt32(InstID);
       }
       if (HomeDomain.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteString(HomeDomain);
       }
       if (NameID.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteString(NameID);
       }
       if (Title.Length != 0) {
@@ -1427,8 +1485,12 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(234, 2);
         output.WriteString(BuildID);
       }
-      if (URL.Length != 0) {
+      if (HomeURL.Length != 0) {
         output.WriteRawTag(146, 3);
+        output.WriteString(HomeURL);
+      }
+      if (URL.Length != 0) {
+        output.WriteRawTag(186, 3);
         output.WriteString(URL);
       }
       if (_unknownFields != null) {
@@ -1440,6 +1502,9 @@ namespace PlanSDK.Crates {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (CrateSchema != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CrateSchema);
+      }
       if (InstID != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InstID);
       }
@@ -1476,6 +1541,9 @@ namespace PlanSDK.Crates {
       if (BuildID.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(BuildID);
       }
+      if (HomeURL.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(HomeURL);
+      }
       if (URL.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(URL);
       }
@@ -1489,6 +1557,9 @@ namespace PlanSDK.Crates {
     public void MergeFrom(CrateInfo other) {
       if (other == null) {
         return;
+      }
+      if (other.CrateSchema != 0) {
+        CrateSchema = other.CrateSchema;
       }
       if (other.InstID != 0) {
         InstID = other.InstID;
@@ -1526,6 +1597,9 @@ namespace PlanSDK.Crates {
       if (other.BuildID.Length != 0) {
         BuildID = other.BuildID;
       }
+      if (other.HomeURL.Length != 0) {
+        HomeURL = other.HomeURL;
+      }
       if (other.URL.Length != 0) {
         URL = other.URL;
       }
@@ -1544,14 +1618,18 @@ namespace PlanSDK.Crates {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
+            CrateSchema = input.ReadInt32();
+            break;
+          }
+          case 16: {
             InstID = input.ReadUInt32();
             break;
           }
-          case 26: {
+          case 50: {
             HomeDomain = input.ReadString();
             break;
           }
-          case 42: {
+          case 58: {
             NameID = input.ReadString();
             break;
           }
@@ -1592,6 +1670,10 @@ namespace PlanSDK.Crates {
             break;
           }
           case 402: {
+            HomeURL = input.ReadString();
+            break;
+          }
+          case 442: {
             URL = input.ReadString();
             break;
           }
@@ -1610,14 +1692,18 @@ namespace PlanSDK.Crates {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
+            CrateSchema = input.ReadInt32();
+            break;
+          }
+          case 16: {
             InstID = input.ReadUInt32();
             break;
           }
-          case 26: {
+          case 50: {
             HomeDomain = input.ReadString();
             break;
           }
-          case 42: {
+          case 58: {
             NameID = input.ReadString();
             break;
           }
@@ -1658,6 +1744,10 @@ namespace PlanSDK.Crates {
             break;
           }
           case 402: {
+            HomeURL = input.ReadString();
+            break;
+          }
+          case 442: {
             URL = input.ReadString();
             break;
           }

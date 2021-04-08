@@ -26,6 +26,8 @@ namespace PlanSDK.CrateSDK {
         [Tooltip("A list of tags for this crate separated by commas")]
         public string                       Tags = "";       
         
+        [Tooltip("An optional URL intended for a human to learn more about this crate")]
+        public string                       HomeURL;
         
         [Header("Build Info")]
         public int                          MajorVersion = 0;
@@ -42,6 +44,7 @@ namespace PlanSDK.CrateSDK {
         
         public Crates.CrateInfo             ExportCrateInfo() {
             var info = new Crates.CrateInfo() {
+                CrateSchema   = (int) Crates.CrateSchema.Crates2021,
                 HomeDomain    = HomeDomain,
                 NameID        = CrateNameID,
                 Title         = CrateTitle,
@@ -52,7 +55,11 @@ namespace PlanSDK.CrateSDK {
                 MajorVersion  = MajorVersion,
                 MinorVersion  = MinorVersion,
                 BuildNumber   = _buildNumber,
+                HomeURL       = HomeURL
             };
+            
+            if (String.IsNullOrWhiteSpace(HomeURL) == false)
+                info.HomeURL = HomeURL.Trim();
             
             string dateStr = DateTime.Now.ToString("yyMMdd");
             info.BuildID = $"{dateStr}-{info.VersionID}";
