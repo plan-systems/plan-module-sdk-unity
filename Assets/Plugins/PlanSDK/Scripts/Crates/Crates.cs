@@ -49,7 +49,7 @@ namespace PlanSDK.Crates {
             "SXNSZWN0VHJhbnNmb3JtEBASCAoESXNVSRAgEgwKB0hhc0ljb24QgAISDgoJ",
             "SXNQcml2YXRlEIAEEg0KCElzU2t5Ym94EIAIEg4KCUF1dG9TY2FsZRCAEBIO",
             "CglJc1N1cmZhY2UQgCAqMwoLQ3JhdGVTY2hlbWESEwoPVW5kZWZpbmVkU2No",
-            "ZW1hEAASDwoKQ3JhdGVzMjAyMRDSAUIRqgIOUGxhblNESy5DcmF0ZXNiBnBy",
+            "ZW1hEAASDwoLQ3JhdGVzX3YxMDAQZEIRqgIOUGxhblNESy5DcmF0ZXNiBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -102,11 +102,11 @@ namespace PlanSDK.Crates {
 
   /// <summary>
   /// CrateSchema helps future-proof against breaking changes down the road.
-  /// Enum values should be the last two digits of the release year and a revision digit.
+  /// Enum values should be three digits corresponding to the major, minor, and revision number.
   /// </summary>
   public enum CrateSchema {
     [pbr::OriginalName("UndefinedSchema")] UndefinedSchema = 0,
-    [pbr::OriginalName("Crates2021")] Crates2021 = 210,
+    [pbr::OriginalName("Crates_v100")] CratesV100 = 100,
   }
 
   #endregion

@@ -44,7 +44,7 @@ namespace PlanSDK.CrateSDK {
         
         public Crates.CrateInfo             ExportCrateInfo() {
             var info = new Crates.CrateInfo() {
-                CrateSchema   = (int) Crates.CrateSchema.Crates2021,
+                CrateSchema   = (int) Crates.CrateSchema.CratesV100,
                 HomeDomain    = HomeDomain,
                 NameID        = CrateNameID,
                 Title         = CrateTitle,
