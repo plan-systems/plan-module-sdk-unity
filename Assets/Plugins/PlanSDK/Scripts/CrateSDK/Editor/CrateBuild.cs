@@ -282,8 +282,8 @@ namespace PlanSDK.CrateSDK {
             if (String.IsNullOrEmpty(iconPath) == false) {
                 entry.AssetFlags |= AssetFlags.HasIcon;
 
-                Crate.BrowserBundle.Manifest.Assets.Add(new AssetEntry {
-                    AssetFlags = /*AssetFlags.IsIcon |*/ AssetFlags.IsSprite,
+                Crate.IconBundle.Manifest.Assets.Add(new AssetEntry {
+                    AssetFlags = AssetFlags.IsSprite,
                     LocalURI = iconPath,
                     NameID = item.AssetNameID,
                 });
@@ -346,10 +346,10 @@ namespace PlanSDK.CrateSDK {
 
 
     public class CrateBuild {
-        public const string                         kDefaultBrowserBundleName = "!";
+        public const string                         kDefaultIconBundleName = "!";
 
-        // Bundle containing all this module's browsable assets, etc.
-        public BundleBuild                          BrowserBundle;
+        // Bundle containing icons for this crate's assets.
+        public BundleBuild                          IconBundle;
         
         public string                               OutputPath;                 // Absolute path of where build products go
         public string                               AssetStagingDir;            // Asset dir pathname of where tp export module assets (starts with "Assets/")
@@ -414,9 +414,9 @@ namespace PlanSDK.CrateSDK {
             }
 
             // Set up browser bundle
-            BrowserBundle = CreateSubBundle(kDefaultBrowserBundleName, kDefaultBrowserBundleName);
-            BrowserBundle.Manifest.LoadAllHint = true;
-            Manifest.Info.BrowserBundleNameID = BrowserBundle.Manifest.BundleNameID;
+            IconBundle = CreateSubBundle(kDefaultIconBundleName, kDefaultIconBundleName);
+            IconBundle.Manifest.LoadAllHint = true;
+            Manifest.IconBundleName = IconBundle.Manifest.BundleNameID;
         }
 
 
@@ -523,7 +523,7 @@ namespace PlanSDK.CrateSDK {
             // Export module icon if set
             if (Params.Crate.CrateIcon != null) {
                 string spriteAssetPath = AssetDatabase.GetAssetPath(Params.Crate.CrateIcon);
-                BrowserBundle.Manifest.Assets.Add(new AssetEntry {
+                IconBundle.Manifest.Assets.Add(new AssetEntry {
                     AssetFlags = AssetFlags.IsSprite,
                     NameID = CrateManifest.kCrateIconNameID,
                     LocalURI = spriteAssetPath,
