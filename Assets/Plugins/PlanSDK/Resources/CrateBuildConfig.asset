@@ -18,7 +18,7 @@ MonoBehaviour:
   AssetStagingPath: Assets/_asset-staging
   platforms:
   - Platform: 19
-    TargetEnabled: 0
+    TargetEnabled: 1
     Uncompressed: 0
     ChunkBasedCompression: 1
     StrictMode: 1
@@ -28,17 +28,17 @@ MonoBehaviour:
     ChunkBasedCompression: 1
     StrictMode: 1
   - Platform: 24
-    TargetEnabled: 0
+    TargetEnabled: 1
     Uncompressed: 0
     ChunkBasedCompression: 1
     StrictMode: 1
   - Platform: 13
-    TargetEnabled: 0
+    TargetEnabled: 1
     Uncompressed: 0
     ChunkBasedCompression: 1
     StrictMode: 1
   - Platform: 9
-    TargetEnabled: 0
+    TargetEnabled: 1
     Uncompressed: 0
     ChunkBasedCompression: 1
     StrictMode: 1
