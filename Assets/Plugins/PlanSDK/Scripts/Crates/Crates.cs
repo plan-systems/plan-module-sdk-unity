@@ -33,32 +33,30 @@ namespace PlanSDK.Crates {
             "CRIRCglTaG9ydERlc2MYICABKAkidAoOQnVuZGxlTWFuaWZlc3QSEwoLQnVu",
             "ZGxlVGl0bGUYAiABKAkSFAoMQnVuZGxlTmFtZUlEGAMgASgJEiIKBkFzc2V0",
             "cxgKIAMoCzISLmNyYXRlcy5Bc3NldEVudHJ5EhMKC0xvYWRBbGxIaW50GBQg",
-            "ASgIIoYCCglDcmF0ZUluZm8SDgoGSW5zdElEGAEgASgFEhIKCkhvbWVEb21h",
+            "ASgIIvYBCglDcmF0ZUluZm8SDgoGSW5zdElEGAEgASgNEhIKCkhvbWVEb21h",
             "aW4YAyABKAkSDgoGTmFtZUlEGAUgASgJEg0KBVRpdGxlGAogASgJEhEKCVNo",
-            "b3J0RGVzYxgLIAEoCRIbChNCcm93c2VyQnVuZGxlTmFtZUlEGA0gASgJEgwK",
-            "BFRhZ3MYDyABKAkSEwoLVGltZUNyZWF0ZWQYHiABKAMSEQoJVGltZUJ1aWx0",
-            "GB8gASgDEhQKDE1ham9yVmVyc2lvbhgoIAEoBRIUCgxNaW5vclZlcnNpb24Y",
-            "KSABKAUSEwoLQnVpbGROdW1iZXIYKiABKAUSDwoHQnVpbGRJRBgtIAEoCSJZ",
-            "Cg1DcmF0ZU1hbmlmZXN0Eh8KBEluZm8YASABKAsyES5jcmF0ZXMuQ3JhdGVJ",
-            "bmZvEicKB0J1bmRsZXMYCiADKAsyFi5jcmF0ZXMuQnVuZGxlTWFuaWZlc3Qi",
-            "UQoNQ3JhdGVIb3N0SW5mbxIPCgdEb21haW5zGAEgAygJEhkKEUxhdGVzdFNu",
-            "YXBzaG90VVJMGAogAygJEhQKDERvd25sb2FkVVJMcxgUIAMoCSJGCg1DcmF0",
-            "ZVNuYXBzaG90Eg0KBVJldklEGAEgASgDEhMKC0Rvd25sb2FkVVJMGAMgASgJ",
-            "EhEKCUNyYXRlVVJJcxgFIAMoCSrBAQoKQXNzZXRGbGFncxILCgdOb0ZsYWdz",
-            "EAASCwoHSXNUZXgyRBABEgwKCElzU3ByaXRlEAISDgoKSXNNYXRlcmlhbBAE",
-            "Eg8KC0lzUGxhY2VhYmxlEAgSEwoPSXNSZWN0VHJhbnNmb3JtEBASCAoESXNV",
-            "SRAgEgwKB0hhc0ljb24QgAISDgoJSXNQcml2YXRlEIAEEg0KCElzU2t5Ym94",
-            "EIAIEg4KCUF1dG9TY2FsZRCAEBIOCglJc1N1cmZhY2UQgCBCEaoCDlBsYW5T",
-            "REsuQ3JhdGVzYgZwcm90bzM="));
+            "b3J0RGVzYxgLIAEoCRIMCgRUYWdzGA8gASgJEhMKC1RpbWVDcmVhdGVkGB4g",
+            "ASgDEhEKCVRpbWVCdWlsdBgfIAEoAxIUCgxNYWpvclZlcnNpb24YKCABKAUS",
+            "FAoMTWlub3JWZXJzaW9uGCkgASgFEhMKC0J1aWxkTnVtYmVyGCogASgFEg8K",
+            "B0J1aWxkSUQYLSABKAkSCwoDVVJMGDIgASgJInEKDUNyYXRlTWFuaWZlc3QS",
+            "HwoESW5mbxgBIAEoCzIRLmNyYXRlcy5DcmF0ZUluZm8SFgoOSWNvbkJ1bmRs",
+            "ZU5hbWUYBSABKAkSJwoHQnVuZGxlcxgKIAMoCzIWLmNyYXRlcy5CdW5kbGVN",
+            "YW5pZmVzdCJWCg1DcmF0ZVNuYXBzaG90Eg0KBVJldklEGAEgASgDEhMKC0Rv",
+            "d25sb2FkVVJMGAMgASgJEiEKBkNyYXRlcxgKIAMoCzIRLmNyYXRlcy5DcmF0",
+            "ZUluZm8qwQEKCkFzc2V0RmxhZ3MSCwoHTm9GbGFncxAAEgsKB0lzVGV4MkQQ",
+            "ARIMCghJc1Nwcml0ZRACEg4KCklzTWF0ZXJpYWwQBBIPCgtJc1BsYWNlYWJs",
+            "ZRAIEhMKD0lzUmVjdFRyYW5zZm9ybRAQEggKBElzVUkQIBIMCgdIYXNJY29u",
+            "EIACEg4KCUlzUHJpdmF0ZRCABBINCghJc1NreWJveBCACBIOCglBdXRvU2Nh",
+            "bGUQgBASDgoJSXNTdXJmYWNlEIAgQhGqAg5QbGFuU0RLLkNyYXRlc2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PlanSDK.Crates.AssetFlags), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.AssetEntry), global::PlanSDK.Crates.AssetEntry.Parser, new[]{ "AssetFlags", "BrowsePath", "Name", "NameID", "CenterX", "CenterY", "CenterZ", "ExtentsX", "ExtentsY", "ExtentsZ", "LocalURI", "Tags", "ShortDesc" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.BundleManifest), global::PlanSDK.Crates.BundleManifest.Parser, new[]{ "BundleTitle", "BundleNameID", "Assets", "LoadAllHint" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "InstID", "HomeDomain", "NameID", "Title", "ShortDesc", "BrowserBundleNameID", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateManifest), global::PlanSDK.Crates.CrateManifest.Parser, new[]{ "Info", "Bundles" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateHostInfo), global::PlanSDK.Crates.CrateHostInfo.Parser, new[]{ "Domains", "LatestSnapshotURL", "DownloadURLs" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateSnapshot), global::PlanSDK.Crates.CrateSnapshot.Parser, new[]{ "RevID", "DownloadURL", "CrateURIs" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "InstID", "HomeDomain", "NameID", "Title", "ShortDesc", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID", "URL" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateManifest), global::PlanSDK.Crates.CrateManifest.Parser, new[]{ "Info", "IconBundleName", "Bundles" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateSnapshot), global::PlanSDK.Crates.CrateSnapshot.Parser, new[]{ "RevID", "DownloadURL", "Crates" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1048,7 +1046,6 @@ namespace PlanSDK.Crates {
       nameID_ = other.nameID_;
       title_ = other.title_;
       shortDesc_ = other.shortDesc_;
-      browserBundleNameID_ = other.browserBundleNameID_;
       tags_ = other.tags_;
       timeCreated_ = other.timeCreated_;
       timeBuilt_ = other.timeBuilt_;
@@ -1056,6 +1053,7 @@ namespace PlanSDK.Crates {
       minorVersion_ = other.minorVersion_;
       buildNumber_ = other.buildNumber_;
       buildID_ = other.buildID_;
+      uRL_ = other.uRL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1066,12 +1064,13 @@ namespace PlanSDK.Crates {
 
     /// <summary>Field number for the "InstID" field.</summary>
     public const int InstIDFieldNumber = 1;
-    private int instID_;
+    private uint instID_;
     /// <summary>
     /// InstID is 0 by default and reserved for a runtime manager to reference a crate via issuing integers.
+    /// If non-zero, it will not change and no other instance will have the same value.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int InstID {
+    public uint InstID {
       get { return instID_; }
       set {
         instID_ = value;
@@ -1145,20 +1144,6 @@ namespace PlanSDK.Crates {
       get { return shortDesc_; }
       set {
         shortDesc_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "BrowserBundleNameID" field.</summary>
-    public const int BrowserBundleNameIDFieldNumber = 13;
-    private string browserBundleNameID_ = "";
-    /// <summary>
-    /// BrowserBundle is the bundle name ID containing assets and info used to browse this crate.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string BrowserBundleNameID {
-      get { return browserBundleNameID_; }
-      set {
-        browserBundleNameID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1246,7 +1231,7 @@ namespace PlanSDK.Crates {
     private string buildID_ = "";
     /// <summary>
     /// BuildID uniquely identifies a particular crate build/version.
-    /// This value should have no spaces and only have '.', '_', or '-' (and should lead with an alpha-numeric)
+    /// This value should have no spaces and only have '.', '_', or '-' (and starts and ends with an alpha-numeric)
     /// By convention, the format is "yyMMdd-{VersionID}" (so that sorting by BuildID string yields the most recent release).
     /// e.g. "210320-v0.1.11"
     /// </summary>
@@ -1255,6 +1240,20 @@ namespace PlanSDK.Crates {
       get { return buildID_; }
       set {
         buildID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "URL" field.</summary>
+    public const int URLFieldNumber = 50;
+    private string uRL_ = "";
+    /// <summary>
+    /// URL is an optional string available to specifying a means to access this crate.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string URL {
+      get { return uRL_; }
+      set {
+        uRL_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1276,7 +1275,6 @@ namespace PlanSDK.Crates {
       if (NameID != other.NameID) return false;
       if (Title != other.Title) return false;
       if (ShortDesc != other.ShortDesc) return false;
-      if (BrowserBundleNameID != other.BrowserBundleNameID) return false;
       if (Tags != other.Tags) return false;
       if (TimeCreated != other.TimeCreated) return false;
       if (TimeBuilt != other.TimeBuilt) return false;
@@ -1284,6 +1282,7 @@ namespace PlanSDK.Crates {
       if (MinorVersion != other.MinorVersion) return false;
       if (BuildNumber != other.BuildNumber) return false;
       if (BuildID != other.BuildID) return false;
+      if (URL != other.URL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1295,7 +1294,6 @@ namespace PlanSDK.Crates {
       if (NameID.Length != 0) hash ^= NameID.GetHashCode();
       if (Title.Length != 0) hash ^= Title.GetHashCode();
       if (ShortDesc.Length != 0) hash ^= ShortDesc.GetHashCode();
-      if (BrowserBundleNameID.Length != 0) hash ^= BrowserBundleNameID.GetHashCode();
       if (Tags.Length != 0) hash ^= Tags.GetHashCode();
       if (TimeCreated != 0L) hash ^= TimeCreated.GetHashCode();
       if (TimeBuilt != 0L) hash ^= TimeBuilt.GetHashCode();
@@ -1303,6 +1301,7 @@ namespace PlanSDK.Crates {
       if (MinorVersion != 0) hash ^= MinorVersion.GetHashCode();
       if (BuildNumber != 0) hash ^= BuildNumber.GetHashCode();
       if (BuildID.Length != 0) hash ^= BuildID.GetHashCode();
+      if (URL.Length != 0) hash ^= URL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1321,7 +1320,7 @@ namespace PlanSDK.Crates {
     #else
       if (InstID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(InstID);
+        output.WriteUInt32(InstID);
       }
       if (HomeDomain.Length != 0) {
         output.WriteRawTag(26);
@@ -1338,10 +1337,6 @@ namespace PlanSDK.Crates {
       if (ShortDesc.Length != 0) {
         output.WriteRawTag(90);
         output.WriteString(ShortDesc);
-      }
-      if (BrowserBundleNameID.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(BrowserBundleNameID);
       }
       if (Tags.Length != 0) {
         output.WriteRawTag(122);
@@ -1370,6 +1365,10 @@ namespace PlanSDK.Crates {
       if (BuildID.Length != 0) {
         output.WriteRawTag(234, 2);
         output.WriteString(BuildID);
+      }
+      if (URL.Length != 0) {
+        output.WriteRawTag(146, 3);
+        output.WriteString(URL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1382,7 +1381,7 @@ namespace PlanSDK.Crates {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (InstID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(InstID);
+        output.WriteUInt32(InstID);
       }
       if (HomeDomain.Length != 0) {
         output.WriteRawTag(26);
@@ -1399,10 +1398,6 @@ namespace PlanSDK.Crates {
       if (ShortDesc.Length != 0) {
         output.WriteRawTag(90);
         output.WriteString(ShortDesc);
-      }
-      if (BrowserBundleNameID.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(BrowserBundleNameID);
       }
       if (Tags.Length != 0) {
         output.WriteRawTag(122);
@@ -1432,6 +1427,10 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(234, 2);
         output.WriteString(BuildID);
       }
+      if (URL.Length != 0) {
+        output.WriteRawTag(146, 3);
+        output.WriteString(URL);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1442,7 +1441,7 @@ namespace PlanSDK.Crates {
     public int CalculateSize() {
       int size = 0;
       if (InstID != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(InstID);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InstID);
       }
       if (HomeDomain.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(HomeDomain);
@@ -1455,9 +1454,6 @@ namespace PlanSDK.Crates {
       }
       if (ShortDesc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ShortDesc);
-      }
-      if (BrowserBundleNameID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BrowserBundleNameID);
       }
       if (Tags.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Tags);
@@ -1479,6 +1475,9 @@ namespace PlanSDK.Crates {
       }
       if (BuildID.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(BuildID);
+      }
+      if (URL.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(URL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1506,9 +1505,6 @@ namespace PlanSDK.Crates {
       if (other.ShortDesc.Length != 0) {
         ShortDesc = other.ShortDesc;
       }
-      if (other.BrowserBundleNameID.Length != 0) {
-        BrowserBundleNameID = other.BrowserBundleNameID;
-      }
       if (other.Tags.Length != 0) {
         Tags = other.Tags;
       }
@@ -1530,6 +1526,9 @@ namespace PlanSDK.Crates {
       if (other.BuildID.Length != 0) {
         BuildID = other.BuildID;
       }
+      if (other.URL.Length != 0) {
+        URL = other.URL;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1545,7 +1544,7 @@ namespace PlanSDK.Crates {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            InstID = input.ReadInt32();
+            InstID = input.ReadUInt32();
             break;
           }
           case 26: {
@@ -1562,10 +1561,6 @@ namespace PlanSDK.Crates {
           }
           case 90: {
             ShortDesc = input.ReadString();
-            break;
-          }
-          case 106: {
-            BrowserBundleNameID = input.ReadString();
             break;
           }
           case 122: {
@@ -1594,6 +1589,10 @@ namespace PlanSDK.Crates {
           }
           case 362: {
             BuildID = input.ReadString();
+            break;
+          }
+          case 402: {
+            URL = input.ReadString();
             break;
           }
         }
@@ -1611,7 +1610,7 @@ namespace PlanSDK.Crates {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            InstID = input.ReadInt32();
+            InstID = input.ReadUInt32();
             break;
           }
           case 26: {
@@ -1628,10 +1627,6 @@ namespace PlanSDK.Crates {
           }
           case 90: {
             ShortDesc = input.ReadString();
-            break;
-          }
-          case 106: {
-            BrowserBundleNameID = input.ReadString();
             break;
           }
           case 122: {
@@ -1660,6 +1655,10 @@ namespace PlanSDK.Crates {
           }
           case 362: {
             BuildID = input.ReadString();
+            break;
+          }
+          case 402: {
+            URL = input.ReadString();
             break;
           }
         }
@@ -1707,6 +1706,7 @@ namespace PlanSDK.Crates {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CrateManifest(CrateManifest other) : this() {
       info_ = other.info_ != null ? other.info_.Clone() : null;
+      iconBundleName_ = other.iconBundleName_;
       bundles_ = other.bundles_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1724,6 +1724,21 @@ namespace PlanSDK.Crates {
       get { return info_; }
       set {
         info_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IconBundleName" field.</summary>
+    public const int IconBundleNameFieldNumber = 5;
+    private string iconBundleName_ = "";
+    /// <summary>
+    /// IconBundleName is the bundle name ID of the bundle containing icons (Sprites) used to represent the "real" crate assets.
+    /// Asset name IDs in this bundle correspond to assets in all the other Crate's bundles.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string IconBundleName {
+      get { return iconBundleName_; }
+      set {
+        iconBundleName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1751,6 +1766,7 @@ namespace PlanSDK.Crates {
         return true;
       }
       if (!object.Equals(Info, other.Info)) return false;
+      if (IconBundleName != other.IconBundleName) return false;
       if(!bundles_.Equals(other.bundles_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1759,6 +1775,7 @@ namespace PlanSDK.Crates {
     public override int GetHashCode() {
       int hash = 1;
       if (info_ != null) hash ^= Info.GetHashCode();
+      if (IconBundleName.Length != 0) hash ^= IconBundleName.GetHashCode();
       hash ^= bundles_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1780,6 +1797,10 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(10);
         output.WriteMessage(Info);
       }
+      if (IconBundleName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(IconBundleName);
+      }
       bundles_.WriteTo(output, _repeated_bundles_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1794,6 +1815,10 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(10);
         output.WriteMessage(Info);
       }
+      if (IconBundleName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(IconBundleName);
+      }
       bundles_.WriteTo(ref output, _repeated_bundles_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1806,6 +1831,9 @@ namespace PlanSDK.Crates {
       int size = 0;
       if (info_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Info);
+      }
+      if (IconBundleName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IconBundleName);
       }
       size += bundles_.CalculateSize(_repeated_bundles_codec);
       if (_unknownFields != null) {
@@ -1824,6 +1852,9 @@ namespace PlanSDK.Crates {
           Info = new global::PlanSDK.Crates.CrateInfo();
         }
         Info.MergeFrom(other.Info);
+      }
+      if (other.IconBundleName.Length != 0) {
+        IconBundleName = other.IconBundleName;
       }
       bundles_.Add(other.bundles_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1845,6 +1876,10 @@ namespace PlanSDK.Crates {
               Info = new global::PlanSDK.Crates.CrateInfo();
             }
             input.ReadMessage(Info);
+            break;
+          }
+          case 42: {
+            IconBundleName = input.ReadString();
             break;
           }
           case 82: {
@@ -1872,233 +1907,12 @@ namespace PlanSDK.Crates {
             input.ReadMessage(Info);
             break;
           }
+          case 42: {
+            IconBundleName = input.ReadString();
+            break;
+          }
           case 82: {
             bundles_.AddEntriesFrom(ref input, _repeated_bundles_codec);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
-  /// CrateHost represents Crate binary host.
-  /// </summary>
-  public sealed partial class CrateHostInfo : pb::IMessage<CrateHostInfo>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<CrateHostInfo> _parser = new pb::MessageParser<CrateHostInfo>(() => new CrateHostInfo());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<CrateHostInfo> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::PlanSDK.Crates.CratesReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CrateHostInfo() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CrateHostInfo(CrateHostInfo other) : this() {
-      domains_ = other.domains_.Clone();
-      latestSnapshotURL_ = other.latestSnapshotURL_.Clone();
-      downloadURLs_ = other.downloadURLs_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CrateHostInfo Clone() {
-      return new CrateHostInfo(this);
-    }
-
-    /// <summary>Field number for the "Domains" field.</summary>
-    public const int DomainsFieldNumber = 1;
-    private static readonly pb::FieldCodec<string> _repeated_domains_codec
-        = pb::FieldCodec.ForString(10);
-    private readonly pbc::RepeatedField<string> domains_ = new pbc::RepeatedField<string>();
-    /// <summary>
-    /// Domains is a list of crate home domains that this host is serving.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> Domains {
-      get { return domains_; }
-    }
-
-    /// <summary>Field number for the "LatestSnapshotURL" field.</summary>
-    public const int LatestSnapshotURLFieldNumber = 10;
-    private static readonly pb::FieldCodec<string> _repeated_latestSnapshotURL_codec
-        = pb::FieldCodec.ForString(82);
-    private readonly pbc::RepeatedField<string> latestSnapshotURL_ = new pbc::RepeatedField<string>();
-    /// <summary>
-    /// LatestSnapshotURL is used to get the latest CrateSnapshot
-    /// e.g. "http://whatever.com/CrateSnapshot.json"
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> LatestSnapshotURL {
-      get { return latestSnapshotURL_; }
-    }
-
-    /// <summary>Field number for the "DownloadURLs" field.</summary>
-    public const int DownloadURLsFieldNumber = 20;
-    private static readonly pb::FieldCodec<string> _repeated_downloadURLs_codec
-        = pb::FieldCodec.ForString(162);
-    private readonly pbc::RepeatedField<string> downloadURLs_ = new pbc::RepeatedField<string>();
-    /// <summary>
-    /// DownloadURLs is a list of mirror URLs that serve a requested crate build
-    /// e.g. "http://whatever.com/plan-crates/{CrateDomain}/{CrateNameID}/{CrateBuildID}"
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> DownloadURLs {
-      get { return downloadURLs_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as CrateHostInfo);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(CrateHostInfo other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!domains_.Equals(other.domains_)) return false;
-      if(!latestSnapshotURL_.Equals(other.latestSnapshotURL_)) return false;
-      if(!downloadURLs_.Equals(other.downloadURLs_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= domains_.GetHashCode();
-      hash ^= latestSnapshotURL_.GetHashCode();
-      hash ^= downloadURLs_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      domains_.WriteTo(output, _repeated_domains_codec);
-      latestSnapshotURL_.WriteTo(output, _repeated_latestSnapshotURL_codec);
-      downloadURLs_.WriteTo(output, _repeated_downloadURLs_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      domains_.WriteTo(ref output, _repeated_domains_codec);
-      latestSnapshotURL_.WriteTo(ref output, _repeated_latestSnapshotURL_codec);
-      downloadURLs_.WriteTo(ref output, _repeated_downloadURLs_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += domains_.CalculateSize(_repeated_domains_codec);
-      size += latestSnapshotURL_.CalculateSize(_repeated_latestSnapshotURL_codec);
-      size += downloadURLs_.CalculateSize(_repeated_downloadURLs_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(CrateHostInfo other) {
-      if (other == null) {
-        return;
-      }
-      domains_.Add(other.domains_);
-      latestSnapshotURL_.Add(other.latestSnapshotURL_);
-      downloadURLs_.Add(other.downloadURLs_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            domains_.AddEntriesFrom(input, _repeated_domains_codec);
-            break;
-          }
-          case 82: {
-            latestSnapshotURL_.AddEntriesFrom(input, _repeated_latestSnapshotURL_codec);
-            break;
-          }
-          case 162: {
-            downloadURLs_.AddEntriesFrom(input, _repeated_downloadURLs_codec);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            domains_.AddEntriesFrom(ref input, _repeated_domains_codec);
-            break;
-          }
-          case 82: {
-            latestSnapshotURL_.AddEntriesFrom(ref input, _repeated_latestSnapshotURL_codec);
-            break;
-          }
-          case 162: {
-            downloadURLs_.AddEntriesFrom(ref input, _repeated_downloadURLs_codec);
             break;
           }
         }
@@ -2123,7 +1937,7 @@ namespace PlanSDK.Crates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PlanSDK.Crates.CratesReflection.Descriptor.MessageTypes[5]; }
+      get { return global::PlanSDK.Crates.CratesReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2142,7 +1956,7 @@ namespace PlanSDK.Crates {
     public CrateSnapshot(CrateSnapshot other) : this() {
       revID_ = other.revID_;
       downloadURL_ = other.downloadURL_;
-      crateURIs_ = other.crateURIs_.Clone();
+      crates_ = other.crates_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2167,6 +1981,7 @@ namespace PlanSDK.Crates {
     private string downloadURL_ = "";
     /// <summary>
     /// This is a template string where the symbols "CrateDomain", "CrateNameID", "CrateBuildID", "PlatformID" are delimited with { and }.
+    /// The symbol "AppStreaming" will be replaced with "file://"
     /// e.g. "http://whatever.com/{CrateDomain}/{CrateNameID}__{CrateBuildID}.{PlatformID}.zip"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2177,17 +1992,14 @@ namespace PlanSDK.Crates {
       }
     }
 
-    /// <summary>Field number for the "CrateURIs" field.</summary>
-    public const int CrateURIsFieldNumber = 5;
-    private static readonly pb::FieldCodec<string> _repeated_crateURIs_codec
-        = pb::FieldCodec.ForString(42);
-    private readonly pbc::RepeatedField<string> crateURIs_ = new pbc::RepeatedField<string>();
-    /// <summary>
-    /// List of crate build URIs where each has the form "crateDomain/crateNameID/crateBuildID"
-    /// </summary>
+    /// <summary>Field number for the "Crates" field.</summary>
+    public const int CratesFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::PlanSDK.Crates.CrateInfo> _repeated_crates_codec
+        = pb::FieldCodec.ForMessage(82, global::PlanSDK.Crates.CrateInfo.Parser);
+    private readonly pbc::RepeatedField<global::PlanSDK.Crates.CrateInfo> crates_ = new pbc::RepeatedField<global::PlanSDK.Crates.CrateInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> CrateURIs {
-      get { return crateURIs_; }
+    public pbc::RepeatedField<global::PlanSDK.Crates.CrateInfo> Crates {
+      get { return crates_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2205,7 +2017,7 @@ namespace PlanSDK.Crates {
       }
       if (RevID != other.RevID) return false;
       if (DownloadURL != other.DownloadURL) return false;
-      if(!crateURIs_.Equals(other.crateURIs_)) return false;
+      if(!crates_.Equals(other.crates_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2214,7 +2026,7 @@ namespace PlanSDK.Crates {
       int hash = 1;
       if (RevID != 0L) hash ^= RevID.GetHashCode();
       if (DownloadURL.Length != 0) hash ^= DownloadURL.GetHashCode();
-      hash ^= crateURIs_.GetHashCode();
+      hash ^= crates_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2239,7 +2051,7 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(26);
         output.WriteString(DownloadURL);
       }
-      crateURIs_.WriteTo(output, _repeated_crateURIs_codec);
+      crates_.WriteTo(output, _repeated_crates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2257,7 +2069,7 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(26);
         output.WriteString(DownloadURL);
       }
-      crateURIs_.WriteTo(ref output, _repeated_crateURIs_codec);
+      crates_.WriteTo(ref output, _repeated_crates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2273,7 +2085,7 @@ namespace PlanSDK.Crates {
       if (DownloadURL.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DownloadURL);
       }
-      size += crateURIs_.CalculateSize(_repeated_crateURIs_codec);
+      size += crates_.CalculateSize(_repeated_crates_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2291,7 +2103,7 @@ namespace PlanSDK.Crates {
       if (other.DownloadURL.Length != 0) {
         DownloadURL = other.DownloadURL;
       }
-      crateURIs_.Add(other.crateURIs_);
+      crates_.Add(other.crates_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2314,8 +2126,8 @@ namespace PlanSDK.Crates {
             DownloadURL = input.ReadString();
             break;
           }
-          case 42: {
-            crateURIs_.AddEntriesFrom(input, _repeated_crateURIs_codec);
+          case 82: {
+            crates_.AddEntriesFrom(input, _repeated_crates_codec);
             break;
           }
         }
@@ -2340,8 +2152,8 @@ namespace PlanSDK.Crates {
             DownloadURL = input.ReadString();
             break;
           }
-          case 42: {
-            crateURIs_.AddEntriesFrom(ref input, _repeated_crateURIs_codec);
+          case 82: {
+            crates_.AddEntriesFrom(ref input, _repeated_crates_codec);
             break;
           }
         }
