@@ -388,15 +388,8 @@ namespace PlanSDK.CrateSDK {
 
             Bundles.Clear();
 
-            {
-                // var outDir = Params.BuildConfig.ExpandedOutputPath;
-                // Directory.CreateDirectory(outDir);
-                OutputPath = $"{Params.BuildConfig.ExpandedOutputPath}/{Manifest.Info.DomainUUID}";
-                //OutputPath = $"{Params.BuildConfig.ExpandedOutputPath}/{Manifest.Info.CrateBuildURI}";
-                Directory.CreateDirectory(OutputPath);
-                // OutputPath = $"{outDir}/{Manifest.CrateNameID}";
-                // Directory.CreateDirectory(outDir);
-            }
+            OutputPath = $"{Params.BuildConfig.ExpandedOutputPath}/{Manifest.Info.PublisherID}";
+            Directory.CreateDirectory(OutputPath);
         
 
             AssetStagingDir = Params.BuildConfig.AssetStagingPath;

@@ -32,7 +32,7 @@ namespace PlanSDK.CrateSDK {
             }
 
             var buildConfig = CrateBuildConfig.CurrentConfig();
-            var outputPath = $"{buildConfig.ExpandedOutputPath}/{crate.DomainUUID}";
+            var outputPath = $"{buildConfig.ExpandedOutputPath}/{crate.PublisherID}";
             EditorGUILayout.HelpBox(outputPath, MessageType.None);
 
             if (Directory.Exists(outputPath)) {

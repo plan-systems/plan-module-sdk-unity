@@ -11,13 +11,18 @@ namespace PlanSDK.CrateSDK {
         
         public Sprite                       CrateIcon;
 
-
-        [Header("Crate Info")]
-        public string                       CrateTitle          = "My Crate Title";
-        public string                       CrateNameID         = "static-create-name-id";       
-        
-        public string                       DomainUUID;
+        [Header("Publisher Info")]
+        [Tooltip("This identifies a publisher and is not visible to the user.  A publisher must use the same ID for all its crates.  By convention, you should select an ICANN domain name that you own and control.")]
+        public string                       PublisherID;
+        [Tooltip("This identifies a publisher to the user and is for optics only.  It can be changed without any reprocussions.")]
         public string                       PublisherName;
+        
+        [Header("Crate Info")]
+        [Tooltip("This identifies a crate for a given publisher and is not visible to the user.  It cannot be changed after a crate is deployed or else the new crate will not be linked to the previous version.")]
+        public string                       CrateNameID         = "static-create-name-id";       
+        [Tooltip("This identifies a crate to the user and is for optics only.  It can be changed without any reprocussions.")]
+        public string                       CrateTitle          = "My Crate Name";
+        
         string                              HomeDomain;         // Deprecated
         public string                       ShortDescription    = "";
 
@@ -45,8 +50,8 @@ namespace PlanSDK.CrateSDK {
         public Crates.CrateInfo             ExportCrateInfo() {
             var info = new Crates.CrateInfo() {
                 CrateSchema   = (int) Crates.CrateSchema.V100,
-                CrateURI      = $"{DomainUUID}/{CrateNameID}",
-                PublisherName = (PublisherName != null) ? PublisherName : DomainUUID,
+                CrateURI      = $"{PublisherID}/{CrateNameID}",
+                PublisherName = (PublisherName != null) ? PublisherName : PublisherID,
                 CrateName     = CrateTitle,
                 ShortDesc     = ShortDescription,
                 Tags          = Tags,
@@ -90,12 +95,12 @@ namespace PlanSDK.CrateSDK {
                 _version = 2;
             }
             
-            if (String.IsNullOrEmpty(DomainUUID)) {
-                DomainUUID = HomeDomain;
+            if (String.IsNullOrEmpty(PublisherID)) {
+                PublisherID = HomeDomain;
                 HomeDomain = null;
                 
-                if (String.IsNullOrEmpty(DomainUUID)) {
-                    DomainUUID = "org-domain-name.pizza";
+                if (String.IsNullOrEmpty(PublisherID)) {
+                    PublisherID = "plan-systems.org";
                 }
             }
             

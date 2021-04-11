@@ -28,7 +28,7 @@ namespace PlanSDK.Crates {
         
         public string                       CrateBuildURI   { get => $"{CrateURI}/{BuildID}";    }
         
-        public string                       DomainUUID {
+        public string                       PublisherID {
             get {
                 var idx = CrateURI.LastIndexOf('/');
                 return CrateURI.Substring(0, idx);
@@ -57,17 +57,9 @@ namespace PlanSDK.Crates {
             URL = scrap.ToString();
         }
                 
-        public bool                         IsNewerOrEqualTo(CrateInfo other) {
-            if (BuildID != null && other != null && other.BuildID != null) {
-                if (String.CompareOrdinal(BuildID, other.BuildID) >= 0) 
-                    return true;
-            }
-            return false;
-        }
-        
-        public bool                         IsOlderThan(CrateInfo other) {
-            if (BuildID != null && other != null && other.BuildID != null) {
-                if (String.CompareOrdinal(BuildID, other.BuildID) < 0) 
+        public bool                         IsUpdateOf(CrateInfo other) {
+            if (CrateURI == other.CrateURI && BuildID != null && other != null && other.BuildID != null) {
+                if (String.CompareOrdinal(BuildID, other.BuildID) > 0) 
                     return true;
             }
             return false;
