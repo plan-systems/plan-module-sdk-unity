@@ -2322,13 +2322,14 @@ MonoBehaviour:
   CrateIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
   CrateTitle: Drew's Crate Demo!!!!
   CrateNameID: drews-crate-demo
-  HomeDomain: plan-systems.org
-  ShortDescription: Meat!
+  DomainUUID: plan-systems.org
+  ShortDescription: Meat, part deux
   TimeCreated: 1617218717
   Tags: 
+  HomeURL: 
   MajorVersion: 0
   MinorVersion: 3
-  _buildNumber: 73
+  _buildNumber: 88
 --- !u!1 &3801478230160134348
 GameObject:
   m_ObjectHideFlags: 0

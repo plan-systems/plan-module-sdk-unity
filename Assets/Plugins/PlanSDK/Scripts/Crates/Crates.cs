@@ -33,30 +33,30 @@ namespace PlanSDK.Crates {
             "CRIRCglTaG9ydERlc2MYICABKAkidAoOQnVuZGxlTWFuaWZlc3QSEwoLQnVu",
             "ZGxlVGl0bGUYAiABKAkSFAoMQnVuZGxlTmFtZUlEGAMgASgJEiIKBkFzc2V0",
             "cxgKIAMoCzISLmNyYXRlcy5Bc3NldEVudHJ5EhMKC0xvYWRBbGxIaW50GBQg",
-            "ASgIIpwCCglDcmF0ZUluZm8SEwoLQ3JhdGVTY2hlbWEYASABKAUSDgoGSW5z",
-            "dElEGAIgASgNEhIKCkhvbWVEb21haW4YBiABKAkSDgoGTmFtZUlEGAcgASgJ",
-            "Eg0KBVRpdGxlGAogASgJEhEKCVNob3J0RGVzYxgLIAEoCRIMCgRUYWdzGA8g",
-            "ASgJEhMKC1RpbWVDcmVhdGVkGB4gASgDEhEKCVRpbWVCdWlsdBgfIAEoAxIU",
-            "CgxNYWpvclZlcnNpb24YKCABKAUSFAoMTWlub3JWZXJzaW9uGCkgASgFEhMK",
-            "C0J1aWxkTnVtYmVyGCogASgFEg8KB0J1aWxkSUQYLSABKAkSDwoHSG9tZVVS",
-            "TBgyIAEoCRILCgNVUkwYNyABKAkicQoNQ3JhdGVNYW5pZmVzdBIfCgRJbmZv",
-            "GAEgASgLMhEuY3JhdGVzLkNyYXRlSW5mbxIWCg5JY29uQnVuZGxlTmFtZRgF",
-            "IAEoCRInCgdCdW5kbGVzGAogAygLMhYuY3JhdGVzLkJ1bmRsZU1hbmlmZXN0",
-            "IlYKDUNyYXRlU25hcHNob3QSDQoFUmV2SUQYASABKAMSEwoLRG93bmxvYWRV",
-            "UkwYAyABKAkSIQoGQ3JhdGVzGAogAygLMhEuY3JhdGVzLkNyYXRlSW5mbyrB",
-            "AQoKQXNzZXRGbGFncxILCgdOb0ZsYWdzEAASCwoHSXNUZXgyRBABEgwKCElz",
-            "U3ByaXRlEAISDgoKSXNNYXRlcmlhbBAEEg8KC0lzUGxhY2VhYmxlEAgSEwoP",
-            "SXNSZWN0VHJhbnNmb3JtEBASCAoESXNVSRAgEgwKB0hhc0ljb24QgAISDgoJ",
-            "SXNQcml2YXRlEIAEEg0KCElzU2t5Ym94EIAIEg4KCUF1dG9TY2FsZRCAEBIO",
-            "CglJc1N1cmZhY2UQgCAqMwoLQ3JhdGVTY2hlbWESEwoPVW5kZWZpbmVkU2No",
-            "ZW1hEAASDwoLQ3JhdGVzX3YxMDAQZEIRqgIOUGxhblNESy5DcmF0ZXNiBnBy",
-            "b3RvMw=="));
+            "ASgIIqUCCglDcmF0ZUluZm8SEwoLQ3JhdGVTY2hlbWEYASABKAUSDgoGSW5z",
+            "dElEGAIgASgNEhAKCENyYXRlVVJJGAQgASgJEhUKDVB1Ymxpc2hlck5hbWUY",
+            "BiABKAkSEQoJQ3JhdGVOYW1lGAogASgJEhEKCVNob3J0RGVzYxgLIAEoCRIM",
+            "CgRUYWdzGA8gASgJEhMKC1RpbWVDcmVhdGVkGB4gASgDEhEKCVRpbWVCdWls",
+            "dBgfIAEoAxIUCgxNYWpvclZlcnNpb24YKCABKAUSFAoMTWlub3JWZXJzaW9u",
+            "GCkgASgFEhMKC0J1aWxkTnVtYmVyGCogASgFEg8KB0J1aWxkSUQYLSABKAkS",
+            "DwoHSG9tZVVSTBgyIAEoCRILCgNVUkwYNyABKAkicQoNQ3JhdGVNYW5pZmVz",
+            "dBIfCgRJbmZvGAEgASgLMhEuY3JhdGVzLkNyYXRlSW5mbxIWCg5JY29uQnVu",
+            "ZGxlTmFtZRgFIAEoCRInCgdCdW5kbGVzGAogAygLMhYuY3JhdGVzLkJ1bmRs",
+            "ZU1hbmlmZXN0IlYKDUNyYXRlU25hcHNob3QSDQoFUmV2SUQYASABKAMSEwoL",
+            "RG93bmxvYWRVUkwYAyABKAkSIQoGQ3JhdGVzGAogAygLMhEuY3JhdGVzLkNy",
+            "YXRlSW5mbyrBAQoKQXNzZXRGbGFncxILCgdOb0ZsYWdzEAASCwoHSXNUZXgy",
+            "RBABEgwKCElzU3ByaXRlEAISDgoKSXNNYXRlcmlhbBAEEg8KC0lzUGxhY2Vh",
+            "YmxlEAgSEwoPSXNSZWN0VHJhbnNmb3JtEBASCAoESXNVSRAgEgwKB0hhc0lj",
+            "b24QgAISDgoJSXNQcml2YXRlEIAEEg0KCElzU2t5Ym94EIAIEg4KCUF1dG9T",
+            "Y2FsZRCAEBIOCglJc1N1cmZhY2UQgCAqLAoLQ3JhdGVTY2hlbWESEwoPVW5k",
+            "ZWZpbmVkU2NoZW1hEAASCAoEdjEwMBBkQhGqAg5QbGFuU0RLLkNyYXRlc2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PlanSDK.Crates.AssetFlags), typeof(global::PlanSDK.Crates.CrateSchema), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.AssetEntry), global::PlanSDK.Crates.AssetEntry.Parser, new[]{ "AssetFlags", "BrowsePath", "Name", "NameID", "CenterX", "CenterY", "CenterZ", "ExtentsX", "ExtentsY", "ExtentsZ", "LocalURI", "Tags", "ShortDesc" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.BundleManifest), global::PlanSDK.Crates.BundleManifest.Parser, new[]{ "BundleTitle", "BundleNameID", "Assets", "LoadAllHint" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "CrateSchema", "InstID", "HomeDomain", "NameID", "Title", "ShortDesc", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID", "HomeURL", "URL" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "CrateSchema", "InstID", "CrateURI", "PublisherName", "CrateName", "ShortDesc", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID", "HomeURL", "URL" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateManifest), global::PlanSDK.Crates.CrateManifest.Parser, new[]{ "Info", "IconBundleName", "Bundles" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateSnapshot), global::PlanSDK.Crates.CrateSnapshot.Parser, new[]{ "RevID", "DownloadURL", "Crates" }, null, null, null, null)
           }));
@@ -101,12 +101,14 @@ namespace PlanSDK.Crates {
   }
 
   /// <summary>
-  /// CrateSchema helps future-proof against breaking changes down the road.
-  /// Enum values should be three digits corresponding to the major, minor, and revision number.
+  /// Enum values should be three base10 digits corresponding to the major, minor, and revision number.
   /// </summary>
   public enum CrateSchema {
     [pbr::OriginalName("UndefinedSchema")] UndefinedSchema = 0,
-    [pbr::OriginalName("Crates_v100")] CratesV100 = 100,
+    /// <summary>
+    /// V100 (April 2020) should be used for CrateInfo.CrateSchema
+    /// </summary>
+    [pbr::OriginalName("v100")] V100 = 100,
   }
 
   #endregion
@@ -1054,9 +1056,9 @@ namespace PlanSDK.Crates {
     public CrateInfo(CrateInfo other) : this() {
       crateSchema_ = other.crateSchema_;
       instID_ = other.instID_;
-      homeDomain_ = other.homeDomain_;
-      nameID_ = other.nameID_;
-      title_ = other.title_;
+      crateURI_ = other.crateURI_;
+      publisherName_ = other.publisherName_;
+      crateName_ = other.crateName_;
       shortDesc_ = other.shortDesc_;
       tags_ = other.tags_;
       timeCreated_ = other.timeCreated_;
@@ -1079,8 +1081,8 @@ namespace PlanSDK.Crates {
     public const int CrateSchemaFieldNumber = 1;
     private int crateSchema_;
     /// <summary>
-    /// CrateSchema communicates which build and packaging schema was used for this crate build.
-    /// This value should be the integer value of a valid CrateSchema enum.
+    /// CrateSchema communicates which build and packaging schema was used for this crate build .
+    /// This value should be the integer value of a valid CrateSchema.vNNN enum.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CrateSchema {
@@ -1105,59 +1107,52 @@ namespace PlanSDK.Crates {
       }
     }
 
-    /// <summary>Field number for the "HomeDomain" field.</summary>
-    public const int HomeDomainFieldNumber = 6;
-    private string homeDomain_ = "";
+    /// <summary>Field number for the "CrateURI" field.</summary>
+    public const int CrateURIFieldNumber = 4;
+    private string crateURI_ = "";
     /// <summary>
-    /// HomeDomain identifies the publisher of this asset crate and  double 
-    ///
-    /// e.g. 
-    ///    "plan-systems.org"
-    ///    "themushroom.farm" 
-    ///    "the-smiths.family" 
+    /// CrateURI takes the form "{DomainUUID}/{CrateNameID}" is used to globally reference assets in this crate.
+    /// DomainUUID uniquely identifies the author/owner/publisher of this crate and only contains chars in [A-Za-z0-9_.-].
+    /// CrateNameID uniquely identifies this crate (for the given publisher) and all subsequent revisions.
+    ///    "plan-systems.org/plan.app.ui"
+    ///    "plan-systems.org/about-plan-systems"
+    ///    "themushroom.farm/main" 
+    ///    "themushroom.farm/mycology-201" 
+    ///    "the-smiths.family/123-Maple" 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HomeDomain {
-      get { return homeDomain_; }
+    public string CrateURI {
+      get { return crateURI_; }
       set {
-        homeDomain_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        crateURI_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "NameID" field.</summary>
-    public const int NameIDFieldNumber = 7;
-    private string nameID_ = "";
+    /// <summary>Field number for the "PublisherName" field.</summary>
+    public const int PublisherNameFieldNumber = 6;
+    private string publisherName_ = "";
     /// <summary>
-    /// NameID uniquely identifies this crate (for the given crate's publisher/home domain).
-    /// This name identifies this crate and is permanent (or else existing path refs will be broken)
-    ///
-    /// e.g. 
-    ///    "plan-app"
-    ///    "about-plan-systems"
-    ///    "welcome-to-plan"
-    ///    "common"     
-    ///    "mycology-101"     
-    ///    "mycology-201"     
+    /// PublisherName is a human-readable of the author/owner/publisher of this crate and can change without repercussions (i.e. is purely optical).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string NameID {
-      get { return nameID_; }
+    public string PublisherName {
+      get { return publisherName_; }
       set {
-        nameID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        publisherName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "Title" field.</summary>
-    public const int TitleFieldNumber = 10;
-    private string title_ = "";
+    /// <summary>Field number for the "CrateName" field.</summary>
+    public const int CrateNameFieldNumber = 10;
+    private string crateName_ = "";
     /// <summary>
-    /// Title is a human-readable title for this crate and can change without any repercussions (i.e. is purely optical)
+    /// CrateName is a human-readable title for this crate and can change without repercussions.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Title {
-      get { return title_; }
+    public string CrateName {
+      get { return crateName_; }
       set {
-        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        crateName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1314,9 +1309,9 @@ namespace PlanSDK.Crates {
       }
       if (CrateSchema != other.CrateSchema) return false;
       if (InstID != other.InstID) return false;
-      if (HomeDomain != other.HomeDomain) return false;
-      if (NameID != other.NameID) return false;
-      if (Title != other.Title) return false;
+      if (CrateURI != other.CrateURI) return false;
+      if (PublisherName != other.PublisherName) return false;
+      if (CrateName != other.CrateName) return false;
       if (ShortDesc != other.ShortDesc) return false;
       if (Tags != other.Tags) return false;
       if (TimeCreated != other.TimeCreated) return false;
@@ -1335,9 +1330,9 @@ namespace PlanSDK.Crates {
       int hash = 1;
       if (CrateSchema != 0) hash ^= CrateSchema.GetHashCode();
       if (InstID != 0) hash ^= InstID.GetHashCode();
-      if (HomeDomain.Length != 0) hash ^= HomeDomain.GetHashCode();
-      if (NameID.Length != 0) hash ^= NameID.GetHashCode();
-      if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (CrateURI.Length != 0) hash ^= CrateURI.GetHashCode();
+      if (PublisherName.Length != 0) hash ^= PublisherName.GetHashCode();
+      if (CrateName.Length != 0) hash ^= CrateName.GetHashCode();
       if (ShortDesc.Length != 0) hash ^= ShortDesc.GetHashCode();
       if (Tags.Length != 0) hash ^= Tags.GetHashCode();
       if (TimeCreated != 0L) hash ^= TimeCreated.GetHashCode();
@@ -1372,17 +1367,17 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(16);
         output.WriteUInt32(InstID);
       }
-      if (HomeDomain.Length != 0) {
+      if (CrateURI.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(CrateURI);
+      }
+      if (PublisherName.Length != 0) {
         output.WriteRawTag(50);
-        output.WriteString(HomeDomain);
+        output.WriteString(PublisherName);
       }
-      if (NameID.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(NameID);
-      }
-      if (Title.Length != 0) {
+      if (CrateName.Length != 0) {
         output.WriteRawTag(82);
-        output.WriteString(Title);
+        output.WriteString(CrateName);
       }
       if (ShortDesc.Length != 0) {
         output.WriteRawTag(90);
@@ -1441,17 +1436,17 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(16);
         output.WriteUInt32(InstID);
       }
-      if (HomeDomain.Length != 0) {
+      if (CrateURI.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(CrateURI);
+      }
+      if (PublisherName.Length != 0) {
         output.WriteRawTag(50);
-        output.WriteString(HomeDomain);
+        output.WriteString(PublisherName);
       }
-      if (NameID.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(NameID);
-      }
-      if (Title.Length != 0) {
+      if (CrateName.Length != 0) {
         output.WriteRawTag(82);
-        output.WriteString(Title);
+        output.WriteString(CrateName);
       }
       if (ShortDesc.Length != 0) {
         output.WriteRawTag(90);
@@ -1508,14 +1503,14 @@ namespace PlanSDK.Crates {
       if (InstID != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InstID);
       }
-      if (HomeDomain.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HomeDomain);
+      if (CrateURI.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CrateURI);
       }
-      if (NameID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(NameID);
+      if (PublisherName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PublisherName);
       }
-      if (Title.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+      if (CrateName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CrateName);
       }
       if (ShortDesc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ShortDesc);
@@ -1564,14 +1559,14 @@ namespace PlanSDK.Crates {
       if (other.InstID != 0) {
         InstID = other.InstID;
       }
-      if (other.HomeDomain.Length != 0) {
-        HomeDomain = other.HomeDomain;
+      if (other.CrateURI.Length != 0) {
+        CrateURI = other.CrateURI;
       }
-      if (other.NameID.Length != 0) {
-        NameID = other.NameID;
+      if (other.PublisherName.Length != 0) {
+        PublisherName = other.PublisherName;
       }
-      if (other.Title.Length != 0) {
-        Title = other.Title;
+      if (other.CrateName.Length != 0) {
+        CrateName = other.CrateName;
       }
       if (other.ShortDesc.Length != 0) {
         ShortDesc = other.ShortDesc;
@@ -1625,16 +1620,16 @@ namespace PlanSDK.Crates {
             InstID = input.ReadUInt32();
             break;
           }
-          case 50: {
-            HomeDomain = input.ReadString();
+          case 34: {
+            CrateURI = input.ReadString();
             break;
           }
-          case 58: {
-            NameID = input.ReadString();
+          case 50: {
+            PublisherName = input.ReadString();
             break;
           }
           case 82: {
-            Title = input.ReadString();
+            CrateName = input.ReadString();
             break;
           }
           case 90: {
@@ -1699,16 +1694,16 @@ namespace PlanSDK.Crates {
             InstID = input.ReadUInt32();
             break;
           }
-          case 50: {
-            HomeDomain = input.ReadString();
+          case 34: {
+            CrateURI = input.ReadString();
             break;
           }
-          case 58: {
-            NameID = input.ReadString();
+          case 50: {
+            PublisherName = input.ReadString();
             break;
           }
           case 82: {
-            Title = input.ReadString();
+            CrateName = input.ReadString();
             break;
           }
           case 90: {

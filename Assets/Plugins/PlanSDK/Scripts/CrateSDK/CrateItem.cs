@@ -30,12 +30,6 @@ namespace PlanSDK.CrateSDK {
         }
         
         void                                OnValidate() {
-            // if (_version <= 1) {
-            //     AutoScaleByDefault = IsGlyph;
-            //     IsSurface = IsStruct;
-            //     Debug.Log($"Updated '{name}' from version {_version} to {2}");
-            //     _version = 2;
-            // }
             
             if (String.IsNullOrWhiteSpace(AssetNameID)) {
                 AssetNameID = CrateMaker.FilterAssetID(gameObject.name.ToLowerInvariant());

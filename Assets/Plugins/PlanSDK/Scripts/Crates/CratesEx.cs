@@ -1,6 +1,8 @@
 using UnityEngine;
 using System;
 using System.Text;
+using System.IO;
+
 
 namespace PlanSDK.Crates {
 
@@ -24,8 +26,21 @@ namespace PlanSDK.Crates {
         // Symbolically denotes the most recent BuildID of a crate (instead of an explicit BuildID)
         public const string                 kMostRecentBuildID = "_";
         
-        public string                       CrateURI        { get => $"{HomeDomain}/{NameID}";              }
-        public string                       CrateBuildURI   { get => $"{HomeDomain}/{NameID}/{BuildID}";    }
+        public string                       CrateBuildURI   { get => $"{CrateURI}/{BuildID}";    }
+        
+        public string                       DomainUUID {
+            get {
+                var idx = CrateURI.LastIndexOf('/');
+                return CrateURI.Substring(0, idx);
+            }
+        }
+        
+        public string                       CrateNameID {
+            get {
+                var idx = CrateURI.LastIndexOf('/');
+                return CrateURI.Substring(idx + 1);
+            }
+        }
         
         public void                         SetURL(string url, StringBuilder scrap = null, string path = null) {
             if (scrap == null)
@@ -35,25 +50,24 @@ namespace PlanSDK.Crates {
             scrap.Append(url);
             if (path != null)
                 scrap.Replace("{.}", path);
-            scrap.Replace("{CrateDomain}", HomeDomain);
-            scrap.Replace("{CrateNameID}", NameID);
+            scrap.Replace("{CrateURI}", CrateURI);
             scrap.Replace("{CrateBuildID}", BuildID);
             scrap.Replace("{PlatformID}", kThisPlatformID);
                 
             URL = scrap.ToString();
         }
                 
-        public bool                         IsNewerOrEqualTo(string buildID) {
-            if (BuildID != null && buildID != null) {
-                if (String.CompareOrdinal(BuildID, buildID) >= 0) 
+        public bool                         IsNewerOrEqualTo(CrateInfo other) {
+            if (BuildID != null && other != null && other.BuildID != null) {
+                if (String.CompareOrdinal(BuildID, other.BuildID) >= 0) 
                     return true;
             }
             return false;
         }
         
-        public bool                         IsOlderThan(string buildID) {
-            if (BuildID != null && buildID != null) {
-                if (String.CompareOrdinal(BuildID, buildID) < 0) 
+        public bool                         IsOlderThan(CrateInfo other) {
+            if (BuildID != null && other != null && other.BuildID != null) {
+                if (String.CompareOrdinal(BuildID, other.BuildID) < 0) 
                     return true;
             }
             return false;

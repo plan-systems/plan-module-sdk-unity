@@ -7,7 +7,7 @@ namespace PlanSDK.CrateSDK {
     public class CrateMaker : MonoBehaviour {
     
         [HideInInspector]
-        public int                          _version = 1;
+        [SerializeField] int                _version;
         
         public Sprite                       CrateIcon;
 
@@ -16,7 +16,9 @@ namespace PlanSDK.CrateSDK {
         public string                       CrateTitle          = "My Crate Title";
         public string                       CrateNameID         = "static-create-name-id";       
         
-        public string                       HomeDomain          = "org-name.org";
+        public string                       DomainUUID;
+        public string                       PublisherName;
+        string                              HomeDomain;         // Deprecated
         public string                       ShortDescription    = "";
 
         // Seconds UTC
@@ -33,10 +35,8 @@ namespace PlanSDK.CrateSDK {
         public int                          MajorVersion = 0;
         public int                          MinorVersion = 1;
         
-        [SerializeField]
-        int                                 _buildNumber = 1;
+        [SerializeField] int                _buildNumber = 1;
         
-
 
         public void                         IncrementBuildNum() {
             _buildNumber++;
@@ -44,10 +44,10 @@ namespace PlanSDK.CrateSDK {
         
         public Crates.CrateInfo             ExportCrateInfo() {
             var info = new Crates.CrateInfo() {
-                CrateSchema   = (int) Crates.CrateSchema.CratesV100,
-                HomeDomain    = HomeDomain,
-                NameID        = CrateNameID,
-                Title         = CrateTitle,
+                CrateSchema   = (int) Crates.CrateSchema.V100,
+                CrateURI      = $"{DomainUUID}/{CrateNameID}",
+                PublisherName = (PublisherName != null) ? PublisherName : DomainUUID,
+                CrateName     = CrateTitle,
                 ShortDesc     = ShortDescription,
                 Tags          = Tags,
                 TimeCreated   = TimeCreated,
@@ -55,7 +55,7 @@ namespace PlanSDK.CrateSDK {
                 MajorVersion  = MajorVersion,
                 MinorVersion  = MinorVersion,
                 BuildNumber   = _buildNumber,
-                HomeURL       = HomeURL
+                HomeURL       = HomeURL,
             };
             
             if (String.IsNullOrWhiteSpace(HomeURL) == false)
@@ -86,8 +86,25 @@ namespace PlanSDK.CrateSDK {
 
         void                                OnValidate() {
             
+            if (_version < 2) {
+                _version = 2;
+            }
+            
+            if (String.IsNullOrEmpty(DomainUUID)) {
+                DomainUUID = HomeDomain;
+                HomeDomain = null;
+                
+                if (String.IsNullOrEmpty(DomainUUID)) {
+                    DomainUUID = "org-domain-name.pizza";
+                }
+            }
+            
             if (TimeCreated == 0) {
                 TimeCreated = IssueSecondsUTC();
+            }
+            
+            if (String.IsNullOrWhiteSpace(HomeURL)) {
+                HomeURL = "";
             }
             
             if (String.IsNullOrWhiteSpace(CrateNameID)) {

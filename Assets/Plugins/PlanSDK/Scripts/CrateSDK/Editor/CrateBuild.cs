@@ -25,7 +25,7 @@ namespace PlanSDK.CrateSDK {
             buildParams.BuildConfig = CrateBuildConfig.CurrentConfig(true);
 
             var crateBuild = CrateBuild.NewBuild(buildParams);
-            var buildDesc = $"<b><color=#008080>{crateBuild.Manifest.Info.HomeDomain}/{crateBuild.Manifest.Info.NameID}</color></b>";
+            var buildDesc = $"<b><color=#008080>{crateBuild.Manifest.Info.CrateURI}</color></b>";
 
             var buildTargets = buildParams.BuildConfig.GetBuildTargets(); 
             Debug.Log($"{buildDesc} STARTING ({buildTargets.Count} targets)");
@@ -74,7 +74,6 @@ namespace PlanSDK.CrateSDK {
                 }
                 
 
-    
 
                 if (successCount == buildTargets.Count) {
                     crateBuild.WriteManifests();
@@ -91,7 +90,7 @@ namespace PlanSDK.CrateSDK {
                         File.Copy(manifest,      $"{platformDir}/{CrateManifest.kManfestFilename}");
                         File.Copy(manifestJSON,  $"{platformDir}/{CrateManifest.kManfestFilename}.json");
                     
-                        var dstZip = $"{outputDir}/{crateBuild.Manifest.Info.NameID}__{crateBuild.Manifest.Info.BuildID}.{target.TargetString}.zip";
+                        var dstZip = $"{outputDir}/{crateBuild.Manifest.Info.CrateNameID}__{crateBuild.Manifest.Info.BuildID}.{target.TargetString}.zip";
                         int[] zipProgress = new int[1];
                         var zipStatus = lzip.compressDir(platformDir, 9, dstZip, true, zipProgress, null, false, 0);
                         
@@ -390,10 +389,11 @@ namespace PlanSDK.CrateSDK {
             Bundles.Clear();
 
             {
-                var outDir = Params.BuildConfig.ExpandedOutputPath;
-                Directory.CreateDirectory(outDir);
-                OutputPath = $"{outDir}/{Manifest.Info.HomeDomain}";
-                Directory.CreateDirectory(outDir);
+                // var outDir = Params.BuildConfig.ExpandedOutputPath;
+                // Directory.CreateDirectory(outDir);
+                OutputPath = $"{Params.BuildConfig.ExpandedOutputPath}/{Manifest.Info.DomainUUID}";
+                //OutputPath = $"{Params.BuildConfig.ExpandedOutputPath}/{Manifest.Info.CrateBuildURI}";
+                Directory.CreateDirectory(OutputPath);
                 // OutputPath = $"{outDir}/{Manifest.CrateNameID}";
                 // Directory.CreateDirectory(outDir);
             }
@@ -469,7 +469,7 @@ namespace PlanSDK.CrateSDK {
 
             var bundle = new BundleBuild();
             bundle.Manifest.BundleTitle = bundleTitle;
-            bundle.Manifest.BundleNameID = $"{Manifest.Info.NameID}.{bundleNameID} {Manifest.Info.BuildID}";
+            bundle.Manifest.BundleNameID = $"{Manifest.Info.CrateNameID}.{bundleNameID} {Manifest.Info.BuildID}";
             bundle.Crate = this;
 
             Bundles.Add(bundle);
