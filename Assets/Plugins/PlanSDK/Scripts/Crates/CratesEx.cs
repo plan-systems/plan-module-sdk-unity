@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using System.Text;
-using System.IO;
 
 
 namespace PlanSDK.Crates {
@@ -35,7 +34,7 @@ namespace PlanSDK.Crates {
             }
         }
         
-        public string                       CrateNameID {
+        public string                       CrateID {
             get {
                 var idx = CrateURI.LastIndexOf('/');
                 return CrateURI.Substring(idx + 1);

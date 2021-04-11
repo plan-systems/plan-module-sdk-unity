@@ -24,37 +24,37 @@ namespace PlanSDK.Crates {
     static CratesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNjcmF0ZXMvY3JhdGVzLnByb3RvEgZjcmF0ZXMiggIKCkFzc2V0RW50cnkS",
+            "ChNjcmF0ZXMvY3JhdGVzLnByb3RvEgZjcmF0ZXMigwIKCkFzc2V0RW50cnkS",
             "JgoKQXNzZXRGbGFncxgBIAEoDjISLmNyYXRlcy5Bc3NldEZsYWdzEhIKCkJy",
-            "b3dzZVBhdGgYAiABKAkSDAoETmFtZRgDIAEoCRIOCgZOYW1lSUQYBCABKAkS",
-            "DwoHQ2VudGVyWBgFIAEoAhIPCgdDZW50ZXJZGAYgASgCEg8KB0NlbnRlcloY",
-            "ByABKAISEAoIRXh0ZW50c1gYCiABKAISEAoIRXh0ZW50c1kYCyABKAISEAoI",
-            "RXh0ZW50c1oYDCABKAISEAoITG9jYWxVUkkYHiABKAkSDAoEVGFncxgfIAEo",
-            "CRIRCglTaG9ydERlc2MYICABKAkidAoOQnVuZGxlTWFuaWZlc3QSEwoLQnVu",
-            "ZGxlVGl0bGUYAiABKAkSFAoMQnVuZGxlTmFtZUlEGAMgASgJEiIKBkFzc2V0",
-            "cxgKIAMoCzISLmNyYXRlcy5Bc3NldEVudHJ5EhMKC0xvYWRBbGxIaW50GBQg",
-            "ASgIIqUCCglDcmF0ZUluZm8SEwoLQ3JhdGVTY2hlbWEYASABKAUSDgoGSW5z",
-            "dElEGAIgASgNEhAKCENyYXRlVVJJGAQgASgJEhUKDVB1Ymxpc2hlck5hbWUY",
-            "BiABKAkSEQoJQ3JhdGVOYW1lGAogASgJEhEKCVNob3J0RGVzYxgLIAEoCRIM",
-            "CgRUYWdzGA8gASgJEhMKC1RpbWVDcmVhdGVkGB4gASgDEhEKCVRpbWVCdWls",
-            "dBgfIAEoAxIUCgxNYWpvclZlcnNpb24YKCABKAUSFAoMTWlub3JWZXJzaW9u",
-            "GCkgASgFEhMKC0J1aWxkTnVtYmVyGCogASgFEg8KB0J1aWxkSUQYLSABKAkS",
-            "DwoHSG9tZVVSTBgyIAEoCRILCgNVUkwYNyABKAkicQoNQ3JhdGVNYW5pZmVz",
-            "dBIfCgRJbmZvGAEgASgLMhEuY3JhdGVzLkNyYXRlSW5mbxIWCg5JY29uQnVu",
-            "ZGxlTmFtZRgFIAEoCRInCgdCdW5kbGVzGAogAygLMhYuY3JhdGVzLkJ1bmRs",
-            "ZU1hbmlmZXN0IlYKDUNyYXRlU25hcHNob3QSDQoFUmV2SUQYASABKAMSEwoL",
-            "RG93bmxvYWRVUkwYAyABKAkSIQoGQ3JhdGVzGAogAygLMhEuY3JhdGVzLkNy",
-            "YXRlSW5mbyrBAQoKQXNzZXRGbGFncxILCgdOb0ZsYWdzEAASCwoHSXNUZXgy",
-            "RBABEgwKCElzU3ByaXRlEAISDgoKSXNNYXRlcmlhbBAEEg8KC0lzUGxhY2Vh",
-            "YmxlEAgSEwoPSXNSZWN0VHJhbnNmb3JtEBASCAoESXNVSRAgEgwKB0hhc0lj",
-            "b24QgAISDgoJSXNQcml2YXRlEIAEEg0KCElzU2t5Ym94EIAIEg4KCUF1dG9T",
-            "Y2FsZRCAEBIOCglJc1N1cmZhY2UQgCAqLAoLQ3JhdGVTY2hlbWESEwoPVW5k",
-            "ZWZpbmVkU2NoZW1hEAASCAoEdjEwMBBkQhGqAg5QbGFuU0RLLkNyYXRlc2IG",
-            "cHJvdG8z"));
+            "b3dzZVBhdGgYAiABKAkSDAoETmFtZRgDIAEoCRIPCgdBc3NldElEGAQgASgJ",
+            "Eg8KB0NlbnRlclgYBSABKAISDwoHQ2VudGVyWRgGIAEoAhIPCgdDZW50ZXJa",
+            "GAcgASgCEhAKCEV4dGVudHNYGAogASgCEhAKCEV4dGVudHNZGAsgASgCEhAK",
+            "CEV4dGVudHNaGAwgASgCEhAKCExvY2FsVVJJGB4gASgJEgwKBFRhZ3MYHyAB",
+            "KAkSEQoJU2hvcnREZXNjGCAgASgJInQKDkJ1bmRsZU1hbmlmZXN0EhMKC0J1",
+            "bmRsZVRpdGxlGAIgASgJEhQKDEJ1bmRsZU5hbWVJRBgDIAEoCRIiCgZBc3Nl",
+            "dHMYCiADKAsyEi5jcmF0ZXMuQXNzZXRFbnRyeRITCgtMb2FkQWxsSGludBgU",
+            "IAEoCCKlAgoJQ3JhdGVJbmZvEhMKC0NyYXRlU2NoZW1hGAEgASgFEg4KBklu",
+            "c3RJRBgCIAEoDRIQCghDcmF0ZVVSSRgEIAEoCRIVCg1QdWJsaXNoZXJOYW1l",
+            "GAYgASgJEhEKCUNyYXRlTmFtZRgKIAEoCRIRCglTaG9ydERlc2MYCyABKAkS",
+            "DAoEVGFncxgPIAEoCRITCgtUaW1lQ3JlYXRlZBgeIAEoAxIRCglUaW1lQnVp",
+            "bHQYHyABKAMSFAoMTWFqb3JWZXJzaW9uGCggASgFEhQKDE1pbm9yVmVyc2lv",
+            "bhgpIAEoBRITCgtCdWlsZE51bWJlchgqIAEoBRIPCgdCdWlsZElEGC0gASgJ",
+            "Eg8KB0hvbWVVUkwYMiABKAkSCwoDVVJMGDcgASgJInEKDUNyYXRlTWFuaWZl",
+            "c3QSHwoESW5mbxgBIAEoCzIRLmNyYXRlcy5DcmF0ZUluZm8SFgoOSWNvbkJ1",
+            "bmRsZU5hbWUYBSABKAkSJwoHQnVuZGxlcxgKIAMoCzIWLmNyYXRlcy5CdW5k",
+            "bGVNYW5pZmVzdCJWCg1DcmF0ZVNuYXBzaG90Eg0KBVJldklEGAEgASgDEhMK",
+            "C0Rvd25sb2FkVVJMGAMgASgJEiEKBkNyYXRlcxgKIAMoCzIRLmNyYXRlcy5D",
+            "cmF0ZUluZm8qwQEKCkFzc2V0RmxhZ3MSCwoHTm9GbGFncxAAEgsKB0lzVGV4",
+            "MkQQARIMCghJc1Nwcml0ZRACEg4KCklzTWF0ZXJpYWwQBBIPCgtJc1BsYWNl",
+            "YWJsZRAIEhMKD0lzUmVjdFRyYW5zZm9ybRAQEggKBElzVUkQIBIMCgdIYXNJ",
+            "Y29uEIACEg4KCUlzUHJpdmF0ZRCABBINCghJc1NreWJveBCACBIOCglBdXRv",
+            "U2NhbGUQgBASDgoJSXNTdXJmYWNlEIAgKiwKC0NyYXRlU2NoZW1hEhMKD1Vu",
+            "ZGVmaW5lZFNjaGVtYRAAEggKBHYxMDAQZEIRqgIOUGxhblNESy5DcmF0ZXNi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PlanSDK.Crates.AssetFlags), typeof(global::PlanSDK.Crates.CrateSchema), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.AssetEntry), global::PlanSDK.Crates.AssetEntry.Parser, new[]{ "AssetFlags", "BrowsePath", "Name", "NameID", "CenterX", "CenterY", "CenterZ", "ExtentsX", "ExtentsY", "ExtentsZ", "LocalURI", "Tags", "ShortDesc" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.AssetEntry), global::PlanSDK.Crates.AssetEntry.Parser, new[]{ "AssetFlags", "BrowsePath", "Name", "AssetID", "CenterX", "CenterY", "CenterZ", "ExtentsX", "ExtentsY", "ExtentsZ", "LocalURI", "Tags", "ShortDesc" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.BundleManifest), global::PlanSDK.Crates.BundleManifest.Parser, new[]{ "BundleTitle", "BundleNameID", "Assets", "LoadAllHint" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateInfo), global::PlanSDK.Crates.CrateInfo.Parser, new[]{ "CrateSchema", "InstID", "CrateURI", "PublisherName", "CrateName", "ShortDesc", "Tags", "TimeCreated", "TimeBuilt", "MajorVersion", "MinorVersion", "BuildNumber", "BuildID", "HomeURL", "URL" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PlanSDK.Crates.CrateManifest), global::PlanSDK.Crates.CrateManifest.Parser, new[]{ "Info", "IconBundleName", "Bundles" }, null, null, null, null),
@@ -146,7 +146,7 @@ namespace PlanSDK.Crates {
       assetFlags_ = other.assetFlags_;
       browsePath_ = other.browsePath_;
       name_ = other.name_;
-      nameID_ = other.nameID_;
+      assetID_ = other.assetID_;
       centerX_ = other.centerX_;
       centerY_ = other.centerY_;
       centerZ_ = other.centerZ_;
@@ -203,14 +203,14 @@ namespace PlanSDK.Crates {
       }
     }
 
-    /// <summary>Field number for the "NameID" field.</summary>
-    public const int NameIDFieldNumber = 4;
-    private string nameID_ = "";
+    /// <summary>Field number for the "AssetID" field.</summary>
+    public const int AssetIDFieldNumber = 4;
+    private string assetID_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string NameID {
-      get { return nameID_; }
+    public string AssetID {
+      get { return assetID_; }
       set {
-        nameID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        assetID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -350,7 +350,7 @@ namespace PlanSDK.Crates {
       if (AssetFlags != other.AssetFlags) return false;
       if (BrowsePath != other.BrowsePath) return false;
       if (Name != other.Name) return false;
-      if (NameID != other.NameID) return false;
+      if (AssetID != other.AssetID) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CenterX, other.CenterX)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CenterY, other.CenterY)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CenterZ, other.CenterZ)) return false;
@@ -369,7 +369,7 @@ namespace PlanSDK.Crates {
       if (AssetFlags != global::PlanSDK.Crates.AssetFlags.NoFlags) hash ^= AssetFlags.GetHashCode();
       if (BrowsePath.Length != 0) hash ^= BrowsePath.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (NameID.Length != 0) hash ^= NameID.GetHashCode();
+      if (AssetID.Length != 0) hash ^= AssetID.GetHashCode();
       if (CenterX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CenterX);
       if (CenterY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CenterY);
       if (CenterZ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CenterZ);
@@ -407,9 +407,9 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(26);
         output.WriteString(Name);
       }
-      if (NameID.Length != 0) {
+      if (AssetID.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(NameID);
+        output.WriteString(AssetID);
       }
       if (CenterX != 0F) {
         output.WriteRawTag(45);
@@ -468,9 +468,9 @@ namespace PlanSDK.Crates {
         output.WriteRawTag(26);
         output.WriteString(Name);
       }
-      if (NameID.Length != 0) {
+      if (AssetID.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(NameID);
+        output.WriteString(AssetID);
       }
       if (CenterX != 0F) {
         output.WriteRawTag(45);
@@ -526,8 +526,8 @@ namespace PlanSDK.Crates {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (NameID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(NameID);
+      if (AssetID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AssetID);
       }
       if (CenterX != 0F) {
         size += 1 + 4;
@@ -576,8 +576,8 @@ namespace PlanSDK.Crates {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.NameID.Length != 0) {
-        NameID = other.NameID;
+      if (other.AssetID.Length != 0) {
+        AssetID = other.AssetID;
       }
       if (other.CenterX != 0F) {
         CenterX = other.CenterX;
@@ -633,7 +633,7 @@ namespace PlanSDK.Crates {
             break;
           }
           case 34: {
-            NameID = input.ReadString();
+            AssetID = input.ReadString();
             break;
           }
           case 45: {
@@ -699,7 +699,7 @@ namespace PlanSDK.Crates {
             break;
           }
           case 34: {
-            NameID = input.ReadString();
+            AssetID = input.ReadString();
             break;
           }
           case 45: {
@@ -1111,10 +1111,10 @@ namespace PlanSDK.Crates {
     public const int CrateURIFieldNumber = 4;
     private string crateURI_ = "";
     /// <summary>
-    /// CrateURI takes the form "{PublisherID}/{CrateNameID}" is used to globally reference assets in this crate.
+    /// CrateURI takes the form "{PublisherID}/{CrateID}" is used to globally reference assets in this crate.
     /// This URI string can only contains chars in [A-Za-z0-9_.-] (other than the separating '/' char). 
     /// PublisherID uniquely identifies the author/owner/publisher of this crate (and potentially other crates).
-    /// CrateNameID uniquely identifies this crate for the given publisher and all subsequent revisions.
+    /// CrateID uniquely identifies this crate for the given publisher and all subsequent revisions.
     ///    "plan-systems.org/plan.app.ui"
     ///    "plan-systems.org/about-plan-systems"
     ///    "themushroom.farm/land" 
@@ -1759,7 +1759,7 @@ namespace PlanSDK.Crates {
   /// It contains catalog and type info that PLAN loads at runtime to know what's inside binary asset bundles without having to load them.
   ///
   /// A reference to a PLAN asset is via a URI with the form:
-  ///   assetURI := "PublisherID/CrateNameID[@CrateBuildID]/AssetNameID"
+  ///   assetURI := "PublisherID/CrateID[@CrateBuildID]/AssetID"
   /// 
   /// </summary>
   public sealed partial class CrateManifest : pb::IMessage<CrateManifest>

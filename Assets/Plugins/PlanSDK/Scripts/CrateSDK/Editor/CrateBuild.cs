@@ -82,6 +82,9 @@ namespace PlanSDK.CrateSDK {
                     string manifest     = $"{outputDir}/{CrateManifest.kManfestFilename}";
                     string manifestJSON = $"{outputDir}/{CrateManifest.kManfestFilename}.json";
                     
+                    string buildFilename = $"{crateBuild.Manifest.Info.CrateID}__{crateBuild.Manifest.Info.BuildID}";
+                    File.Move($"{info}.json", $"{outputDir}/{buildFilename}.CrateInfo.json");
+                    
                     // Compress and finalize each platform crate
                     foreach (var target in buildTargets) {
                         var platformDir = $"{outputDir}/{target.TargetString}";
@@ -90,7 +93,7 @@ namespace PlanSDK.CrateSDK {
                         File.Copy(manifest,      $"{platformDir}/{CrateManifest.kManfestFilename}");
                         File.Copy(manifestJSON,  $"{platformDir}/{CrateManifest.kManfestFilename}.json");
                     
-                        var dstZip = $"{outputDir}/{crateBuild.Manifest.Info.CrateNameID}__{crateBuild.Manifest.Info.BuildID}.{target.TargetString}.zip";
+                        var dstZip = $"{outputDir}/{buildFilename}.{target.TargetString}.zip";
                         int[] zipProgress = new int[1];
                         var zipStatus = lzip.compressDir(platformDir, 9, dstZip, true, zipProgress, null, false, 0);
                         
@@ -176,7 +179,7 @@ namespace PlanSDK.CrateSDK {
             var iconTex = RuntimePreviewGenerator.GenerateModelPreview(target, 128, entry.Bounds);
             if (iconTex != null) {
 
-                iconPathname = $"{_bundleAssetDir}/{entry.NameID}.icon.png";
+                iconPathname = $"{_bundleAssetDir}/{entry.AssetID}.icon.png";
                 Crate.WriteProjectFile(iconPathname, iconTex.EncodeToPNG());
                 AssetDatabase.ImportAsset(iconPathname, ImportAssetOptions.ForceSynchronousImport);
 
@@ -218,7 +221,7 @@ namespace PlanSDK.CrateSDK {
             var entry = new AssetEntry {
                 Bounds = item.AssetBounds,
                 BrowsePath = $"{_curPath}/{assetName}",        // DEPRECATED
-                NameID = item.AssetID,
+                AssetID = item.AssetID,
                 Name = assetName,
                 Tags = item.ExportTagList(),
             };
@@ -255,7 +258,7 @@ namespace PlanSDK.CrateSDK {
             }
             
             if (entry.AssetFlags.HasFlag(AssetFlags.IsPlaceable)) {
-                string prefabPathname = $"{_bundleAssetDir}/{entry.NameID}.prefab";
+                string prefabPathname = $"{_bundleAssetDir}/{entry.AssetID}.prefab";
                 entry.LocalURI = prefabPathname;
 
                 //Vector3 savedPos = asset.localPosition;
@@ -284,7 +287,7 @@ namespace PlanSDK.CrateSDK {
                 Crate.IconBundle.Manifest.Assets.Add(new AssetEntry {
                     AssetFlags = AssetFlags.IsSprite,
                     LocalURI = iconPath,
-                    NameID = item.AssetID,
+                    AssetID = item.AssetID,
                 });
             }
 
@@ -461,7 +464,7 @@ namespace PlanSDK.CrateSDK {
 
             var bundle = new BundleBuild();
             bundle.Manifest.BundleTitle = bundleTitle;
-            bundle.Manifest.BundleNameID = $"{Manifest.Info.CrateNameID}.{bundleNameID} {Manifest.Info.BuildID}";
+            bundle.Manifest.BundleNameID = $"{Manifest.Info.CrateID}.{bundleNameID} {Manifest.Info.BuildID}";
             bundle.Crate = this;
 
             Bundles.Add(bundle);
@@ -517,7 +520,7 @@ namespace PlanSDK.CrateSDK {
                 string spriteAssetPath = AssetDatabase.GetAssetPath(Params.Crate.CrateIcon);
                 IconBundle.Manifest.Assets.Add(new AssetEntry {
                     AssetFlags = AssetFlags.IsSprite,
-                    NameID = CrateManifest.kCrateIconNameID,
+                    AssetID = CrateManifest.kCrateIconNameID,
                     LocalURI = spriteAssetPath,
                 });
             }
@@ -583,7 +586,7 @@ namespace PlanSDK.CrateSDK {
                 builds[i].addressableNames = new string[N];
                 for (int j = 0; j < N; j++) {
                     builds[i].assetNames[j]       = bundle.Assets[j].LocalURI;
-                    builds[i].addressableNames[j] = bundle.Assets[j].NameID;
+                    builds[i].addressableNames[j] = bundle.Assets[j].AssetID;
                 }
             }
         }
@@ -599,25 +602,32 @@ namespace PlanSDK.CrateSDK {
                 }
             }
             
+            var jsonFormater = new gpb.JsonFormatter(new gpb.JsonFormatter.Settings(true));
+
+                
             {
+                string infoPath = $"{OutputPath}/{CrateInfo.kInfoFilename}";
                 byte[] buf = gpb.MessageExtensions.ToByteArray(this.Manifest.Info);
-                File.WriteAllBytes($"{OutputPath}/{CrateInfo.kInfoFilename}", buf);
+                File.WriteAllBytes(infoPath, buf);
+                
+                string json = jsonFormater.Format(this.Manifest.Info);
+                File.WriteAllText($"{infoPath}.json", json, System.Text.Encoding.UTF8);
             }
-            
+    
             {
                 string manifestPath = $"{OutputPath}/{CrateManifest.kManfestFilename}";
                 byte[] buf = gpb.MessageExtensions.ToByteArray(this.Manifest);
                 File.WriteAllBytes(manifestPath, buf);
 
-                var jsonFormater = new gpb.JsonFormatter(new gpb.JsonFormatter.Settings(true));
-                string manifestJson = jsonFormater.Format(this.Manifest);
-
-                //var parsed = SimpleJSON.JSON.Parse(manifestJson);
-                //parsed.SaveToBinaryFile($"{manifestPath}.json");
-
-                File.WriteAllText($"{manifestPath}.json", manifestJson, System.Text.Encoding.UTF8);
+                string json = jsonFormater.Format(this.Manifest);
+                File.WriteAllText($"{manifestPath}.json", json, System.Text.Encoding.UTF8);
+                
+                // // We use SimpleJSON to properly format the json
+                // var parsed = SimpleJSON.JSON.Parse(manifestJson);
+                // parsed.SaveToBinaryFile($"{manifestPath}.json");
             }
         }
+
 
 
 

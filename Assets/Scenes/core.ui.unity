@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: write
+  AssetID: write
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 1
-  AssetNameID: canvas
+  AssetID: canvas
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: calendar
+  AssetID: calendar
   ShortDescription: 
   IsPrivate: 1
   AutoGenerateIcon: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: space
+  AssetID: space
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 0
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: talk
+  AssetID: talk
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 0
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 1374133438}
   - component: {fileID: 3728906038838836234}
   m_Layer: 0
-  m_Name: CRATE (drews-crate-demo)
+  m_Name: '|CRATE| Drew''s Crate Demo!!!!'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: files
+  AssetID: files
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 0
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: url
+  AssetID: url
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 1
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   ExcludeFromBuild: 0
-  AssetNameID: sheets
+  AssetID: sheets
   ShortDescription: 
   IsPrivate: 0
   AutoGenerateIcon: 0
@@ -2322,15 +2322,15 @@ MonoBehaviour:
   CrateIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
   PublisherID: plan-systems.org
   PublisherName: PLAN Systems
-  CrateNameID: drews-crate-demo
-  CrateTitle: Drew's Crate Demo!!!!
+  CrateID: drews-crate-demo
+  CrateName: Drew's Crate Demo!!!!
   ShortDescription: Meat, part deux
   TimeCreated: 1617218717
   Tags: 
   HomeURL: 
   MajorVersion: 0
   MinorVersion: 3
-  _buildNumber: 92
+  _buildNumber: 96
 --- !u!1 &3801478230160134348
 GameObject:
   m_ObjectHideFlags: 0
