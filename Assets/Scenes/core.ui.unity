@@ -713,7 +713,7 @@ MonoBehaviour:
   AssetBounds:
     m_Center: {x: 0, y: 1.22, z: 0}
     m_Extent: {x: 1.0000002, y: 1, z: 1.0000002}
-  AutoScaleByDefault: 0
+  AutoScaleByDefault: 1
   IsSurface: 0
 --- !u!1 &996001622
 GameObject:
@@ -2320,16 +2320,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 2
   CrateIcon: {fileID: 21300000, guid: 936c7a2441adb415ca4cf1ff307287b9, type: 3}
-  CrateTitle: Drew's Crate Demo!!!!
+  PublisherID: plan-systems.org
+  PublisherName: PLAN Systems
   CrateNameID: drews-crate-demo
-  DomainUUID: plan-systems.org
+  CrateTitle: Drew's Crate Demo!!!!
   ShortDescription: Meat, part deux
   TimeCreated: 1617218717
   Tags: 
   HomeURL: 
   MajorVersion: 0
   MinorVersion: 3
-  _buildNumber: 88
+  _buildNumber: 92
 --- !u!1 &3801478230160134348
 GameObject:
   m_ObjectHideFlags: 0
