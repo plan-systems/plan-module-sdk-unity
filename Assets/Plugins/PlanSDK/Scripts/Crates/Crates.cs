@@ -106,7 +106,7 @@ namespace PlanSDK.Crates {
   public enum CrateSchema {
     [pbr::OriginalName("UndefinedSchema")] UndefinedSchema = 0,
     /// <summary>
-    /// V100 (April 2020) should be used for CrateInfo.CrateSchema
+    /// v100 (April 2020) should be used for CrateInfo.CrateSchema
     /// </summary>
     [pbr::OriginalName("v100")] V100 = 100,
   }
@@ -321,10 +321,10 @@ namespace PlanSDK.Crates {
     private string shortDesc_ = "";
     /// <summary>
     /// A short phrase or fragment describing this asset, starting with an article where appropriate. e.g.:
-    ///      "typical 6 crew member fire truck"
-    ///      "leading U.S. naval ship-based helicopter"
-    ///      "Texas capital building located in Austin"
-    ///      "animated scared-geometry inspired flat seal"
+    ///      "A typical 6 crew member fire truck"
+    ///      "A leading U.S. naval ship-based helicopter"
+    ///      "The Texas capital building located in Austin"
+    ///      "An animated scared-geometry inspired flat seal"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ShortDesc {
@@ -1111,12 +1111,13 @@ namespace PlanSDK.Crates {
     public const int CrateURIFieldNumber = 4;
     private string crateURI_ = "";
     /// <summary>
-    /// CrateURI takes the form "{DomainUUID}/{CrateNameID}" is used to globally reference assets in this crate.
-    /// DomainUUID uniquely identifies the author/owner/publisher of this crate and only contains chars in [A-Za-z0-9_.-].
-    /// CrateNameID uniquely identifies this crate (for the given publisher) and all subsequent revisions.
+    /// CrateURI takes the form "{PublisherID}/{CrateNameID}" is used to globally reference assets in this crate.
+    /// This URI string can only contains chars in [A-Za-z0-9_.-] (other than the separating '/' char). 
+    /// PublisherID uniquely identifies the author/owner/publisher of this crate (and potentially other crates).
+    /// CrateNameID uniquely identifies this crate for the given publisher and all subsequent revisions.
     ///    "plan-systems.org/plan.app.ui"
     ///    "plan-systems.org/about-plan-systems"
-    ///    "themushroom.farm/main" 
+    ///    "themushroom.farm/land" 
     ///    "themushroom.farm/mycology-201" 
     ///    "the-smiths.family/123-Maple" 
     /// </summary>
@@ -1757,8 +1758,8 @@ namespace PlanSDK.Crates {
   /// CrateManifest is the top-level manifest/catalog for a PLAN asset module called a "crate".  
   /// It contains catalog and type info that PLAN loads at runtime to know what's inside binary asset bundles without having to load them.
   ///
-  /// A reference to a PLAN asset is via an asset URI ("PID") having the form:
-  ///   assetURI := "crateDomainName/crateNameID[@crateBuildID]/assetNameID"
+  /// A reference to a PLAN asset is via a URI with the form:
+  ///   assetURI := "PublisherID/CrateNameID[@CrateBuildID]/AssetNameID"
   /// 
   /// </summary>
   public sealed partial class CrateManifest : pb::IMessage<CrateManifest>
@@ -2065,9 +2066,10 @@ namespace PlanSDK.Crates {
     public const int DownloadURLFieldNumber = 3;
     private string downloadURL_ = "";
     /// <summary>
-    /// This is a template string where the symbols "CrateDomain", "CrateNameID", "CrateBuildID", "PlatformID" are delimited with { and }.
-    /// The symbol "AppStreaming" will be replaced with "file://"
-    /// e.g. "http://whatever.com/{CrateDomain}/{CrateNameID}__{CrateBuildID}.{PlatformID}.zip"
+    /// This is a template string where the symbols "CrateURI", "CrateBuildID", "PlatformID" are delimited with { and }.
+    /// The symbol "{.}" is be replaced with a local pathname if the URL refers to a local file system pathname.
+    /// e.g. "http://whatever.com/{CrateURI}__{CrateBuildID}.{PlatformID}.zip"
+    ///      "{.}/{CrateURI}__{CrateBuildID}.{PlatformID}.zip"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DownloadURL {
