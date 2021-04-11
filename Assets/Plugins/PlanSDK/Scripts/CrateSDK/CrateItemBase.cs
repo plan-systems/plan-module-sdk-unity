@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PlanSDK.CrateSDK {
     
@@ -15,7 +16,8 @@ namespace PlanSDK.CrateSDK {
         public bool                         ExcludeFromBuild;
 
         [Tooltip("AssetNameID PERMANENTLY identifies this asset and is CASE SENSITIVE.  Changing this ID after this asset has been published will cause references to this asset to break.")]
-        public string                       AssetNameID;
+        [FormerlySerializedAs("AssetNameID")]
+        public string                       AssetID;
 
         [Tooltip("A short phase or sentence decribing this item")]
         public string                       ShortDescription;

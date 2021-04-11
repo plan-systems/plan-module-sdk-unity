@@ -210,7 +210,7 @@ namespace PlanSDK.CrateSDK {
             var assetName = item.name.Trim();
             var target = item.AssetTarget;
 
-            if (String.IsNullOrEmpty(item.AssetNameID)) {
+            if (String.IsNullOrEmpty(item.AssetID)) {
                 Debug.LogWarning($"asset '{assetName}' skipped because AssetID is empty");
                 return;
             }
@@ -218,7 +218,7 @@ namespace PlanSDK.CrateSDK {
             var entry = new AssetEntry {
                 Bounds = item.AssetBounds,
                 BrowsePath = $"{_curPath}/{assetName}",        // DEPRECATED
-                NameID = item.AssetNameID,
+                NameID = item.AssetID,
                 Name = assetName,
                 Tags = item.ExportTagList(),
             };
@@ -284,7 +284,7 @@ namespace PlanSDK.CrateSDK {
                 Crate.IconBundle.Manifest.Assets.Add(new AssetEntry {
                     AssetFlags = AssetFlags.IsSprite,
                     LocalURI = iconPath,
-                    NameID = item.AssetNameID,
+                    NameID = item.AssetID,
                 });
             }
 
@@ -456,8 +456,7 @@ namespace PlanSDK.CrateSDK {
         public BundleBuild                  CreateSubBundle(string bundleTitle, string bundleNameID = null) {
             bundleTitle = bundleTitle.Trim();
             if (String.IsNullOrWhiteSpace(bundleNameID)) {
-                bundleNameID = LocalFS.FilterName(bundleTitle);
-                bundleNameID = bundleNameID.Replace(" ", "-").ToLowerInvariant();
+                bundleNameID = CrateItem.ValidateNameID(bundleTitle);
             }
 
             var bundle = new BundleBuild();

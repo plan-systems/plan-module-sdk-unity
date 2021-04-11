@@ -49,11 +49,12 @@ namespace PlanSDK {
         }
         
         
-        public static string                FilterName(string name, string invalidCharReplacement = "") {
+        public static string                FilterFileName(string name, string invalidCharReplacement = "") {
             name = IllegalFileChars.Replace(name, invalidCharReplacement);
             name = name.Trim();
             return name;
         }
+
     }
 
 }
