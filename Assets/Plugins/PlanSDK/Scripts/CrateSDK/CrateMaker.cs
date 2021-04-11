@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PlanSDK.CrateSDK {
         
@@ -18,12 +19,13 @@ namespace PlanSDK.CrateSDK {
         public string                       PublisherName;
         
         [Header("Crate Info")]
-        [Tooltip("This identifies a crate for a given publisher and is not visible to the user.  It cannot be changed after a crate is deployed or else the new crate will not be linked to the previous version.")]
-        public string                       CrateNameID         = "static-create-name-id";       
+        [FormerlySerializedAs("CrateNameID")]
+        [Tooltip("This identifies a crate (for a given publisher) and is not visible to the user.  It cannot be changed after a crate is deployed or else the new crate will not be linked to the previous version.  Because it is within a given publisher ID, avoid redundant name parts.")]
+        public string                       CrateID             = "thing.sub-thing.detail";       
         [Tooltip("This identifies a crate to the user and is for optics only.  It can be changed without any reprocussions.")]
-        public string                       CrateTitle          = "My Crate Name";
+        [FormerlySerializedAs("CrateTitle")]
+        public string                       CrateName           = "My Crate Name";
         
-        string                              HomeDomain;         // Deprecated
         public string                       ShortDescription    = "";
 
         // Seconds UTC
@@ -50,17 +52,17 @@ namespace PlanSDK.CrateSDK {
         public Crates.CrateInfo             ExportCrateInfo() {
             var info = new Crates.CrateInfo() {
                 CrateSchema   = (int) Crates.CrateSchema.V100,
-                CrateURI      = $"{PublisherID}/{CrateNameID}",
+                CrateURI      = $"{PublisherID.Trim()}/{CrateID.Trim()}",
                 PublisherName = (PublisherName != null) ? PublisherName : PublisherID,
-                CrateName     = CrateTitle,
-                ShortDesc     = ShortDescription,
+                CrateName     = CrateName.Trim(),
+                ShortDesc     = ShortDescription.Trim(),
                 Tags          = Tags,
                 TimeCreated   = TimeCreated,
                 TimeBuilt     = IssueSecondsUTC(),
                 MajorVersion  = MajorVersion,
                 MinorVersion  = MinorVersion,
                 BuildNumber   = _buildNumber,
-                HomeURL       = HomeURL,
+                HomeURL       = HomeURL.Trim(),
             };
             
             if (String.IsNullOrWhiteSpace(HomeURL) == false)
@@ -74,15 +76,7 @@ namespace PlanSDK.CrateSDK {
                        
 
         
-        public static string                FilterAssetID(string assetID) {
-            assetID = LocalFS.FilterName(assetID);
 
-            assetID.Trim();
-            assetID = assetID.Replace("---", "-"); 
-            assetID = assetID.Replace("  ", " "); 
-            assetID = assetID.Replace("   ", " "); 
-            return assetID;
-        }
         
         public static long                  IssueSecondsUTC() {
             return (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
@@ -96,12 +90,9 @@ namespace PlanSDK.CrateSDK {
             }
             
             if (String.IsNullOrEmpty(PublisherID)) {
-                PublisherID = HomeDomain;
-                HomeDomain = null;
-                
-                if (String.IsNullOrEmpty(PublisherID)) {
-                    PublisherID = "plan-systems.org";
-                }
+                PublisherID = "plan-systems.org";
+            } else {
+                PublisherID = CrateItem.ValidateNameID(PublisherID);
             }
             
             if (TimeCreated == 0) {
@@ -112,13 +103,11 @@ namespace PlanSDK.CrateSDK {
                 HomeURL = "";
             }
             
-            if (String.IsNullOrWhiteSpace(CrateNameID)) {
-                CrateNameID = CrateTitle;
+            if (String.IsNullOrWhiteSpace(CrateID)) {
+                CrateID = CrateName;
             }
             
-            if (String.IsNullOrWhiteSpace(CrateNameID)) {
-                CrateNameID = FilterAssetID(CrateNameID);
-            }
+            CrateID = CrateItem.ValidateNameID(CrateID);
             
             if (String.IsNullOrEmpty(Tags) == false) {
                 bool changed = false;
@@ -141,7 +130,7 @@ namespace PlanSDK.CrateSDK {
                 }
             }
             
-            gameObject.name = $"CRATE ({CrateNameID})";
+            gameObject.name = $"|CRATE| {CrateName}";
         }
         
         // public string                       NextBuildInfo {

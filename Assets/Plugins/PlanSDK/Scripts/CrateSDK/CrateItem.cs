@@ -1,6 +1,8 @@
 using System;
-using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PlanSDK.CrateSDK {
         
@@ -31,8 +33,10 @@ namespace PlanSDK.CrateSDK {
         
         void                                OnValidate() {
             
-            if (String.IsNullOrWhiteSpace(AssetNameID)) {
-                AssetNameID = CrateMaker.FilterAssetID(gameObject.name.ToLowerInvariant());
+            if (String.IsNullOrWhiteSpace(AssetID)) {
+                AssetID = CrateItem.ValidateNameID(gameObject.name.ToLowerInvariant());
+            } else {
+                AssetID = AssetID.Trim();
             }
         }
 
@@ -85,6 +89,18 @@ namespace PlanSDK.CrateSDK {
                 }
             }
         }
+        
+        
+        
+        static readonly Regex _NonNameIDChars = new Regex(@"[^a-zA-Z_.-]", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+
+        public static string                ValidateNameID(string nameID, string invalidCharReplacement = "") {
+            nameID = nameID.Trim().Replace(" ", "-");
+            nameID = _NonNameIDChars.Replace(nameID, "");
+            return nameID;
+        }
+        
+        
 
     }
 
