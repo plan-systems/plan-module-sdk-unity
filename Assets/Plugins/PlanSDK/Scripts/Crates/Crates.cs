@@ -2068,8 +2068,8 @@ namespace PlanSDK.Crates {
     /// <summary>
     /// This is a template string where the symbols "CrateURI", "CrateBuildID", "PlatformID" are delimited with { and }.
     /// The symbol "{.}" is be replaced with a local pathname if the URL refers to a local file system pathname.
-    /// e.g. "http://whatever.com/{CrateURI}__{CrateBuildID}.{PlatformID}.zip"
-    ///      "{.}/{CrateURI}__{CrateBuildID}.{PlatformID}.zip"
+    /// e.g. "http://whatever.com/{CrateURI}__{CrateBuildID}.{PlatformID}.crate"
+    ///      "{.}/{CrateURI}__{CrateBuildID}.{PlatformID}.crate"
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DownloadURL {

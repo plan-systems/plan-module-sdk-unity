@@ -89,11 +89,11 @@ namespace PlanSDK.CrateSDK {
                     foreach (var target in buildTargets) {
                         var platformDir = $"{outputDir}/{target.TargetString}";
     
-                        File.Copy(manifest,      $"{platformDir}/{CrateInfo.kInfoFilename}");
+                        File.Copy(info,          $"{platformDir}/{CrateInfo.kInfoFilename}");
                         File.Copy(manifest,      $"{platformDir}/{CrateManifest.kManfestFilename}");
                         File.Copy(manifestJSON,  $"{platformDir}/{CrateManifest.kManfestFilename}.json");
                     
-                        var dstZip = $"{outputDir}/{buildFilename}.{target.TargetString}.zip";
+                        var dstZip = $"{outputDir}/{buildFilename}.{target.TargetString}.crate";
                         int[] zipProgress = new int[1];
                         var zipStatus = lzip.compressDir(platformDir, 9, dstZip, true, zipProgress, null, false, 0);
                         
