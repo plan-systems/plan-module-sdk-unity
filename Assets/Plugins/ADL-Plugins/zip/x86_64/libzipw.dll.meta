@@ -12,7 +12,7 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
-      : Any
+      '': Any
     second:
       enabled: 0
       settings:
@@ -28,7 +28,7 @@ PluginImporter:
         Exclude Win: 1
         Exclude Win64: 0
   - first:
-      : Editor
+      '': Editor
     second:
       enabled: 0
       settings:
@@ -75,7 +75,7 @@ PluginImporter:
     second:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86_64
   - first:
       Standalone: LinuxUniversal
     second:

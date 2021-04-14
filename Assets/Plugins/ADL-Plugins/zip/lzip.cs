@@ -991,6 +991,17 @@ public class lzip {
 
 #if (!UNITY_WEBGL && !UNITY_TVOS) || UNITY_EDITOR
 
+    // set permissions of a file in user, group, other.
+	// Each string should contain any or all chars of "rwx".
+	// returns 0 on success
+	public static int setFilePermissions(string filePath, string _user, string _group, string _other){
+		#if (UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_ANDROID || UNITY_EDITOR_OSX || UNITY_EDITOR_LINUX || UNITY_IOS || UNITY_IPHONE) && !UNITY_EDITOR_WIN
+			return zsetPermissions(filePath, _user, _group, _other);
+		#else
+			return -1;
+		#endif
+	}
+
     // A function that compresses a byte buffer and writes it to a zip file. I you set the append flag to true, the output will get appended to an existing zip archive.
     //
     // levelOfCompression   : (0-9) recommended 9 for maximum. (0 = Store method.)
