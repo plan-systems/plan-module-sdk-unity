@@ -56,7 +56,7 @@ namespace PlanSDK.Crates {
             URL = scrap.ToString();
         }
                 
-        public bool                         IsUpdateOf(CrateInfo other) {
+        public bool                         IsUpdateTo(CrateInfo other) {
             if (CrateURI == other.CrateURI && BuildID != null && other != null && other.BuildID != null) {
                 if (String.CompareOrdinal(BuildID, other.BuildID) > 0) 
                     return true;
