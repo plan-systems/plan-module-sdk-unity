@@ -1,7 +1,6 @@
 
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -463,9 +462,11 @@ namespace PlanSDK.CrateSDK {
             }
 
             var bundle = new BundleBuild();
-            bundle.Manifest.BundleTitle = bundleTitle;
-            bundle.Manifest.BundleNameID = $"{Manifest.Info.CrateID}.{bundleNameID} {Manifest.Info.BuildID}";
             bundle.Crate = this;
+            
+            // Using a lower case bundle file nume is critical on iOS (and other case-sensitive file systems)
+            bundle.Manifest.BundleNameID = $"{Manifest.Info.CrateID}.{bundleNameID}.{Manifest.Info.BuildID}".ToLowerInvariant();
+            bundle.Manifest.BundleTitle = bundleTitle;
 
             Bundles.Add(bundle);
             this.Manifest.Bundles.Add(bundle.Manifest);
@@ -581,7 +582,6 @@ namespace PlanSDK.CrateSDK {
                 int N = bundle.Assets.Count;
 
                 builds[i].assetBundleName = bundle.BundleNameID + ".assetbundle";
-
                 builds[i].assetNames       = new string[N];
                 builds[i].addressableNames = new string[N];
                 for (int j = 0; j < N; j++) {
